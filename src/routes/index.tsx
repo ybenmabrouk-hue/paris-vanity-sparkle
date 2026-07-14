@@ -156,14 +156,12 @@ function BrandStatement() {
   return (
     <section id="story" className="px-6 md:px-10 py-24 md:py-32 bg-secondary/40 text-center">
       <div className="max-w-2xl mx-auto">
-        <div className="font-script text-5xl mb-8" aria-hidden="true">
-          M
-        </div>
+        <img src={logoBlack.url} alt="Dahlia" className="h-14 md:h-16 w-auto mx-auto mb-8" />
         <p className="eyebrow text-muted-foreground mb-6">
           Imagined in Paris. Crafted by hand.
         </p>
         <p className="text-lg md:text-xl leading-relaxed text-foreground/80">
-          Maison Yasmine is a modern leather-led lifestyle brand shaped around the
+          Dahlia is a modern leather-led lifestyle brand shaped around the
           rituals of self and travel, where the objects you carry become part of
           everyday life. Small batch. Considered. Made to keep.
         </p>
