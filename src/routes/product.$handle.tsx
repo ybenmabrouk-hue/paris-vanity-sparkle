@@ -102,21 +102,31 @@ function ProductDetail({ handle }: { handle: string }) {
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {images.map((img, i) => (
+            {images.length === 0 ? (
               <div
-                key={img.node.url}
-                className={`aspect-[4/5] bg-muted overflow-hidden ${
-                  images.length > 1 && i === 0 ? "md:col-span-2" : ""
-                }`}
+                role="img"
+                aria-label={`${product.title} — product image`}
+                className="aspect-[4/5] bg-muted border border-dashed border-border flex items-center justify-center text-muted-foreground md:col-span-2"
               >
-                <img
-                  src={img.node.url}
-                  alt={img.node.altText ?? product.title}
-                  loading={i === 0 ? "eager" : "lazy"}
-                  className="w-full h-full object-cover"
-                />
+                <span className="eyebrow text-xs">Product image</span>
               </div>
-            ))}
+            ) : (
+              images.map((img, i) => (
+                <div
+                  key={img.node.url}
+                  className={`aspect-[4/5] bg-muted overflow-hidden ${
+                    images.length > 1 && i === 0 ? "md:col-span-2" : ""
+                  }`}
+                >
+                  <img
+                    src={img.node.url}
+                    alt={img.node.altText ?? product.title}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))
+            )}
           </div>
 
           <div className="md:sticky md:top-24 md:self-start">
