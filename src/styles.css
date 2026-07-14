@@ -137,7 +137,7 @@
     align-items: baseline;
     justify-content: center;
     font-family: var(--font-kuenstler);
-    font-size: clamp(54px, 8vw, 104px);
+    font-size: 64px;
     font-weight: 700;
     line-height: 0.82;
     letter-spacing: 0;
@@ -178,6 +178,11 @@
     border-radius: 999px;
     transform: rotate(-30deg);
     transform-origin: left center;
+  }
+  @media (min-width: 768px) {
+    .dahlia-instagram-mark {
+      font-size: 92px;
+    }
   }
   .eyebrow {
     font-family: var(--font-sans);
