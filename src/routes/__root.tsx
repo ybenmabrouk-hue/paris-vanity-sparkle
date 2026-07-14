@@ -68,14 +68,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Maison Yasmine — Vanity Cases Made in Paris" },
+      { title: "Dahlia — Vanity Cases Made in Paris" },
       {
         name: "description",
         content:
-          "Maison Yasmine crafts refined vanity cases in Paris — small-batch, made to travel and to keep.",
+          "Dahlia crafts refined vanity cases in Paris — small-batch, made to travel and to keep.",
       },
-      { name: "author", content: "Maison Yasmine" },
-      { property: "og:title", content: "Maison Yasmine — Vanity Cases Made in Paris" },
+      { name: "author", content: "Dahlia" },
+      { property: "og:title", content: "Dahlia — Vanity Cases Made in Paris" },
       {
         property: "og:description",
         content: "Refined vanity cases, crafted in small batches in Paris.",
