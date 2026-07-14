@@ -53,19 +53,15 @@ function Banner() {
   );
 }
 
-/* ---------- 5 color cards, Sept-style featured carousel ---------- */
-type ColorCard = {
-  name: string;
-  swatch: string;
-  price: string;
-};
+/* ---------- Single product card with color swatches ---------- */
+type ColorSwatch = { name: string; swatch: string };
 
-const COLOR_CARDS: ColorCard[] = [
-  { name: "Black", swatch: "#1a1614", price: "€480" },
-  { name: "Brown", swatch: "#6b4a2b", price: "€480" },
-  { name: "Burgundy", swatch: "#5c1a2a", price: "€480" },
-  { name: "Pink", swatch: "#e8b8c8", price: "€480" },
-  { name: "Beige", swatch: "#d9c4a6", price: "€480" },
+const COLOR_SWATCHES: ColorSwatch[] = [
+  { name: "Black", swatch: "#1a1614" },
+  { name: "Brown", swatch: "#6b4a2b" },
+  { name: "Burgundy", swatch: "#5c1a2a" },
+  { name: "Pink", swatch: "#e8b8c8" },
+  { name: "Beige", swatch: "#d9c4a6" },
 ];
 
 function CollectionCarousel() {
@@ -86,47 +82,49 @@ function CollectionCarousel() {
           </p>
         </div>
 
-        <div className="grid grid-cols-5 gap-3 md:gap-6">
-          {COLOR_CARDS.map((c) => (
-            <ColorProductCard key={c.name} card={c} />
-          ))}
-        </div>
+        <VanityProductCard />
       </div>
     </section>
   );
 }
 
-function ColorProductCard({ card }: { card: ColorCard }) {
+function VanityProductCard() {
   return (
-    <Link to="/collection" className="group block">
-      <div
-        className="relative w-full aspect-[4/5] overflow-hidden"
-        style={{ backgroundColor: card.swatch }}
-      >
-        <ImageSlot
-          label={`The Vanity Case — ${card.name}`}
-          caption={card.name}
-          className="absolute inset-0 border-0 bg-transparent text-white/70"
-        />
+    <Link to="/collection" className="group block max-w-md">
+      <div className="text-[15px] md:text-[16px] leading-[22px]">
+        The Vanity Case
       </div>
       <div
-        className="flex justify-between items-start gap-1"
-        style={{ marginTop: "20px" }}
+        className="text-muted-foreground text-[13px] md:text-[14px]"
+        style={{ marginTop: "8px" }}
       >
-        <div className="text-[14px] md:text-[15px] leading-[20px]">
-          The Vanity Case
-          <br />
-          <span className="text-muted-foreground text-[12px] md:text-[13px]">
-            {card.name}
-          </span>
-        </div>
-        <div className="text-muted-foreground text-[13px] md:text-[14px] whitespace-nowrap">
-          {card.price}
-        </div>
+        $70
+      </div>
+      <div
+        className="flex items-center gap-2"
+        style={{ marginTop: "14px" }}
+      >
+        {COLOR_SWATCHES.map((c, i) => (
+          <span
+            key={c.name}
+            aria-label={c.name}
+            title={c.name}
+            className="inline-block rounded-full"
+            style={{
+              width: "24px",
+              height: "24px",
+              backgroundColor: c.swatch,
+              boxShadow: i === 0
+                ? "0 0 0 1px hsl(var(--foreground)), 0 0 0 3px hsl(var(--background)), 0 0 0 4px hsl(var(--foreground))"
+                : "inset 0 0 0 1px rgba(0,0,0,0.08)",
+            }}
+          />
+        ))}
       </div>
     </Link>
   );
 }
+
 
 /* ---------- Sept-style rich-text banner ---------- */
 function TextBanner() {
