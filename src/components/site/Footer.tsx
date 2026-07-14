@@ -155,7 +155,7 @@ function SocialFeed() {
       >
         <span
           className="font-kuenstler"
-          style={{ fontSize: "clamp(28px, 5vw, 48px)", lineHeight: 1.1 }}
+          style={{ fontSize: "clamp(40px, 7vw, 72px)", lineHeight: 1.05 }}
         >
           With Dahlia
         </span>
