@@ -160,7 +160,7 @@ function TextBanner() {
             fontWeight: 300,
             letterSpacing: "0.01em",
             marginBlockStart: "1.25rem",
-            fontSize: "clamp(2rem, 1.4rem + 2.5vw, 3.5rem)",
+            fontSize: "clamp(28px, 3vw, 44px)",
             lineHeight: 1.1,
           }}
         >
