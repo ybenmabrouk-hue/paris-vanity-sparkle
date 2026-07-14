@@ -141,7 +141,7 @@ function ProductDetail({ handle }: { handle: string }) {
             <div
               className="prose prose-neutral mt-8 text-muted-foreground leading-relaxed whitespace-pre-line max-w-none"
             >
-              {product.description || "A Maison Yasmine vanity case."}
+              {product.description || "A Dahlia vanity case."}
             </div>
 
             {product.options.map((opt) => {
