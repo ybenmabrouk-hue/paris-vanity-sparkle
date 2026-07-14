@@ -1,17 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
-import { Suspense, useCallback, useEffect, useRef, useState } from "react";
-import { fetchProducts, formatPrice, type ShopifyProduct } from "@/lib/shopify";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ImageSlot } from "@/components/site/ImageSlot";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
 
-const productsQuery = queryOptions({
-  queryKey: ["products", "home"],
-  queryFn: () => fetchProducts(12),
-});
-
 export const Route = createFileRoute("/")({
-  loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
   component: Home,
 });
 
@@ -19,9 +11,7 @@ function Home() {
   return (
     <div>
       <Banner />
-      <Suspense fallback={<div className="h-96" />}>
-        <VolOneCollection />
-      </Suspense>
+      <CollectionCarousel />
       <TextBanner />
     </div>
   );
@@ -55,7 +45,7 @@ function Banner() {
               borderWidth: "1px",
             }}
           >
-            Shop Vol. One
+            Shop the Collection
           </Link>
         </div>
       </div>
@@ -63,9 +53,22 @@ function Banner() {
   );
 }
 
-/* ---------- Sept-style featured collection carousel ---------- */
-function VolOneCollection() {
-  const { data: products } = useSuspenseQuery(productsQuery);
+/* ---------- 5 color cards, Sept-style featured carousel ---------- */
+type ColorCard = {
+  name: string;
+  swatch: string;
+  price: string;
+};
+
+const COLOR_CARDS: ColorCard[] = [
+  { name: "Black", swatch: "#1a1614", price: "€480" },
+  { name: "Brown", swatch: "#6b4a2b", price: "€480" },
+  { name: "Burgundy", swatch: "#5c1a2a", price: "€480" },
+  { name: "Pink", swatch: "#e8b8c8", price: "€480" },
+  { name: "Beige", swatch: "#d9c4a6", price: "€480" },
+];
+
+function CollectionCarousel() {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
@@ -87,7 +90,7 @@ function VolOneCollection() {
       el.removeEventListener("scroll", updateEdges);
       window.removeEventListener("resize", updateEdges);
     };
-  }, [updateEdges, products.length]);
+  }, [updateEdges]);
 
   const scrollBy = (dir: 1 | -1) => {
     const el = scrollerRef.current;
@@ -97,24 +100,6 @@ function VolOneCollection() {
     el.scrollBy({ left: dir * step, behavior: "smooth" });
   };
 
-  if (!products.length) {
-    return (
-      <section
-        className="px-6 md:px-10"
-        style={{ paddingBlock: "clamp(45px, 8vw, 80px)" }}
-      >
-        <div className="max-w-[1600px] mx-auto text-center">
-          <h2 className="font-serif text-[20px] md:text-[24px] leading-[26px] font-bold">
-            Vol. One
-          </h2>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Add products in Shopify to populate the collection.
-          </p>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section
       className="px-6 md:px-10"
@@ -123,7 +108,7 @@ function VolOneCollection() {
       <div className="max-w-[1600px] mx-auto">
         <div className="mb-6 md:mb-8 text-center md:text-left">
           <h2 className="font-serif font-bold text-[20px] md:text-[24px] leading-[26px] tracking-tight">
-            Vol. One
+            Collection
           </h2>
           <p className="mt-3 text-[12px] md:text-[15px] leading-[15px] md:leading-[22px] text-muted-foreground max-w-2xl mx-auto md:mx-0">
             The collection begins at our atelier. Shaped by a Parisian eye and
@@ -137,13 +122,13 @@ function VolOneCollection() {
             ref={scrollerRef}
             className="flex gap-3 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
-            {products.map((p) => (
+            {COLOR_CARDS.map((c) => (
               <div
-                key={p.node.id}
+                key={c.name}
                 data-card
-                className="snap-start shrink-0 w-[74vw] md:w-[calc((100%-3rem)/3)]"
+                className="snap-start shrink-0 w-[74vw] md:w-[calc((100%-4.5rem)/4)] lg:w-[calc((100%-6rem)/5)]"
               >
-                <CarouselCard product={p} />
+                <ColorProductCard card={c} />
               </div>
             ))}
           </div>
@@ -176,53 +161,32 @@ function VolOneCollection() {
   );
 }
 
-function CarouselCard({ product }: { product: ShopifyProduct }) {
-  const p = product.node;
-  const img1 = p.images.edges[0]?.node;
-  const img2 = p.images.edges[1]?.node ?? img1;
-  const price = p.priceRange.minVariantPrice;
-
+function ColorProductCard({ card }: { card: ColorCard }) {
   return (
-    <Link
-      to="/product/$handle"
-      params={{ handle: p.handle }}
-      className="group block"
-    >
-      <div className="relative w-full aspect-[4/5] overflow-hidden bg-muted">
-        {img1 ? (
-          <>
-            <img
-              src={img1.url}
-              alt={img1.altText ?? p.title}
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
-            />
-            {img2 && (
-              <img
-                src={img2.url}
-                alt={img2.altText ?? p.title}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              />
-            )}
-          </>
-        ) : (
-          <ImageSlot label={p.title} caption="Product" className="absolute inset-0 border-0" />
-        )}
+    <Link to="/collection" className="group block">
+      <div
+        className="relative w-full aspect-[4/5] overflow-hidden"
+        style={{ backgroundColor: card.swatch }}
+      >
+        <ImageSlot
+          label={`The Vanity Case — ${card.name}`}
+          caption={card.name}
+          className="absolute inset-0 border-0 bg-transparent text-white/70"
+        />
       </div>
       <div
         className="flex justify-between items-start gap-1"
         style={{ marginTop: "20px" }}
       >
         <div className="text-[14px] md:text-[15px] leading-[20px]">
-          {p.title}
+          The Vanity Case
           <br />
           <span className="text-muted-foreground text-[12px] md:text-[13px]">
-            Vanity Case / Petit
+            {card.name}
           </span>
         </div>
         <div className="text-muted-foreground text-[13px] md:text-[14px] whitespace-nowrap">
-          {formatPrice(price.amount, price.currencyCode)}
+          {card.price}
         </div>
       </div>
     </Link>
