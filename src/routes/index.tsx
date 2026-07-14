@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useCallback, useEffect, useRef, useState } from "react";
+
 import { ImageSlot } from "@/components/site/ImageSlot";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
 
@@ -69,37 +69,6 @@ const COLOR_CARDS: ColorCard[] = [
 ];
 
 function CollectionCarousel() {
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const [canPrev, setCanPrev] = useState(false);
-  const [canNext, setCanNext] = useState(false);
-
-  const updateEdges = useCallback(() => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    setCanPrev(el.scrollLeft > 4);
-    setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
-  }, []);
-
-  useEffect(() => {
-    updateEdges();
-    const el = scrollerRef.current;
-    if (!el) return;
-    el.addEventListener("scroll", updateEdges, { passive: true });
-    window.addEventListener("resize", updateEdges);
-    return () => {
-      el.removeEventListener("scroll", updateEdges);
-      window.removeEventListener("resize", updateEdges);
-    };
-  }, [updateEdges]);
-
-  const scrollBy = (dir: 1 | -1) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    const card = el.querySelector<HTMLElement>("[data-card]");
-    const step = card ? card.offsetWidth + 24 : el.clientWidth * 0.8;
-    el.scrollBy({ left: dir * step, behavior: "smooth" });
-  };
-
   return (
     <section
       className="px-6 md:px-10"
@@ -117,44 +86,10 @@ function CollectionCarousel() {
           </p>
         </div>
 
-        <div className="relative group">
-          <div
-            ref={scrollerRef}
-            className="flex gap-3 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {COLOR_CARDS.map((c) => (
-              <div
-                key={c.name}
-                data-card
-                className="snap-start shrink-0 w-[74vw] md:w-[calc((100%-4.5rem)/4)] lg:w-[calc((100%-6rem)/5)]"
-              >
-                <ColorProductCard card={c} />
-              </div>
-            ))}
-          </div>
-
-          <button
-            type="button"
-            aria-label="Previous"
-            onClick={() => scrollBy(-1)}
-            disabled={!canPrev}
-            className="hidden md:flex absolute left-2 top-[38%] -translate-y-1/2 h-11 w-11 items-center justify-center rounded-full bg-background/90 border border-border opacity-0 group-hover:opacity-100 transition disabled:opacity-0"
-          >
-            <svg width="16" viewBox="0 0 16 18" fill="none">
-              <path d="M11 1 3 9l8 8" stroke="currentColor" strokeLinecap="square" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            aria-label="Next"
-            onClick={() => scrollBy(1)}
-            disabled={!canNext}
-            className="hidden md:flex absolute right-2 top-[38%] -translate-y-1/2 h-11 w-11 items-center justify-center rounded-full bg-background/90 border border-border opacity-0 group-hover:opacity-100 transition disabled:opacity-0"
-          >
-            <svg width="16" viewBox="0 0 16 18" fill="none">
-              <path d="m5 17 8-8-8-8" stroke="currentColor" strokeLinecap="square" />
-            </svg>
-          </button>
+        <div className="grid grid-cols-5 gap-3 md:gap-6">
+          {COLOR_CARDS.map((c) => (
+            <ColorProductCard key={c.name} card={c} />
+          ))}
         </div>
       </div>
     </section>
