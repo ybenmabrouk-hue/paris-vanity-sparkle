@@ -1,4 +1,5 @@
-import { Link, useServerFn } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { z } from "zod";
 import { ArrowRight, Facebook, Instagram } from "lucide-react";
