@@ -12,15 +12,15 @@ const collectionQuery = queryOptions({
 export const Route = createFileRoute("/collection")({
   head: () => ({
     meta: [
-      { title: "The Collection — Maison Yasmine" },
+      { title: "The Collection — Dahlia" },
       {
         name: "description",
-        content: "Browse the full collection of Maison Yasmine vanity cases — crafted in Paris.",
+        content: "Browse the full collection of Dahlia vanity cases — crafted in Paris.",
       },
-      { property: "og:title", content: "The Collection — Maison Yasmine" },
+      { property: "og:title", content: "The Collection — Dahlia" },
       {
         property: "og:description",
-        content: "Browse the full collection of Maison Yasmine vanity cases — crafted in Paris.",
+        content: "Browse the full collection of Dahlia vanity cases — crafted in Paris.",
       },
     ],
   }),
