@@ -98,8 +98,8 @@ export function Footer() {
 
       <div className="border-t border-border/60">
         <div className="mx-auto max-w-[1600px] px-6 md:px-10 py-6 text-xs text-muted-foreground flex flex-wrap justify-between gap-4">
-          <div>© 2026 Dahlia — Paris</div>
-          <div>Developed by malkum</div>
+          <div>© 2026 Dahlia<br /><br /></div>
+          <div>Designed in Paris with love</div>
         </div>
       </div>
     </footer>
