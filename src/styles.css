@@ -150,8 +150,9 @@
     justify-content: center;
     width: 0.72em;
     height: 0.72em;
-    margin-right: -0.02em;
-    transform: translateY(-0.02em) skewX(-8deg);
+    margin-right: 0.02em;
+    font-size: 0.82em;
+    transform: translateY(-0.01em) skewX(-8deg);
   }
   .dahlia-instagram-at > span {
     position: relative;
