@@ -76,7 +76,7 @@ function CollectionCarousel() {
     >
       <div className="max-w-[1600px] mx-auto">
         <div className="mb-6 md:mb-8 text-center md:text-left">
-          <h2 className="font-serif font-bold text-[20px] md:text-[24px] leading-[26px] tracking-tight">
+          <h2 className="font-kuenstler text-[24px] md:text-[32px] leading-[1] tracking-tight">
             Collection
           </h2>
           <p className="mt-3 text-[12px] md:text-[15px] leading-[15px] md:leading-[22px] text-muted-foreground max-w-2xl mx-auto md:mx-0">
