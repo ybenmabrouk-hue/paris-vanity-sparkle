@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
-import { Suspense } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { fetchProducts, formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { ImageSlot } from "@/components/site/ImageSlot";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
 
 const productsQuery = queryOptions({
   queryKey: ["products", "home"],
-  queryFn: () => fetchProducts(1),
+  queryFn: () => fetchProducts(12),
 });
 
 export const Route = createFileRoute("/")({
@@ -18,167 +18,256 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div>
-      <Hero />
+      <Banner />
       <Suspense fallback={<div className="h-96" />}>
-        <VolOne />
+        <VolOneCollection />
       </Suspense>
-      <BrandStatement />
+      <TextBanner />
     </div>
   );
 }
 
-function Hero() {
+/* ---------- Sept-style image banner with outline CTA ---------- */
+function Banner() {
   return (
-    <section className="relative -mt-16 grid md:grid-cols-2 min-h-screen">
-      <ImageSlot
-        label="Dahlia vanity cases — hero still life"
-        caption="Hero — product still life"
-        className="order-2 md:order-1 min-h-[50vh] md:min-h-screen border-0 bg-secondary"
-      />
-      <ImageSlot
-        label="Editorial portrait"
-        caption="Editorial portrait"
-        className="order-1 md:order-2 min-h-[70vh] md:min-h-screen border-0 bg-muted"
-      />
-
-      {/* Overlay: CTA, centered across both panels */}
-      <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-        <Link
-          to="/collection"
-          className="pointer-events-auto inline-block bg-background text-foreground px-10 py-4 eyebrow hover:bg-accent hover:text-accent-foreground transition-colors"
-        >
-          Shop Vol. One
-        </Link>
+    <section className="relative -mt-16">
+      <div className="relative w-full aspect-[16/9] md:aspect-[32/17] overflow-hidden bg-secondary">
+        <ImageSlot
+          label="Dahlia — hero banner (3200×1700)"
+          caption="Hero banner"
+          className="absolute inset-0 border-0"
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-end pb-[42px] md:pb-[80px] px-6 text-center">
+          <img
+            src={logoBlack.url}
+            alt="Dahlia"
+            className="max-w-[300px] md:max-w-[540px] w-auto invert brightness-0 opacity-95 mb-8 md:mb-10"
+          />
+          <Link
+            to="/collection"
+            className="inline-flex items-center justify-center border border-white text-white capitalize hover:bg-white hover:text-foreground transition-colors"
+            style={{
+              fontSize: "14px",
+              lineHeight: "16px",
+              height: "38px",
+              padding: "12px 26px",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Shop Vol. One
+          </Link>
+        </div>
       </div>
     </section>
   );
 }
 
-function VolOne() {
+/* ---------- Sept-style featured collection carousel ---------- */
+function VolOneCollection() {
   const { data: products } = useSuspenseQuery(productsQuery);
-  const product = products[0];
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(false);
+
+  const updateEdges = useCallback(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    setCanPrev(el.scrollLeft > 4);
+    setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    updateEdges();
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateEdges, { passive: true });
+    window.addEventListener("resize", updateEdges);
+    return () => {
+      el.removeEventListener("scroll", updateEdges);
+      window.removeEventListener("resize", updateEdges);
+    };
+  }, [updateEdges, products.length]);
+
+  const scrollBy = (dir: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const step = card ? card.offsetWidth + 24 : el.clientWidth * 0.8;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
+  if (!products.length) {
+    return (
+      <section
+        className="px-6 md:px-10"
+        style={{ paddingBlock: "clamp(45px, 8vw, 80px)" }}
+      >
+        <div className="max-w-[1600px] mx-auto text-center">
+          <h2 className="font-serif text-[20px] md:text-[24px] leading-[26px] font-bold">
+            Vol. One
+          </h2>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Add products in Shopify to populate the collection.
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section className="py-24 md:py-32 px-6 md:px-10">
+    <section
+      className="px-6 md:px-10"
+      style={{ paddingBlock: "clamp(45px, 8vw, 80px)" }}
+    >
       <div className="max-w-[1600px] mx-auto">
-        <div className="mb-16 md:mb-20 max-w-2xl">
-          <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-6">
-            Collection
+        <div className="mb-6 md:mb-8 text-center md:text-left">
+          <h2 className="font-serif font-bold text-[20px] md:text-[24px] leading-[26px] tracking-tight">
+            Vol. One
           </h2>
-          <p className="text-base md:text-lg leading-relaxed text-foreground/80">
+          <p className="mt-3 text-[12px] md:text-[15px] leading-[15px] md:leading-[22px] text-muted-foreground max-w-2xl mx-auto md:mx-0">
             The collection begins at our atelier. Shaped by a Parisian eye and
             crafted through modern leatherwork, each vanity case is designed to
             hold the small rituals that travel with you.
           </p>
         </div>
 
-        {!product ? <EmptyState /> : <ColorTiles product={product} />}
+        <div className="relative group">
+          <div
+            ref={scrollerRef}
+            className="flex gap-3 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {products.map((p) => (
+              <div
+                key={p.node.id}
+                data-card
+                className="snap-start shrink-0 w-[74vw] md:w-[calc((100%-3rem)/3)]"
+              >
+                <CarouselCard product={p} />
+              </div>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            aria-label="Previous"
+            onClick={() => scrollBy(-1)}
+            disabled={!canPrev}
+            className="hidden md:flex absolute left-2 top-[38%] -translate-y-1/2 h-11 w-11 items-center justify-center rounded-full bg-background/90 border border-border opacity-0 group-hover:opacity-100 transition disabled:opacity-0"
+          >
+            <svg width="16" viewBox="0 0 16 18" fill="none">
+              <path d="M11 1 3 9l8 8" stroke="currentColor" strokeLinecap="square" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            aria-label="Next"
+            onClick={() => scrollBy(1)}
+            disabled={!canNext}
+            className="hidden md:flex absolute right-2 top-[38%] -translate-y-1/2 h-11 w-11 items-center justify-center rounded-full bg-background/90 border border-border opacity-0 group-hover:opacity-100 transition disabled:opacity-0"
+          >
+            <svg width="16" viewBox="0 0 16 18" fill="none">
+              <path d="m5 17 8-8-8-8" stroke="currentColor" strokeLinecap="square" />
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
   );
 }
 
-function ColorTiles({ product }: { product: ShopifyProduct }) {
+function CarouselCard({ product }: { product: ShopifyProduct }) {
   const p = product.node;
+  const img1 = p.images.edges[0]?.node;
+  const img2 = p.images.edges[1]?.node ?? img1;
   const price = p.priceRange.minVariantPrice;
-  const colorOption = p.options.find((o) => /colou?r/i.test(o.name));
-
-  // Build up to 5 color entries. Prefer real color variants; pad with
-  // placeholder slots so the layout always emphasises the 5-colour offer.
-  const colorVariants = p.variants.edges
-    .map((v) => {
-      const co = v.node.selectedOptions.find((o) => /colou?r/i.test(o.name));
-      return co ? { color: co.value, variant: v.node } : null;
-    })
-    .filter((x): x is { color: string; variant: typeof p.variants.edges[number]["node"] } => x !== null);
-
-  const uniqueByColor = Array.from(
-    new Map(colorVariants.map((c) => [c.color, c])).values(),
-  );
-
-  const placeholderColors = ["Noir", "Crème", "Camel", "Terracotta", "Bordeaux"];
-  const tiles: Array<{ color: string; image?: { url: string; altText: string | null } }> = [];
-
-  for (let i = 0; i < 5; i++) {
-    const real = uniqueByColor[i];
-    if (real) {
-      tiles.push({
-        color: real.color,
-        image: p.images.edges[i]?.node ?? p.images.edges[0]?.node,
-      });
-    } else {
-      tiles.push({
-        color: colorOption?.values[i] ?? placeholderColors[i],
-        image: p.images.edges[i]?.node ?? p.images.edges[0]?.node,
-      });
-    }
-  }
 
   return (
-    <div className="grid grid-cols-5 gap-x-3 md:gap-x-6">
-      {tiles.map((tile) => (
-        <Link
-          key={tile.color}
-          to="/product/$handle"
-          params={{ handle: p.handle }}
-          className="group block"
-        >
-          <div className="relative aspect-[3/4] overflow-hidden bg-muted">
-            {tile.image ? (
+    <Link
+      to="/product/$handle"
+      params={{ handle: p.handle }}
+      className="group block"
+    >
+      <div className="relative w-full aspect-[4/5] overflow-hidden bg-muted">
+        {img1 ? (
+          <>
+            <img
+              src={img1.url}
+              alt={img1.altText ?? p.title}
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
+            />
+            {img2 && (
               <img
-                src={tile.image.url}
-                alt={tile.image.altText ?? `The Vanity Case — ${tile.color}`}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              />
-            ) : (
-              <ImageSlot
-                label={`The Vanity Case — ${tile.color}`}
-                caption={tile.color}
-                className="absolute inset-0 border-0"
+                src={img2.url}
+                alt={img2.altText ?? p.title}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
               />
             )}
-          </div>
-          <div className="mt-5">
-            <h3 className="font-serif text-lg md:text-xl leading-tight">
-              The Vanity Case
-            </h3>
-            <p className="text-sm text-muted-foreground mt-1">
-              {tile.color} — {formatPrice(price.amount, price.currencyCode)}
-            </p>
-          </div>
-        </Link>
-      ))}
-    </div>
+          </>
+        ) : (
+          <ImageSlot label={p.title} caption="Product" className="absolute inset-0 border-0" />
+        )}
+      </div>
+      <div
+        className="flex justify-between items-start gap-1"
+        style={{ marginTop: "20px" }}
+      >
+        <div className="text-[14px] md:text-[15px] leading-[20px]">
+          {p.title}
+          <br />
+          <span className="text-muted-foreground text-[12px] md:text-[13px]">
+            Vanity Case / Petit
+          </span>
+        </div>
+        <div className="text-muted-foreground text-[13px] md:text-[14px] whitespace-nowrap">
+          {formatPrice(price.amount, price.currencyCode)}
+        </div>
+      </div>
+    </Link>
   );
 }
 
-function EmptyState() {
+/* ---------- Sept-style rich-text banner ---------- */
+function TextBanner() {
   return (
-    <div className="border border-dashed border-border py-24 text-center max-w-md mx-auto">
-      <p className="font-serif text-2xl">No products found</p>
-      <p className="text-sm text-muted-foreground mt-2">
-        Add a product in Shopify to populate the collection.
-      </p>
-    </div>
-  );
-}
-
-
-function BrandStatement() {
-  return (
-    <section id="story" className="px-6 md:px-10 py-24 md:py-32 bg-secondary/40 text-center">
-      <div className="max-w-2xl mx-auto">
-        <img src={logoBlack.url} alt="Dahlia" className="h-14 md:h-16 w-auto mx-auto mb-8" />
-        <p className="eyebrow text-muted-foreground mb-6">
-          Imagined in Paris. Crafted by hand.
-        </p>
-        <p className="text-lg md:text-xl leading-relaxed text-foreground/80">
+    <section
+      className="text-center px-6"
+      style={{
+        paddingBlockStart: "clamp(42px, 6vw, 80px)",
+        paddingBlockEnd: "clamp(52px, 10vw, 140px)",
+      }}
+    >
+      <div className="max-w-[560px] mx-auto">
+        <img
+          src={logoBlack.url}
+          alt=""
+          aria-hidden
+          className="mx-auto"
+          style={{ width: "clamp(34px, 6vw, 44px)", height: "auto" }}
+        />
+        <h2
+          className="font-serif font-bold uppercase tracking-[0.02em]"
+          style={{
+            marginBlockStart: "clamp(56px, 8vw, 96px)",
+            fontSize: "clamp(10px, 1.4vw, 20px)",
+            lineHeight: "clamp(15px, 1.8vw, 26px)",
+          }}
+        >
+          Imagined in Paris. Crafted by hand
+        </h2>
+        <p
+          className="mt-6"
+          style={{
+            fontSize: "clamp(12px, 1.4vw, 20px)",
+            lineHeight: "clamp(15px, 1.8vw, 26px)",
+          }}
+        >
           Dahlia is a modern leather-led lifestyle brand shaped around the
-          rituals of self and travel, where the objects you carry become part of
-          everyday life. Small batch. Considered. Made to keep.
+          rituals of self and travel, where the objects you carry become part
+          of everyday life. Small batch. Considered. Made to keep.
         </p>
       </div>
     </section>
   );
 }
-

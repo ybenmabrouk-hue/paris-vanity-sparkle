@@ -14,7 +14,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
       params={{ handle: p.handle }}
       className="group block"
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+      <div className="relative w-full aspect-[4/5] overflow-hidden bg-muted">
         {img1 ? (
           <>
             <img
@@ -28,7 +28,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
                 src={img2.url}
                 alt={img2.altText ?? p.title}
                 loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100 scale-[1.02]"
+                className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
               />
             )}
           </>
@@ -40,14 +40,23 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
           />
         )}
       </div>
-      <div className="mt-4 flex items-baseline justify-between gap-4">
-        <div>
-          <h3 className="font-serif text-xl leading-tight">{p.title}</h3>
-          <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">
-            Vanity Case
-          </p>
+      <div
+        className="flex justify-between items-start gap-1"
+        style={{ marginTop: "20px" }}
+      >
+        <div style={{ fontSize: "15px", lineHeight: "20px" }}>
+          {p.title}
+          <br />
+          <span className="text-muted-foreground" style={{ fontSize: "13px" }}>
+            Vanity Case / Petit
+          </span>
         </div>
-        <div className="text-sm">{formatPrice(price.amount, price.currencyCode)}</div>
+        <div
+          className="text-muted-foreground whitespace-nowrap"
+          style={{ fontSize: "14px", lineHeight: "20px" }}
+        >
+          {formatPrice(price.amount, price.currencyCode)}
+        </div>
       </div>
     </Link>
   );

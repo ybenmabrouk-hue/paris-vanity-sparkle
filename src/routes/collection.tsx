@@ -12,15 +12,15 @@ const collectionQuery = queryOptions({
 export const Route = createFileRoute("/collection")({
   head: () => ({
     meta: [
-      { title: "The Collection — Dahlia" },
+      { title: "Vol. One — Dahlia" },
       {
         name: "description",
-        content: "Browse the full collection of Dahlia vanity cases — crafted in Paris.",
+        content: "Vol. One — the full Dahlia vanity case collection, made by hand in Paris.",
       },
-      { property: "og:title", content: "The Collection — Dahlia" },
+      { property: "og:title", content: "Vol. One — Dahlia" },
       {
         property: "og:description",
-        content: "Browse the full collection of Dahlia vanity cases — crafted in Paris.",
+        content: "Vol. One — the full Dahlia vanity case collection, made by hand in Paris.",
       },
     ],
   }),
@@ -31,14 +31,24 @@ export const Route = createFileRoute("/collection")({
 function CollectionPage() {
   return (
     <div>
-      <header className="px-6 md:px-10 pt-20 pb-14 border-b border-border/60">
+      <header
+        className="px-6 md:px-10 text-center md:text-left"
+        style={{ paddingBlockStart: "clamp(45px, 7vw, 96px)", paddingBlockEnd: "clamp(30px, 4vw, 56px)" }}
+      >
         <div className="max-w-[1600px] mx-auto">
-          <div className="eyebrow text-muted-foreground mb-6">Vol. One</div>
-          <h1 className="font-serif text-5xl md:text-7xl leading-[0.95] max-w-3xl">
-            The Collection
+          <h1
+            className="font-serif font-bold tracking-tight"
+            style={{ fontSize: "clamp(20px, 2.5vw, 24px)", lineHeight: "26px" }}
+          >
+            Vol. One
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-            Every piece from Dahlia, made by hand in our Paris atelier.
+          <p
+            className="mt-3 max-w-2xl mx-auto md:mx-0 text-muted-foreground"
+            style={{ fontSize: "clamp(12px, 1vw, 15px)", lineHeight: "clamp(15px, 1.6vw, 22px)" }}
+          >
+            The collection begins at our atelier. Shaped by a Parisian eye and
+            crafted through modern leatherwork, each piece is designed to hold
+            the small rituals that travel with you.
           </p>
         </div>
       </header>
@@ -53,17 +63,11 @@ function Grid() {
   const { data: products } = useSuspenseQuery(collectionQuery);
 
   return (
-    <section className="px-6 md:px-10 py-16 md:py-20">
+    <section
+      className="px-6 md:px-10"
+      style={{ paddingBlockEnd: "clamp(52px, 10vw, 140px)" }}
+    >
       <div className="max-w-[1600px] mx-auto">
-        <div className="flex items-center justify-between mb-10">
-          <div className="eyebrow text-muted-foreground">
-            {products.length} {products.length === 1 ? "piece" : "pieces"}
-          </div>
-          <div className="eyebrow text-muted-foreground hidden md:block">
-            Sorted by newest
-          </div>
-        </div>
-
         {products.length === 0 ? (
           <div className="border border-dashed border-border py-24 text-center">
             <p className="font-serif text-2xl">No products found</p>
@@ -72,7 +76,10 @@ function Grid() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-16">
+          <div
+            className="grid grid-cols-2 md:grid-cols-3"
+            style={{ columnGap: "24px", rowGap: "clamp(32px, 4vw, 64px)" }}
+          >
             {products.map((p) => (
               <ProductCard key={p.node.id} product={p} />
             ))}
