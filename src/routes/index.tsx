@@ -72,7 +72,7 @@ function CollectionCarousel() {
     >
       <div className="max-w-[1600px] mx-auto">
         <div className="mb-8 md:mb-12 text-left">
-          <h2 className="font-kuenstler leading-[0.9] tracking-tight" style={{ fontSize: "clamp(56px, 9vw, 120px)" }}>
+          <h2 className="font-garamond italic leading-[0.9] tracking-tight" style={{ fontSize: "clamp(72px, 11vw, 150px)", fontWeight: 300 }}>
             Collection
           </h2>
           <p className="mt-2 md:mt-3 text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-muted-foreground max-w-3xl">
@@ -155,16 +155,13 @@ function TextBanner() {
           style={{ width: "clamp(140px, 22vw, 320px)", height: "auto" }}
         />
         <h2
-          className="font-serif uppercase"
+          className="font-garamond italic"
           style={{
-            fontWeight: 600,
-            letterSpacing: "0.02em",
-            // sept prose: sibling margin 1.25rem
+            fontWeight: 300,
+            letterSpacing: "0.01em",
             marginBlockStart: "1.25rem",
-            // sept --text-h2 clamp
-            fontSize:
-              "clamp(1.25rem, 1.0671rem + 0.7805vw, 1.75rem)",
-            lineHeight: 1.5,
+            fontSize: "clamp(2rem, 1.4rem + 2.5vw, 3.5rem)",
+            lineHeight: 1.1,
           }}
         >
           Imagined in Paris. Crafted by hand

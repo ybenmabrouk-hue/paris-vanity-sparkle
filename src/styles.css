@@ -69,11 +69,21 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Garamond Condensed";
+  src: url("/__l5e/assets-v1/d0f5036b-a128-4df0-b291-e28e76a2fc95/GaramondCondensedLightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme inline {
   --font-serif: "Neue Haas Grotesk Display Pro", "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Neue Haas Grotesk Display Pro", "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-script: "Kuenstler Script", "Caveat", "Homemade Apple", cursive;
   --font-kuenstler: "Kuenstler Script", cursive;
+  --font-garamond: "Garamond Condensed", "ITCGaramondCondensedLight", Georgia, serif;
+
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
