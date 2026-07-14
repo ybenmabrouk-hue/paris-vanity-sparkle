@@ -17,9 +17,10 @@ const productQueryOptions = (handle: string) =>
 
 export const Route = createFileRoute("/product/$handle")({
   head: ({ params, loaderData }) => {
-    const title = loaderData?.title ?? "Product";
-    const desc = loaderData?.description?.slice(0, 155) ?? "A Maison Yasmine vanity case.";
-    const img = loaderData?.images.edges[0]?.node.url;
+    const p = loaderData as Awaited<ReturnType<typeof fetchProductByHandle>> | undefined;
+    const title = p?.title ?? "Product";
+    const desc = p?.description?.slice(0, 155) ?? "A Maison Yasmine vanity case.";
+    const img = p?.images.edges[0]?.node.url;
     return {
       meta: [
         { title: `${title} — Maison Yasmine` },
