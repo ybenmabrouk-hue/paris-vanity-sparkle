@@ -108,6 +108,11 @@
     font-family: var(--font-serif);
     font-weight: 400;
     letter-spacing: -0.01em;
+    margin-block-end: 22px;
+  }
+  h1 + p, h2 + p, h3 + p, h4 + p,
+  h1 + div, h2 + div, h3 + div, h4 + div {
+    margin-block-start: 22px;
   }
   .font-script {
     font-family: var(--font-script);
