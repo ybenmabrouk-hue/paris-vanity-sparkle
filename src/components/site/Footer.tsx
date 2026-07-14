@@ -2,9 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { z } from "zod";
-import { Facebook, Instagram } from "lucide-react";
-import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
-import { ImageSlot } from "@/components/site/ImageSlot";
 import { subscribeToNewsletter } from "@/lib/newsletter.functions";
 
 const emailSchema = z.object({
@@ -13,170 +10,64 @@ const emailSchema = z.object({
 
 export function Footer() {
   return (
-    <footer className="text-foreground">
-      {/* Instagram social feed (kept in footer only, Sept-style spacing) */}
+    <footer className="bg-petale text-foreground">
       <div
-        className="mx-auto max-w-[1600px] px-6 md:px-10 bg-background"
-        style={{ paddingBlockStart: "clamp(45px, 6vw, 80px)", paddingBlockEnd: "clamp(30px, 4vw, 56px)" }}
+        className="mx-auto max-w-[1600px] px-6 md:px-10"
+        style={{ paddingBlockStart: "clamp(48px, 6vw, 88px)", paddingBlockEnd: "clamp(32px, 4vw, 56px)" }}
       >
-        <SocialFeed />
-      </div>
-
-      {/* Sept-style 4-block footer */}
-      <div className="bg-petale">
-        <div className="mx-auto max-w-[1600px] px-6 md:px-10" style={{ paddingBlockEnd: "clamp(30px, 4vw, 56px)" }}>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
-          {/* Block 1: logo + newsletter + brand statement */}
-          <div className="md:col-span-1">
-            <img
-              src={logoBlack.url}
-              alt="Dahlia"
-              className="w-auto"
-              style={{ maxWidth: "min(340px, 100%)", height: "auto" }}
-            />
-            <div className="mt-6 md:mt-8 space-y-4 md:space-y-5">
-              <p
-                className="font-serif font-medium"
-                style={{ fontSize: "14px", lineHeight: "20px" }}
-              >
-                Enter the world of Dahlia
-              </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Left: newsletter */}
+          <div className="max-w-xl">
+            <p
+              className="font-serif"
+              style={{ fontSize: "14px", lineHeight: "22px" }}
+            >
+              Sign up for $15 off your first purchase and to be the first to hear
+              about all things Dahlia: exclusive sales, new arrivals, events and
+              more. Join the inner circle.
+            </p>
+            <div className="mt-6">
               <NewsletterForm />
-              <p
-                className="text-muted-foreground"
-                style={{ fontSize: "12px", lineHeight: "18px" }}
-              >
-                Dahlia is a small-batch vanity case studio imagined in Paris and
-                crafted by hand. Shaped by a Parisian eye and expressed through
-                modern leatherwork, we create considered, made-to-keep pieces
-                designed for modern ritual and everyday wear.
-              </p>
             </div>
           </div>
 
-          {/* Block 2: links */}
-          <div className="md:col-span-1">
-            <ul className="space-y-2.5" style={{ fontSize: "14px", lineHeight: "20px" }}>
-              <li><Link to="/about" className="opacity-70 hover:opacity-100 transition">About</Link></li>
-              <li><a href="mailto:hello@dahlia-paris.com" className="opacity-70 hover:opacity-100 transition">Contact</a></li>
-              <li><Link to="/faq" className="opacity-70 hover:opacity-100 transition">FAQ</Link></li>
-              <li><Link to="/shipping" className="opacity-70 hover:opacity-100 transition">Shipping & Refund Policy</Link></li>
-              <li><Link to="/privacy" className="opacity-70 hover:opacity-100 transition">Privacy & Terms of Service</Link></li>
+          {/* Right: link columns */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:justify-self-end lg:pl-16 lg:border-l lg:border-foreground/20 w-full">
+            <ul className="space-y-4" style={{ fontSize: "14px", lineHeight: "20px" }}>
+              <li><Link to="/about" className="hover:opacity-60 transition">About Us</Link></li>
+              <li><a href="#" className="hover:opacity-60 transition">Account</a></li>
+              <li><a href="mailto:hello@dahlia-paris.com" className="hover:opacity-60 transition">Contact</a></li>
+              <li><a href="#" className="hover:opacity-60 transition">Dahlia Hub</a></li>
+              <li><a href="#" className="hover:opacity-60 transition">E-Gift Card</a></li>
+              <li><a href="#" className="hover:opacity-60 transition">Reviews</a></li>
             </ul>
-          </div>
-
-          {/* Block 3: business hours */}
-          <div className="md:col-span-1">
-            <div
-              className="text-muted-foreground space-y-4"
-              style={{ fontSize: "14px", lineHeight: "20px" }}
-            >
-              <p>
-                Business Hours<br />Mon – Fri 10am – 6pm CET
-              </p>
-              <p>
-                Atelier & Logistics<br />+33 1 42 00 00 00
-              </p>
-            </div>
-          </div>
-
-          {/* Block 4: emails + social */}
-          <div className="md:col-span-1">
-            <div
-              className="text-muted-foreground space-y-4"
-              style={{ fontSize: "14px", lineHeight: "20px" }}
-            >
-              <p>
-                Press & Partnerships<br />press@dahlia-paris.com
-              </p>
-              <p>
-                Customer Care<br />care@dahlia-paris.com
-              </p>
-            </div>
-            <ul className="mt-6 flex items-center gap-4">
-              <li>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Follow on Facebook"
-                  className="opacity-70 hover:opacity-100 transition"
-                >
-                  <Facebook className="h-5 w-5" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Follow on Instagram"
-                  className="opacity-70 hover:opacity-100 transition"
-                >
-                  <Instagram className="h-5 w-5" />
-                </a>
-              </li>
+            <ul className="space-y-4" style={{ fontSize: "14px", lineHeight: "20px" }}>
+              <li><Link to="/shipping" className="hover:opacity-60 transition">Shipping & Returns</Link></li>
+              <li><a href="#" className="hover:opacity-60 transition">Warranty</a></li>
+              <li><a href="#" className="hover:opacity-60 transition">Make A Return</a></li>
+              <li><Link to="/privacy" className="hover:opacity-60 transition">Terms & Conditions</Link></li>
+              <li><Link to="/privacy" className="hover:opacity-60 transition">Privacy Policy</Link></li>
+              <li><a href="#" className="hover:opacity-60 transition">EU Right of Withdrawal</a></li>
+            </ul>
+            <ul className="space-y-4" style={{ fontSize: "14px", lineHeight: "20px" }}>
+              <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Instagram</a></li>
+              <li><a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Facebook</a></li>
+              <li><a href="https://tiktok.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">TikTok</a></li>
+              <li><a href="https://pinterest.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Pinterest</a></li>
+              <li><a href="https://youtube.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Youtube</a></li>
             </ul>
           </div>
         </div>
 
-        {/* Aside line */}
         <div
-          className="mt-12 md:mt-16 flex flex-wrap justify-between gap-4 text-muted-foreground"
-          style={{ fontSize: "10px", lineHeight: "15px", letterSpacing: "0.02em" }}
+          className="mt-16 pt-6 border-t border-foreground/20 flex flex-wrap justify-between gap-4"
+          style={{ fontSize: "11px", lineHeight: "16px", letterSpacing: "0.04em" }}
         >
-          <p>© {new Date().getFullYear()} — Dahlia</p>
-          <p>Designed in Paris with love</p>
+          <p>© {new Date().getFullYear()} Dahlia. All rights reserved.</p>
+          <p>Imagined in Paris. Crafted by hand.</p>
         </div>
-      </div>
       </div>
     </footer>
-  );
-}
-
-function SocialFeed() {
-  const posts = [
-    { label: "Dahlia — social post 1", caption: "Post 1" },
-    { label: "Dahlia — social post 2", caption: "Post 2" },
-    { label: "Dahlia — social post 3", caption: "Post 3" },
-    { label: "Dahlia — social post 4", caption: "Post 4" },
-    { label: "Dahlia — social post 5", caption: "Post 5" },
-    { label: "Dahlia — social post 6", caption: "Post 6" },
-  ];
-
-  return (
-    <div className="text-center">
-      <a
-        href="https://instagram.com"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Dahlia on Instagram"
-        className="inline-block text-foreground hover:opacity-70 transition-opacity"
-      >
-        <span
-          className="font-kuenstler"
-          style={{ fontSize: "clamp(40px, 7vw, 72px)", lineHeight: 1.05 }}
-        >
-          With Dahlia
-        </span>
-      </a>
-      <p
-        className="mt-3 text-muted-foreground"
-        style={{ fontSize: "14px", lineHeight: "20px", letterSpacing: "0.02em" }}
-      >
-        Elevate your beauty routine
-      </p>
-      <div className="mt-8 md:mt-10 grid grid-cols-6 gap-2 md:gap-4">
-        {posts.map((post) => (
-          <ImageSlot
-            key={post.label}
-            label={post.label}
-            caption={post.caption}
-            className="aspect-square w-full border-0"
-          />
-        ))}
-      </div>
-    </div>
   );
 }
 
@@ -202,43 +93,38 @@ function NewsletterForm() {
       setStatus("success");
       setMessage("Thank you for subscribing.");
       setEmail("");
-    } catch (err) {
+    } catch {
       setStatus("error");
       setMessage("Something went wrong. Please try again.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md">
-      <div className="relative flex items-center bg-transparent border-b border-border/70">
+    <form onSubmit={handleSubmit} className="w-full">
+      <div className="flex items-stretch gap-3">
         <input
           type="email"
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail"
+          placeholder="Your email"
           aria-label="Email address for newsletter"
-          className="w-full bg-transparent py-2.5 pr-8 outline-none placeholder:text-muted-foreground"
+          className="flex-1 bg-transparent border border-foreground/70 px-4 py-3 outline-none placeholder:text-foreground/60 italic font-serif focus:border-foreground transition"
           style={{ fontSize: "14px", lineHeight: "20px" }}
           maxLength={255}
         />
         <button
           type="submit"
-          aria-label="Subscribe to newsletter"
-          className="absolute right-0 h-full flex items-center px-1 text-accent hover:opacity-70 transition"
+          className="bg-foreground text-background px-10 py-3 hover:opacity-80 transition"
+          style={{ fontSize: "13px", letterSpacing: "0.06em" }}
         >
-          <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M-1.6881e-07 4.97792L-2.17599e-07 3.86176L6.69697 3.86176L3.62752 0.792318L4.42 -0.000156596L8.84 4.41984L4.42 8.83984L3.62753 8.04737L6.69697 4.97792L-1.6881e-07 4.97792Z"
-              fill="currentColor"
-            />
-          </svg>
+          Submit
         </button>
       </div>
       {status !== "idle" && (
         <p
-          className={`mt-2 ${status === "success" ? "text-muted-foreground" : "text-destructive"}`}
-          style={{ fontSize: "12px", lineHeight: "15px" }}
+          className={`mt-3 ${status === "success" ? "opacity-70" : "text-destructive"}`}
+          style={{ fontSize: "12px", lineHeight: "16px" }}
         >
           {message}
         </p>
