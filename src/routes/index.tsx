@@ -85,9 +85,10 @@ function CollectionCarousel() {
         </div>
 
         <div className="grid grid-cols-5 gap-3 md:gap-6">
-          {COLOR_SWATCHES.map((c, i) => (
-            <VanityProductCard key={c.name} card={c} activeIndex={i} />
+          {COLOR_SWATCHES.map((c) => (
+            <VanityProductCard key={c.name} card={c} />
           ))}
+
         </div>
       </div>
     </section>
