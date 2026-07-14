@@ -122,15 +122,15 @@ function SocialFeed() {
         href="https://instagram.com"
         target="_blank"
         rel="noreferrer"
-        className="inline-block font-script text-5xl md:text-7xl hover:text-accent transition-colors"
+        className="inline-block font-['Times_New_Roman',_Times,_serif] text-5xl md:text-7xl hover:text-accent transition-colors"
       >
         @dahlia
       </a>
       <p className="mt-3 text-sm md:text-base text-muted-foreground">
-        A case for beauty, since 2026.
+        Elevate your beauty routine
       </p>
 
-      <div className="mt-10 grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
+      <div className="mt-10 grid grid-cols-6 gap-3 md:gap-4">
         {posts.map((post) => (
           <ImageSlot
             key={post.label}
