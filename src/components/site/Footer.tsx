@@ -34,8 +34,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Right columns: links, business info, contact */}
-          <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-8">
+          {/* Right column: navigation links */}
+          <div className="md:col-span-7 md:flex md:justify-end">
             <div>
               <ul className="space-y-3 text-sm">
                 <li>
@@ -64,29 +64,7 @@ export function Footer() {
                   </Link>
                 </li>
               </ul>
-            </div>
-
-            <div className="space-y-6">
-              <div>
-                <p className="text-sm font-medium">Business Hours</p>
-                <p className="text-sm text-muted-foreground">Mon - Fri 10am - 6pm CET</p>
-              </div>
-              <div>
-                <p className="text-sm font-medium">Operations & Logistics</p>
-                <p className="text-sm text-muted-foreground">+33 1 23 45 67 89</p>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div>
-                <p className="text-sm font-medium">Press & Partnerships</p>
-                <p className="text-sm text-muted-foreground">press@dahlia-paris.com</p>
-              </div>
-              <div>
-                <p className="text-sm font-medium">Customer Care</p>
-                <p className="text-sm text-muted-foreground">care@dahlia-paris.com</p>
-              </div>
-              <div className="flex items-center gap-4">
+              <div className="mt-8 flex items-center gap-4">
                 <a
                   href="https://facebook.com"
                   aria-label="Facebook"
