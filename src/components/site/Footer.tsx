@@ -13,17 +13,18 @@ const emailSchema = z.object({
 
 export function Footer() {
   return (
-    <footer className="bg-petale text-foreground">
+    <footer className="text-foreground">
       {/* Instagram social feed (kept in footer only, Sept-style spacing) */}
       <div
-        className="mx-auto max-w-[1600px] px-6 md:px-10"
+        className="mx-auto max-w-[1600px] px-6 md:px-10 bg-background"
         style={{ paddingBlockStart: "clamp(45px, 6vw, 80px)", paddingBlockEnd: "clamp(30px, 4vw, 56px)" }}
       >
         <SocialFeed />
       </div>
 
       {/* Sept-style 4-block footer */}
-      <div className="mx-auto max-w-[1600px] px-6 md:px-10" style={{ paddingBlockEnd: "clamp(30px, 4vw, 56px)" }}>
+      <div className="bg-petale">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-10" style={{ paddingBlockEnd: "clamp(30px, 4vw, 56px)" }}>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
           {/* Block 1: logo + newsletter + brand statement */}
           <div className="md:col-span-1">
@@ -127,6 +128,7 @@ export function Footer() {
           <p>© {new Date().getFullYear()} — Dahlia</p>
           <p>Designed in Paris with love</p>
         </div>
+      </div>
       </div>
     </footer>
   );
