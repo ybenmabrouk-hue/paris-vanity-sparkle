@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { formatPrice, type ShopifyProduct } from "@/lib/shopify";
+import { ImageSlot } from "@/components/site/ImageSlot";
 
 export function ProductCard({ product }: { product: ShopifyProduct }) {
   const p = product.node;
@@ -14,20 +15,28 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
       className="group block"
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-muted">
-        {img1 && (
-          <img
-            src={img1.url}
-            alt={img1.altText ?? p.title}
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
-          />
-        )}
-        {img2 && (
-          <img
-            src={img2.url}
-            alt={img2.altText ?? p.title}
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100 scale-[1.02]"
+        {img1 ? (
+          <>
+            <img
+              src={img1.url}
+              alt={img1.altText ?? p.title}
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
+            />
+            {img2 && (
+              <img
+                src={img2.url}
+                alt={img2.altText ?? p.title}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100 scale-[1.02]"
+              />
+            )}
+          </>
+        ) : (
+          <ImageSlot
+            label={`${p.title} — product image`}
+            caption="Product image"
+            className="absolute inset-0 border-0"
           />
         )}
       </div>

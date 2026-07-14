@@ -3,9 +3,7 @@ import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { Suspense } from "react";
 import { fetchProducts } from "@/lib/shopify";
 import { ProductCard } from "@/components/site/ProductCard";
-import heroImg from "@/assets/hero.jpg";
-import portraitImg from "@/assets/portrait.jpg";
-import storyImg from "@/assets/story.jpg";
+import { ImageSlot } from "@/components/site/ImageSlot";
 
 const productsQuery = queryOptions({
   queryKey: ["products", "home"],
@@ -33,33 +31,27 @@ function Home() {
 function Hero() {
   return (
     <section className="relative -mt-16 grid md:grid-cols-2 min-h-screen">
-      <div className="relative order-2 md:order-1">
-        <img
-          src={heroImg}
-          alt="Maison Yasmine vanity case"
-          className="absolute inset-0 w-full h-full object-cover"
-          width={1600}
-          height={1800}
+      <ImageSlot
+        label="Maison Yasmine vanity case — hero image"
+        caption="Hero image"
+        className="order-2 md:order-1 min-h-[40vh] md:min-h-screen"
+      />
+      <div className="relative order-1 md:order-2 min-h-[70vh] md:min-h-screen bg-secondary">
+        <ImageSlot
+          label="Editorial portrait"
+          caption="Editorial portrait"
+          className="absolute inset-0 border-0 bg-secondary"
         />
-      </div>
-      <div className="relative order-1 md:order-2 min-h-[70vh] md:min-h-screen">
-        <img
-          src={portraitImg}
-          alt="Editorial portrait"
-          className="absolute inset-0 w-full h-full object-cover"
-          width={1400}
-          height={1800}
-        />
-        <div className="absolute inset-0 flex flex-col items-center justify-end md:justify-center pb-16 md:pb-0 px-8 text-primary-foreground">
+        <div className="absolute inset-0 flex flex-col items-center justify-end md:justify-center pb-16 md:pb-0 px-8">
           <div className="text-center max-w-md">
-            <div className="font-script text-5xl md:text-7xl leading-[0.9] text-background drop-shadow-[0_2px_20px_rgba(0,0,0,0.25)]">
+            <div className="font-script text-5xl md:text-7xl leading-[0.9]">
               Small batch,
               <br />
               made in Paris.
             </div>
             <Link
               to="/collection"
-              className="mt-10 inline-block bg-background text-foreground px-10 py-4 eyebrow hover:bg-accent hover:text-accent-foreground transition-colors"
+              className="mt-10 inline-block bg-foreground text-background px-10 py-4 eyebrow hover:bg-accent hover:text-accent-foreground transition-colors"
             >
               Shop the Collection
             </Link>
@@ -128,16 +120,11 @@ function Story() {
   return (
     <section id="story" className="px-6 md:px-10 py-24 md:py-32 bg-secondary/40">
       <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <img
-            src={storyImg}
-            alt="Inside a Maison Yasmine vanity case"
-            loading="lazy"
-            className="w-full h-full object-cover"
-            width={1600}
-            height={1100}
-          />
-        </div>
+        <ImageSlot
+          label="Inside a Maison Yasmine vanity case"
+          caption="Atelier image"
+          className="aspect-[4/3] w-full"
+        />
         <div>
           <div className="eyebrow text-muted-foreground mb-4">Notre Maison</div>
           <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-6">
