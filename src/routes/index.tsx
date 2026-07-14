@@ -41,16 +41,11 @@ function Hero() {
         className="order-1 md:order-2 min-h-[70vh] md:min-h-screen border-0 bg-muted"
       />
 
-      {/* Overlay: script headline + CTA, centered across both panels */}
+      {/* Overlay: CTA, centered across both panels */}
       <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-        <h1 className="font-script text-6xl md:text-8xl leading-[0.9] text-background mix-blend-difference">
-          Small Batch
-          <br />
-          <span className="italic">Fine Vanity Cases</span>
-        </h1>
         <Link
           to="/collection"
-          className="pointer-events-auto mt-10 inline-block bg-background text-foreground px-10 py-4 eyebrow hover:bg-accent hover:text-accent-foreground transition-colors"
+          className="pointer-events-auto inline-block bg-background text-foreground px-10 py-4 eyebrow hover:bg-accent hover:text-accent-foreground transition-colors"
         >
           Shop Vol. One
         </Link>
