@@ -72,7 +72,7 @@ function CollectionCarousel() {
     >
       <div className="max-w-[1600px] mx-auto">
         <div className="mb-8 md:mb-12 text-left">
-          <h2 className="font-garamond italic leading-[0.9] tracking-tight" style={{ fontSize: "clamp(72px, 11vw, 150px)", fontWeight: 300 }}>
+          <h2 className="font-garamond italic leading-[1.05] tracking-tight" style={{ fontSize: "clamp(28px, 3vw, 44px)", fontWeight: 300 }}>
             Collection
           </h2>
           <p className="mt-2 md:mt-3 text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-muted-foreground max-w-3xl">
