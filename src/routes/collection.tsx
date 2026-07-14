@@ -38,7 +38,7 @@ function CollectionPage() {
             The Collection
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-            Every piece from Maison Yasmine, made by hand in our Paris atelier.
+            Every piece from Dahlia, made by hand in our Paris atelier.
           </p>
         </div>
       </header>
