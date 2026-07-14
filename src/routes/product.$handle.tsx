@@ -19,13 +19,13 @@ export const Route = createFileRoute("/product/$handle")({
   head: ({ params, loaderData }) => {
     const p = loaderData as Awaited<ReturnType<typeof fetchProductByHandle>> | undefined;
     const title = p?.title ?? "Product";
-    const desc = p?.description?.slice(0, 155) ?? "A Maison Yasmine vanity case.";
+    const desc = p?.description?.slice(0, 155) ?? "A Dahlia vanity case.";
     const img = p?.images.edges[0]?.node.url;
     return {
       meta: [
-        { title: `${title} — Maison Yasmine` },
+        { title: `${title} — Dahlia` },
         { name: "description", content: desc },
-        { property: "og:title", content: `${title} — Maison Yasmine` },
+        { property: "og:title", content: `${title} — Dahlia` },
         { property: "og:description", content: desc },
         ...(img ? [{ property: "og:image", content: img }, { name: "twitter:image", content: img }] : []),
       ],
