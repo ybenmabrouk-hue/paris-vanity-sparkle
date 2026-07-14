@@ -90,6 +90,10 @@
 }
 
 @layer base {
+  html {
+    /* Match Sept Fragrances typographic scale: 1rem = 12px */
+    font-size: 75%;
+  }
   * {
     border-color: var(--color-border);
   }
