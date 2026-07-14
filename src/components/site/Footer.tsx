@@ -4,6 +4,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { Facebook, Instagram } from "lucide-react";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
+import atHandle from "@/assets/dahlia-at-handle.png.asset.json";
 import { ImageSlot } from "@/components/site/ImageSlot";
 import { subscribeToNewsletter } from "@/lib/newsletter.functions";
 
