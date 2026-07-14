@@ -150,14 +150,14 @@ function SocialFeed() {
         href="https://instagram.com"
         target="_blank"
         rel="noreferrer"
-        aria-label="@dahlia on Instagram"
+        aria-label="Dahlia on Instagram"
         className="inline-block text-foreground hover:opacity-70 transition-opacity"
       >
-        <span className="dahlia-instagram-mark" aria-hidden="true">
-          <span className="dahlia-instagram-at">
-            <span>a</span>
-          </span>
-          <span>dahlia</span>
+        <span
+          className="font-serif"
+          style={{ fontSize: "clamp(28px, 5vw, 48px)", lineHeight: 1.1 }}
+        >
+          Dahlia on social
         </span>
       </a>
       <p
