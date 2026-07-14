@@ -134,11 +134,11 @@ function VanityProductCard({ card }: { card: ColorSwatch }) {
 function TextBanner() {
   return (
     <section
-      className="text-center px-6 text-white"
+      className="flex flex-col items-center justify-center text-center px-6 text-white"
       style={{
         backgroundColor: "#320F13",
-        paddingBlockStart: "clamp(42px, 6vw, 80px)",
-        paddingBlockEnd: "clamp(52px, 10vw, 140px)",
+        minHeight: "50vh",
+        paddingBlock: "clamp(56px, 8vw, 120px)",
       }}
     >
       <div className="max-w-[560px] mx-auto">
@@ -152,7 +152,7 @@ function TextBanner() {
         <h2
           className="font-serif font-bold uppercase tracking-[0.02em]"
           style={{
-            marginBlockStart: "clamp(56px, 8vw, 96px)",
+            marginBlockStart: "clamp(48px, 6vw, 72px)",
             fontSize: "clamp(10px, 1.4vw, 20px)",
             lineHeight: "clamp(15px, 1.8vw, 26px)",
           }}
