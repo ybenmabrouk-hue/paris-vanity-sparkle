@@ -35,7 +35,7 @@ export function Footer() {
           </div>
 
           {/* Right column: navigation links */}
-          <div className="md:col-span-7 md:flex md:justify-end">
+          <div className="md:col-span-7 md:flex md:justify-end md:pt-40">
             <div>
               <ul className="space-y-3 text-sm">
                 <li>
