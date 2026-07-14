@@ -187,36 +187,3 @@ function BrandStatement() {
   );
 }
 
-function ProductFeature() {
-  const { data: products } = useSuspenseQuery(productsQuery);
-  const product = products[0]?.node;
-  if (!product) return null;
-
-  return (
-    <section className="px-6 md:px-10 py-24 md:py-32">
-      <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
-        <ImageSlot
-          label={`${product.title} — editorial image`}
-          caption="Editorial image"
-          className="aspect-[4/5] w-full border-0"
-        />
-        <div className="max-w-md">
-          <h3 className="font-serif text-5xl md:text-6xl leading-[0.95] mb-6">
-            {product.title}
-          </h3>
-          <p className="text-lg leading-relaxed text-muted-foreground mb-8">
-            {product.description ||
-              "A refined vanity case, structured to travel and made to keep. Assembled by hand in our Paris atelier from full-grain leather."}
-          </p>
-          <Link
-            to="/product/$handle"
-            params={{ handle: product.handle }}
-            className="eyebrow underline underline-offset-8 decoration-1 hover:text-accent"
-          >
-            Discover Now
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
