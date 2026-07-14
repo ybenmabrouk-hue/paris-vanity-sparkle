@@ -14,7 +14,9 @@ const emailSchema = z.object({
 export function Footer() {
   return (
     <footer className="bg-background text-foreground">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-10 py-16 md:py-24">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24">
+        <SocialFeed />
+
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-8">
           {/* Logo */}
           <div className="md:col-span-5">
