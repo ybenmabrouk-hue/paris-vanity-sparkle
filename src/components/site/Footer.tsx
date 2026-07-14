@@ -24,24 +24,7 @@ export function Footer() {
             />
           </div>
 
-          {/* Empty right column to preserve grid alignment */}
-          <div className="hidden md:col-span-7 md:block" />
-
-          {/* Newsletter and brand statement */}
-          <div className="md:col-span-5">
-            <h3 className="font-sans text-base md:text-lg font-medium tracking-wide">
-              Enter the world of Dahlia
-            </h3>
-            <NewsletterForm />
-            <p className="mt-8 max-w-md text-sm text-muted-foreground leading-relaxed">
-              Dahlia is a small-batch vanity case studio imagined in Paris and
-              crafted by hand. Shaped by a Parisian eye and expressed through
-              modern leatherwork, each piece is designed to hold the small
-              rituals that travel with you.
-            </p>
-          </div>
-
-          {/* Navigation: right side, aligned with the newsletter */}
+          {/* Navigation: right blank space, top row on desktop */}
           <div className="md:col-span-7 md:flex md:justify-end">
             <div>
               <ul className="space-y-3 text-sm">
@@ -92,6 +75,20 @@ export function Footer() {
                 </a>
               </div>
             </div>
+          </div>
+
+          {/* Newsletter and brand statement */}
+          <div className="md:col-span-5">
+            <h3 className="font-sans text-base md:text-lg font-medium tracking-wide">
+              Enter the world of Dahlia
+            </h3>
+            <NewsletterForm />
+            <p className="mt-8 max-w-md text-sm text-muted-foreground leading-relaxed">
+              Dahlia is a small-batch vanity case studio imagined in Paris and
+              crafted by hand. Shaped by a Parisian eye and expressed through
+              modern leatherwork, each piece is designed to hold the small
+              rituals that travel with you.
+            </p>
           </div>
         </div>
       </div>
