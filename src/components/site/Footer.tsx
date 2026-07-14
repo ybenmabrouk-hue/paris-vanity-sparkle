@@ -129,6 +129,7 @@ export function Footer() {
           <p>Designed in Paris with love</p>
         </div>
       </div>
+      </div>
     </footer>
   );
 }
