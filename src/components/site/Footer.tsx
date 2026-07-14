@@ -4,6 +4,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { Facebook, Instagram } from "lucide-react";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
+import atHandle from "@/assets/dahlia-at-handle.png.asset.json";
 import { ImageSlot } from "@/components/site/ImageSlot";
 import { subscribeToNewsletter } from "@/lib/newsletter.functions";
 
@@ -150,10 +151,15 @@ function SocialFeed() {
         href="https://instagram.com"
         target="_blank"
         rel="noreferrer"
-        className="inline-block font-kuenstler hover:text-accent transition-colors"
-        style={{ fontSize: "clamp(40px, 7vw, 80px)", lineHeight: "1", letterSpacing: "-0.01em" }}
+        aria-label="@dahlia on Instagram"
+        className="inline-block hover:opacity-70 transition-opacity"
       >
-        @dahlia
+        <img
+          src={atHandle.url}
+          alt="@dahlia"
+          className="w-auto mx-auto"
+          style={{ height: "clamp(48px, 8vw, 96px)" }}
+        />
       </a>
       <p
         className="mt-3 text-muted-foreground"
