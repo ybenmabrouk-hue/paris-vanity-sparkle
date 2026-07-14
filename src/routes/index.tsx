@@ -33,7 +33,7 @@ function Hero() {
   return (
     <section className="relative -mt-16 grid md:grid-cols-2 min-h-screen">
       <ImageSlot
-        label="Maison Yasmine vanity cases — hero still life"
+        label="Dahlia vanity cases — hero still life"
         caption="Hero — product still life"
         className="order-2 md:order-1 min-h-[50vh] md:min-h-screen border-0 bg-secondary"
       />
