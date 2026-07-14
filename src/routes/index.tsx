@@ -75,11 +75,11 @@ function CollectionCarousel() {
       style={{ paddingBlock: "clamp(45px, 8vw, 80px)" }}
     >
       <div className="max-w-[1600px] mx-auto">
-        <div className="mb-6 md:mb-8 text-center md:text-left">
-          <h2 className="font-kuenstler text-[24px] md:text-[32px] leading-[1] tracking-tight">
+        <div className="mb-8 md:mb-12 text-left">
+          <h2 className="font-kuenstler leading-[0.95] tracking-tight" style={{ fontSize: "clamp(40px, 7vw, 96px)" }}>
             Collection
           </h2>
-          <p className="mt-3 text-[12px] md:text-[15px] leading-[15px] md:leading-[22px] text-muted-foreground max-w-2xl mx-auto md:mx-0">
+          <p className="mt-4 md:mt-6 text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-muted-foreground max-w-3xl">
             The collection begins at our atelier. Shaped by a Parisian eye and
             crafted through modern leatherwork, each vanity case is designed to
             hold the small rituals that travel with you.
