@@ -123,7 +123,7 @@ function ColorTiles({ product }: { product: ShopifyProduct }) {
   }
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-5 gap-x-4 md:gap-x-6 gap-y-12">
+    <div className="grid grid-cols-5 gap-x-3 md:gap-x-6">
       {tiles.map((tile) => (
         <Link
           key={tile.color}
