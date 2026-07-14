@@ -39,17 +39,13 @@ function Banner() {
           />
           <Link
             to="/collection"
-            className="inline-flex items-center justify-center rounded-full border border-white/90 text-white capitalize hover:bg-white hover:text-foreground transition-colors backdrop-blur-[1px]"
+            className="inline-block text-white uppercase border-b border-white/90 pb-1 hover:opacity-80 transition-opacity"
             style={{
-              fontSize: "14px",
-              lineHeight: "16px",
-              height: "42px",
-              padding: "0 32px",
-              letterSpacing: "0.01em",
-              borderWidth: "1px",
+              fontSize: "13px",
+              letterSpacing: "0.18em",
             }}
           >
-            Shop the Collection
+            Shop Now
           </Link>
         </div>
       </div>
