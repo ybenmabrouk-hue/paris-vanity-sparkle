@@ -1,13 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { Suspense } from "react";
-import { fetchProducts } from "@/lib/shopify";
-import { ProductCard } from "@/components/site/ProductCard";
+import { fetchProducts, formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { ImageSlot } from "@/components/site/ImageSlot";
 
 const productsQuery = queryOptions({
   queryKey: ["products", "home"],
-  queryFn: () => fetchProducts(6),
+  queryFn: () => fetchProducts(1),
 });
 
 export const Route = createFileRoute("/")({
@@ -20,10 +19,12 @@ function Home() {
     <div>
       <Hero />
       <Suspense fallback={<div className="h-96" />}>
-        <FeaturedProducts />
+        <VolOne />
       </Suspense>
-      <Story />
-      <Ethos />
+      <BrandStatement />
+      <Suspense fallback={<div className="h-96" />}>
+        <ProductFeature />
+      </Suspense>
     </div>
   );
 }
@@ -32,134 +33,173 @@ function Hero() {
   return (
     <section className="relative -mt-16 grid md:grid-cols-2 min-h-screen">
       <ImageSlot
-        label="Maison Yasmine vanity case — hero image"
-        caption="Hero image"
-        className="order-2 md:order-1 min-h-[40vh] md:min-h-screen"
+        label="Maison Yasmine vanity cases — hero still life"
+        caption="Hero — product still life"
+        className="order-2 md:order-1 min-h-[50vh] md:min-h-screen border-0 bg-secondary"
       />
-      <div className="relative order-1 md:order-2 min-h-[70vh] md:min-h-screen bg-secondary">
-        <ImageSlot
-          label="Editorial portrait"
-          caption="Editorial portrait"
-          className="absolute inset-0 border-0 bg-secondary"
-        />
-        <div className="absolute inset-0 flex flex-col items-center justify-end md:justify-center pb-16 md:pb-0 px-8">
-          <div className="text-center max-w-md">
-            <div className="font-script text-5xl md:text-7xl leading-[0.9]">
-              Small batch,
-              <br />
-              made in Paris.
-            </div>
-            <Link
-              to="/collection"
-              className="mt-10 inline-block bg-foreground text-background px-10 py-4 eyebrow hover:bg-accent hover:text-accent-foreground transition-colors"
-            >
-              Shop the Collection
-            </Link>
-          </div>
-        </div>
+      <ImageSlot
+        label="Editorial portrait"
+        caption="Editorial portrait"
+        className="order-1 md:order-2 min-h-[70vh] md:min-h-screen border-0 bg-muted"
+      />
+
+      {/* Overlay: script headline + CTA, centered across both panels */}
+      <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+        <h1 className="font-script text-6xl md:text-8xl leading-[0.9] text-background mix-blend-difference">
+          Small Batch
+          <br />
+          <span className="italic">Fine Vanity Cases</span>
+        </h1>
+        <Link
+          to="/collection"
+          className="pointer-events-auto mt-10 inline-block bg-background text-foreground px-10 py-4 eyebrow hover:bg-accent hover:text-accent-foreground transition-colors"
+        >
+          Shop Vol. One
+        </Link>
       </div>
     </section>
   );
 }
 
-function FeaturedProducts() {
+function VolOne() {
   const { data: products } = useSuspenseQuery(productsQuery);
+  const product = products[0];
 
   return (
     <section className="py-24 md:py-32 px-6 md:px-10">
-      <div className="max-w-[1600px] mx-auto">
-        <div className="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16 mb-16">
-          <div>
-            <div className="eyebrow text-muted-foreground mb-4">The Collection</div>
-            <h2 className="font-serif text-5xl md:text-6xl leading-[0.95]">
-              Vol. One
-            </h2>
-          </div>
-          <p className="text-lg leading-relaxed text-muted-foreground max-w-xl md:pt-4">
-            Volume one begins at our atelier. Shaped by a Parisian eye and crafted from
-            hand-selected leathers, each vanity case is designed to hold the small
-            rituals that make a life your own.
+      <div className="max-w-[1400px] mx-auto">
+        <div className="grid md:grid-cols-[1fr_1.4fr] gap-10 md:gap-20 mb-20 items-end">
+          <h2 className="font-serif text-6xl md:text-7xl leading-[0.95]">Vol. One</h2>
+          <p className="text-lg leading-relaxed text-muted-foreground max-w-xl md:pb-3">
+            Volume one begins at our atelier. Shaped by a Parisian perspective and crafted
+            through modern leatherwork, each vanity case is designed to hold the small
+            rituals that travel with you.
           </p>
         </div>
 
-        {products.length === 0 ? (
+        {!product ? (
           <EmptyState />
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-14">
-            {products.map((p) => (
-              <ProductCard key={p.node.id} product={p} />
-            ))}
+          <div className="mx-auto max-w-md">
+            <FeaturedProductCard product={product} />
           </div>
         )}
-
-        <div className="mt-16 text-center">
-          <Link
-            to="/collection"
-            className="eyebrow underline underline-offset-8 decoration-1 hover:text-accent"
-          >
-            View all pieces
-          </Link>
-        </div>
       </div>
     </section>
+  );
+}
+
+function FeaturedProductCard({ product }: { product: ShopifyProduct }) {
+  const p = product.node;
+  const img1 = p.images.edges[0]?.node;
+  const img2 = p.images.edges[1]?.node ?? img1;
+  const price = p.priceRange.minVariantPrice;
+  const colorOption = p.options.find((o) => /colou?r/i.test(o.name));
+  const colorCount = colorOption?.values.length ?? p.variants.edges.length;
+
+  return (
+    <Link
+      to="/product/$handle"
+      params={{ handle: p.handle }}
+      className="group block"
+    >
+      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+        {img1 ? (
+          <>
+            <img
+              src={img1.url}
+              alt={img1.altText ?? p.title}
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
+            />
+            {img2 && (
+              <img
+                src={img2.url}
+                alt={img2.altText ?? p.title}
+                className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+            )}
+          </>
+        ) : (
+          <ImageSlot
+            label={`${p.title} — product image`}
+            caption="Product image"
+            className="absolute inset-0 border-0"
+          />
+        )}
+      </div>
+      <div className="mt-6 flex items-baseline justify-between gap-4">
+        <div>
+          <h3 className="font-serif text-2xl leading-tight">{p.title}</h3>
+          <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">
+            Vanity Case {colorCount > 1 ? `/ ${colorCount} colours` : ""}
+          </p>
+        </div>
+        <div className="text-sm">{formatPrice(price.amount, price.currencyCode)}</div>
+      </div>
+    </Link>
   );
 }
 
 function EmptyState() {
   return (
-    <div className="border border-dashed border-border py-24 text-center">
+    <div className="border border-dashed border-border py-24 text-center max-w-md mx-auto">
       <p className="font-serif text-2xl">No products found</p>
       <p className="text-sm text-muted-foreground mt-2">
-        Add products in Shopify to populate the collection.
+        Add a product in Shopify to populate the collection.
       </p>
     </div>
   );
 }
 
-function Story() {
+function BrandStatement() {
   return (
-    <section id="story" className="px-6 md:px-10 py-24 md:py-32 bg-secondary/40">
-      <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-        <ImageSlot
-          label="Inside a Maison Yasmine vanity case"
-          caption="Atelier image"
-          className="aspect-[4/3] w-full"
-        />
-        <div>
-          <div className="eyebrow text-muted-foreground mb-4">Notre Maison</div>
-          <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-6">
-            Objects that hold the everyday.
-          </h2>
-          <p className="text-lg leading-relaxed text-muted-foreground">
-            Founded in Paris by Yasmine, our maison began with a single question:
-            what if the pieces we carry every day were made with the same care
-            as the ones we save for a lifetime?
-          </p>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Each vanity case is assembled by hand in our atelier, from leathers
-            chosen for the way they age.
-          </p>
+    <section id="story" className="px-6 md:px-10 py-24 md:py-32 bg-secondary/40 text-center">
+      <div className="max-w-2xl mx-auto">
+        <div className="font-script text-5xl mb-8" aria-hidden="true">
+          M
         </div>
+        <p className="eyebrow text-muted-foreground mb-6">
+          Imagined in Paris. Crafted by hand.
+        </p>
+        <p className="text-lg md:text-xl leading-relaxed text-foreground/80">
+          Maison Yasmine is a modern leather-led lifestyle brand shaped around the
+          rituals of self and travel, where the objects you carry become part of
+          everyday life. Small batch. Considered. Made to keep.
+        </p>
       </div>
     </section>
   );
 }
 
-function Ethos() {
-  const items = [
-    { t: "Made in Paris", d: "Assembled by hand in our atelier, in small numbered batches." },
-    { t: "Made to last", d: "Full-grain leathers, brass hardware, structured to travel." },
-    { t: "Made to keep", d: "Each piece is designed to age with you, not against you." },
-  ];
+function ProductFeature() {
+  const { data: products } = useSuspenseQuery(productsQuery);
+  const product = products[0]?.node;
+  if (!product) return null;
+
   return (
     <section className="px-6 md:px-10 py-24 md:py-32">
-      <div className="max-w-[1200px] mx-auto grid md:grid-cols-3 gap-12">
-        {items.map((i) => (
-          <div key={i.t} className="text-center md:text-left">
-            <div className="font-script text-3xl mb-3">{i.t}</div>
-            <p className="text-muted-foreground leading-relaxed">{i.d}</p>
-          </div>
-        ))}
+      <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-center">
+        <ImageSlot
+          label={`${product.title} — editorial image`}
+          caption="Editorial image"
+          className="aspect-[4/5] w-full border-0"
+        />
+        <div className="max-w-md">
+          <h3 className="font-serif text-5xl md:text-6xl leading-[0.95] mb-6">
+            {product.title}
+          </h3>
+          <p className="text-lg leading-relaxed text-muted-foreground mb-8">
+            {product.description ||
+              "A refined vanity case, structured to travel and made to keep. Assembled by hand in our Paris atelier from full-grain leather."}
+          </p>
+          <Link
+            to="/product/$handle"
+            params={{ handle: product.handle }}
+            className="eyebrow underline underline-offset-8 decoration-1 hover:text-accent"
+          >
+            Discover Now
+          </Link>
+        </div>
       </div>
     </section>
   );
