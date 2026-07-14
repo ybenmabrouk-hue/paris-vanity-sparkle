@@ -134,36 +134,50 @@ function VanityProductCard({ card }: { card: ColorSwatch }) {
 function TextBanner() {
   return (
     <section
-      className="flex flex-col items-center justify-center text-center px-6 text-white"
+      className="text-white"
       style={{
         backgroundColor: "#320F13",
-        minHeight: "50vh",
-        paddingBlock: "clamp(56px, 8vw, 120px)",
+        // sept .section-spacing → 2.5rem (mobile) to 4rem (desktop),
+        // plus the 1.5625rem block-start compensation
+        paddingBlockStart: "calc(clamp(2.5rem, 2.0122rem + 2.0813vw, 4rem) + 1.5625rem)",
+        paddingBlockEnd: "clamp(2.5rem, 2.0122rem + 2.0813vw, 4rem)",
       }}
     >
-      <div className="max-w-[560px] mx-auto">
+      <div
+        className="mx-auto text-center"
+        style={{
+          // sept .container--xs → 42.5rem, gutter 1.25rem → 3rem
+          maxWidth: "42.5rem",
+          paddingInline: "clamp(1.25rem, 0.6707rem + 2.4390vw, 3rem)",
+        }}
+      >
         <img
           src={monogrammeWhite.url}
           alt=""
           aria-hidden
-          className="mx-auto"
+          className="block mx-auto"
           style={{ width: "clamp(140px, 22vw, 320px)", height: "auto" }}
         />
         <h2
-          className="font-serif font-bold uppercase tracking-[0.02em]"
+          className="font-serif uppercase"
           style={{
-            marginBlockStart: "clamp(48px, 6vw, 72px)",
-            fontSize: "clamp(10px, 1.4vw, 20px)",
-            lineHeight: "clamp(15px, 1.8vw, 26px)",
+            fontWeight: 600,
+            letterSpacing: "0.02em",
+            // sept prose: sibling margin 1.25rem
+            marginBlockStart: "1.25rem",
+            // sept --text-h2 clamp
+            fontSize:
+              "clamp(1.25rem, 1.0671rem + 0.7805vw, 1.75rem)",
+            lineHeight: 1.5,
           }}
         >
           Imagined in Paris. Crafted by hand
         </h2>
         <p
-          className="mt-6"
           style={{
-            fontSize: "clamp(12px, 1.4vw, 20px)",
-            lineHeight: "clamp(15px, 1.8vw, 26px)",
+            marginBlockStart: "1.25rem",
+            fontSize: "1rem",
+            lineHeight: 1.6,
           }}
         >
           Dahlia is a modern leather-led lifestyle brand shaped around the
@@ -173,5 +187,4 @@ function TextBanner() {
       </div>
     </section>
   );
-
 }
