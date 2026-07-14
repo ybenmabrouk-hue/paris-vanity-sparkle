@@ -45,13 +45,14 @@ function Banner() {
           />
           <Link
             to="/collection"
-            className="inline-flex items-center justify-center border border-white text-white capitalize hover:bg-white hover:text-foreground transition-colors"
+            className="inline-flex items-center justify-center rounded-full border border-white/90 text-white capitalize hover:bg-white hover:text-foreground transition-colors backdrop-blur-[1px]"
             style={{
               fontSize: "14px",
               lineHeight: "16px",
-              height: "38px",
-              padding: "12px 26px",
-              letterSpacing: "0.02em",
+              height: "42px",
+              padding: "0 32px",
+              letterSpacing: "0.01em",
+              borderWidth: "1px",
             }}
           >
             Shop Vol. One
