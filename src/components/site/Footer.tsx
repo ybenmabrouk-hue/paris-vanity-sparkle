@@ -150,7 +150,7 @@ function SocialFeed() {
         href="https://instagram.com"
         target="_blank"
         rel="noreferrer"
-        className="inline-block font-['Times_New_Roman',_Times,_serif] hover:text-accent transition-colors"
+        className="inline-block font-kuenstler hover:text-accent transition-colors"
         style={{ fontSize: "clamp(40px, 7vw, 80px)", lineHeight: "1", letterSpacing: "-0.01em" }}
       >
         @dahlia
