@@ -3,6 +3,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImageSlot } from "@/components/site/ImageSlot";
 import { ProductReviews } from "@/components/site/ProductReviews";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
+import monogrammeWhite from "@/assets/dahlia-monogramme-white.png.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
@@ -132,19 +134,20 @@ function VanityProductCard({ card }: { card: ColorSwatch }) {
 function TextBanner() {
   return (
     <section
-      className="text-center px-6"
+      className="text-center px-6 text-white"
       style={{
+        backgroundColor: "#320F13",
         paddingBlockStart: "clamp(42px, 6vw, 80px)",
         paddingBlockEnd: "clamp(52px, 10vw, 140px)",
       }}
     >
       <div className="max-w-[560px] mx-auto">
         <img
-          src={logoBlack.url}
+          src={monogrammeWhite.url}
           alt=""
           aria-hidden
           className="mx-auto"
-          style={{ width: "clamp(34px, 6vw, 44px)", height: "auto" }}
+          style={{ width: "clamp(60px, 9vw, 110px)", height: "auto" }}
         />
         <h2
           className="font-serif font-bold uppercase tracking-[0.02em]"
@@ -170,4 +173,5 @@ function TextBanner() {
       </div>
     </section>
   );
+
 }
