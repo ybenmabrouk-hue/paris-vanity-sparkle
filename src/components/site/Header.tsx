@@ -15,7 +15,7 @@ export function Header() {
           <img src={logoBlack.url} alt="Dahlia" className="h-10 md:h-12 w-auto" />
         </Link>
 
-        <nav className="flex items-center gap-10 md:gap-14 font-sans font-semibold text-[12px] tracking-[0.03em]">
+        <nav className="flex items-center gap-10 md:gap-14 font-sans font-normal text-[12px] tracking-[0.03em]">
           <Link to="/collection" className="hover:opacity-60 transition-opacity">
             Shop
           </Link>
