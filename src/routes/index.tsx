@@ -23,9 +23,6 @@ function Home() {
         <VolOne />
       </Suspense>
       <BrandStatement />
-      <Suspense fallback={<div className="h-96" />}>
-        <ProductFeature />
-      </Suspense>
     </div>
   );
 }
