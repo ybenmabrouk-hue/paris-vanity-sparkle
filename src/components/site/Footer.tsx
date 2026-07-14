@@ -1,39 +1,181 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useServerFn } from "@tanstack/react-router";
+import { useState } from "react";
+import { z } from "zod";
+import { ArrowRight, Facebook, Instagram } from "lucide-react";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
+import { subscribeToNewsletter } from "@/lib/newsletter.functions";
+
+const emailSchema = z.object({
+  email: z.string().trim().email({ message: "Please enter a valid email address" }).max(255),
+});
 
 export function Footer() {
   return (
-    <footer className="mt-32 border-t border-border/60 bg-background">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-10 py-16 grid gap-12 md:grid-cols-4">
-        <div className="md:col-span-2">
-          <img src={logoBlack.url} alt="Dahlia" className="h-12 w-auto" />
-          <p className="mt-4 max-w-sm text-sm text-muted-foreground leading-relaxed">
-            Vanity cases crafted in Paris. A quiet ritual for the objects you love —
-            designed to travel, to keep, to pass on.
-          </p>
-        </div>
-        <div>
-          <div className="eyebrow mb-4 text-muted-foreground">Shop</div>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/collection" className="hover:text-accent">The Collection</Link></li>
-            <li><Link to="/collection" className="hover:text-accent">New arrivals</Link></li>
-          </ul>
-        </div>
-        <div>
-          <div className="eyebrow mb-4 text-muted-foreground">Maison</div>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#story" className="hover:text-accent">Our story</a></li>
-            <li><a href="mailto:hello@dahlia-paris.com" className="hover:text-accent">Contact</a></li>
-            <li><a href="#" className="hover:text-accent">Instagram</a></li>
-          </ul>
+    <footer className="bg-background text-foreground">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-10 py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+          {/* Left column: logo, newsletter, brand statement */}
+          <div className="md:col-span-5">
+            <img
+              src={logoBlack.url}
+              alt="Dahlia"
+              className="h-24 md:h-32 w-auto"
+            />
+            <h3 className="mt-8 font-sans text-base md:text-lg font-medium tracking-wide">
+              Enter the world of Dahlia
+            </h3>
+            <NewsletterForm />
+            <p className="mt-8 max-w-md text-sm text-muted-foreground leading-relaxed">
+              Dahlia is a small-batch vanity case studio imagined in Paris and
+              crafted by hand. Shaped by a Parisian eye and expressed through
+              modern leatherwork, each piece is designed to hold the small
+              rituals that travel with you.
+            </p>
+          </div>
+
+          {/* Right columns: links, business info, contact */}
+          <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-8">
+            <div>
+              <ul className="space-y-3 text-sm">
+                <li>
+                  <Link to="/about" className="hover:text-accent transition-colors">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <a href="mailto:hello@dahlia-paris.com" className="hover:text-accent transition-colors">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <Link to="/faq" className="hover:text-accent transition-colors">
+                    FAQ
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/shipping" className="hover:text-accent transition-colors">
+                    Shipping & Refund Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/privacy" className="hover:text-accent transition-colors">
+                    Privacy & Terms of Service
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-6">
+              <div>
+                <p className="text-sm font-medium">Business Hours</p>
+                <p className="text-sm text-muted-foreground">Mon - Fri 10am - 6pm CET</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium">Operations & Logistics</p>
+                <p className="text-sm text-muted-foreground">+33 1 23 45 67 89</p>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div>
+                <p className="text-sm font-medium">Press & Partnerships</p>
+                <p className="text-sm text-muted-foreground">press@dahlia-paris.com</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium">Customer Care</p>
+                <p className="text-sm text-muted-foreground">care@dahlia-paris.com</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://facebook.com"
+                  aria-label="Facebook"
+                  className="hover:text-accent transition-colors"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  aria-label="Instagram"
+                  className="hover:text-accent transition-colors"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
       <div className="border-t border-border/60">
         <div className="mx-auto max-w-[1600px] px-6 md:px-10 py-6 text-xs text-muted-foreground flex flex-wrap justify-between gap-4">
-          <div>© {new Date().getFullYear()} Dahlia — Paris</div>
-          <div>Fait à Paris avec soin</div>
+          <div>© 2026 Dahlia — Paris</div>
+          <div>Developed by malkum</div>
         </div>
       </div>
     </footer>
+  );
+}
+
+function NewsletterForm() {
+  const subscribe = useServerFn(subscribeToNewsletter);
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("idle");
+
+    const result = emailSchema.safeParse({ email });
+    if (!result.success) {
+      setStatus("error");
+      setMessage(result.error.errors[0].message);
+      return;
+    }
+
+    try {
+      await subscribe({ data: { email: result.data.email } });
+      setStatus("success");
+      setMessage("Thank you for subscribing.");
+      setEmail("");
+    } catch (err) {
+      setStatus("error");
+      setMessage("Something went wrong. Please try again.");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-4 max-w-md">
+      <div className="relative flex items-center bg-card border border-border rounded-md overflow-hidden">
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="E-mail"
+          aria-label="Email address for newsletter"
+          className="w-full bg-transparent px-4 py-3.5 text-sm outline-none placeholder:text-muted-foreground"
+          maxLength={255}
+        />
+        <button
+          type="submit"
+          aria-label="Subscribe to newsletter"
+          className="px-4 py-3.5 hover:text-accent transition-colors"
+        >
+          <ArrowRight className="h-5 w-5" />
+        </button>
+      </div>
+      {status !== "idle" && (
+        <p
+          className={`mt-2 text-xs ${status === "success" ? "text-muted-foreground" : "text-destructive"}`}
+        >
+          {message}
+        </p>
+      )}
+    </form>
   );
 }
