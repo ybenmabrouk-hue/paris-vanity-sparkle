@@ -68,76 +68,95 @@ function VolOne() {
 
   return (
     <section className="py-24 md:py-32 px-6 md:px-10">
-      <div className="max-w-[1400px] mx-auto">
-        <div className="grid md:grid-cols-[1fr_1.4fr] gap-10 md:gap-20 mb-20 items-end">
-          <h2 className="font-serif text-6xl md:text-7xl leading-[0.95]">Vol. One</h2>
-          <p className="text-lg leading-relaxed text-muted-foreground max-w-xl md:pb-3">
-            Volume one begins at our atelier. Shaped by a Parisian perspective and crafted
-            through modern leatherwork, each vanity case is designed to hold the small
-            rituals that travel with you.
+      <div className="max-w-[1600px] mx-auto">
+        <div className="mb-16 md:mb-20 max-w-2xl">
+          <h2 className="font-serif text-4xl md:text-5xl leading-tight mb-6">
+            Collection
+          </h2>
+          <p className="text-base md:text-lg leading-relaxed text-foreground/80">
+            The collection begins at our atelier. Shaped by a Parisian eye and
+            crafted through modern leatherwork, each vanity case is designed to
+            hold the small rituals that travel with you.
           </p>
         </div>
 
-        {!product ? (
-          <EmptyState />
-        ) : (
-          <div className="mx-auto max-w-md">
-            <FeaturedProductCard product={product} />
-          </div>
-        )}
+        {!product ? <EmptyState /> : <ColorTiles product={product} />}
       </div>
     </section>
   );
 }
 
-function FeaturedProductCard({ product }: { product: ShopifyProduct }) {
+function ColorTiles({ product }: { product: ShopifyProduct }) {
   const p = product.node;
-  const img1 = p.images.edges[0]?.node;
-  const img2 = p.images.edges[1]?.node ?? img1;
   const price = p.priceRange.minVariantPrice;
   const colorOption = p.options.find((o) => /colou?r/i.test(o.name));
-  const colorCount = colorOption?.values.length ?? p.variants.edges.length;
+
+  // Build up to 5 color entries. Prefer real color variants; pad with
+  // placeholder slots so the layout always emphasises the 5-colour offer.
+  const colorVariants = p.variants.edges
+    .map((v) => {
+      const co = v.node.selectedOptions.find((o) => /colou?r/i.test(o.name));
+      return co ? { color: co.value, variant: v.node } : null;
+    })
+    .filter((x): x is { color: string; variant: typeof p.variants.edges[number]["node"] } => x !== null);
+
+  const uniqueByColor = Array.from(
+    new Map(colorVariants.map((c) => [c.color, c])).values(),
+  );
+
+  const placeholderColors = ["Noir", "Crème", "Camel", "Terracotta", "Bordeaux"];
+  const tiles: Array<{ color: string; image?: { url: string; altText: string | null } }> = [];
+
+  for (let i = 0; i < 5; i++) {
+    const real = uniqueByColor[i];
+    if (real) {
+      tiles.push({
+        color: real.color,
+        image: p.images.edges[i]?.node ?? p.images.edges[0]?.node,
+      });
+    } else {
+      tiles.push({
+        color: colorOption?.values[i] ?? placeholderColors[i],
+        image: p.images.edges[i]?.node ?? p.images.edges[0]?.node,
+      });
+    }
+  }
 
   return (
-    <Link
-      to="/product/$handle"
-      params={{ handle: p.handle }}
-      className="group block"
-    >
-      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
-        {img1 ? (
-          <>
-            <img
-              src={img1.url}
-              alt={img1.altText ?? p.title}
-              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
-            />
-            {img2 && (
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-x-4 md:gap-x-6 gap-y-12">
+      {tiles.map((tile) => (
+        <Link
+          key={tile.color}
+          to="/product/$handle"
+          params={{ handle: p.handle }}
+          className="group block"
+        >
+          <div className="relative aspect-[3/4] overflow-hidden bg-muted">
+            {tile.image ? (
               <img
-                src={img2.url}
-                alt={img2.altText ?? p.title}
-                className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                src={tile.image.url}
+                alt={tile.image.altText ?? `The Vanity Case — ${tile.color}`}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+            ) : (
+              <ImageSlot
+                label={`The Vanity Case — ${tile.color}`}
+                caption={tile.color}
+                className="absolute inset-0 border-0"
               />
             )}
-          </>
-        ) : (
-          <ImageSlot
-            label={`${p.title} — product image`}
-            caption="Product image"
-            className="absolute inset-0 border-0"
-          />
-        )}
-      </div>
-      <div className="mt-6 flex items-baseline justify-between gap-4">
-        <div>
-          <h3 className="font-serif text-2xl leading-tight">{p.title}</h3>
-          <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">
-            Vanity Case {colorCount > 1 ? `/ ${colorCount} colours` : ""}
-          </p>
-        </div>
-        <div className="text-sm">{formatPrice(price.amount, price.currencyCode)}</div>
-      </div>
-    </Link>
+          </div>
+          <div className="mt-5">
+            <h3 className="font-serif text-lg md:text-xl leading-tight">
+              The Vanity Case
+            </h3>
+            <p className="text-sm text-muted-foreground mt-1">
+              {tile.color} — {formatPrice(price.amount, price.currencyCode)}
+            </p>
+          </div>
+        </Link>
+      ))}
+    </div>
   );
 }
 
@@ -151,6 +170,7 @@ function EmptyState() {
     </div>
   );
 }
+
 
 function BrandStatement() {
   return (
