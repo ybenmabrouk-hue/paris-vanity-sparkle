@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-serif: "Cormorant Garamond", Garamond, Baskerville, "Times New Roman", serif;
-  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-script: "Caveat", "Homemade Apple", cursive;
 
   --radius-sm: calc(var(--radius) - 4px);
