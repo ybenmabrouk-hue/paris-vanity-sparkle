@@ -13,7 +13,7 @@ const emailSchema = z.object({
 
 export function Footer() {
   return (
-    <footer className="bg-background text-foreground">
+    <footer className="bg-petale text-foreground">
       {/* Instagram social feed (kept in footer only, Sept-style spacing) */}
       <div
         className="mx-auto max-w-[1600px] px-6 md:px-10"

@@ -36,6 +36,7 @@
   --color-cream: var(--cream);
   --color-terracotta: var(--terracotta);
   --color-ink: var(--ink);
+  --color-petale: var(--petale);
 }
 
 :root {
@@ -45,8 +46,9 @@
   --cream: oklch(0.965 0.018 80);
   --terracotta: oklch(0.62 0.13 40);
   --ink: oklch(0.22 0.02 60);
+  --petale: #edc7c7;
 
-  --background: oklch(0.965 0.018 80);
+  --background: #ffffff;
   --foreground: oklch(0.22 0.02 60);
   --card: oklch(0.98 0.012 80);
   --card-foreground: oklch(0.22 0.02 60);
