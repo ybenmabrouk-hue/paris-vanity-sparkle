@@ -12,15 +12,15 @@ const collectionQuery = queryOptions({
 export const Route = createFileRoute("/collection")({
   head: () => ({
     meta: [
-      { title: "Vol. One — Dahlia" },
+      { title: "Collection — Dahlia" },
       {
         name: "description",
-        content: "Vol. One — the full Dahlia vanity case collection, made by hand in Paris.",
+        content: "The Collection — Dahlia vanity cases, made by hand in Paris.",
       },
-      { property: "og:title", content: "Vol. One — Dahlia" },
+      { property: "og:title", content: "Collection — Dahlia" },
       {
         property: "og:description",
-        content: "Vol. One — the full Dahlia vanity case collection, made by hand in Paris.",
+        content: "The Collection — Dahlia vanity cases, made by hand in Paris.",
       },
     ],
   }),
@@ -40,7 +40,7 @@ function CollectionPage() {
             className="font-serif font-bold tracking-tight"
             style={{ fontSize: "clamp(20px, 2.5vw, 24px)", lineHeight: "26px" }}
           >
-            Vol. One
+            Collection
           </h1>
           <p
             className="mt-3 max-w-2xl mx-auto md:mx-0 text-muted-foreground"
