@@ -147,7 +147,7 @@ function TextBanner() {
           alt=""
           aria-hidden
           className="mx-auto"
-          style={{ width: "clamp(60px, 9vw, 110px)", height: "auto" }}
+          style={{ width: "clamp(140px, 22vw, 320px)", height: "auto" }}
         />
         <h2
           className="font-serif font-bold uppercase tracking-[0.02em]"
