@@ -92,13 +92,7 @@ function CollectionCarousel() {
   );
 }
 
-function VanityProductCard({
-  card,
-  activeIndex,
-}: {
-  card: ColorSwatch;
-  activeIndex: number;
-}) {
+function VanityProductCard({ card }: { card: ColorSwatch }) {
   return (
     <Link to="/collection" className="group block">
       <div
@@ -123,31 +117,11 @@ function VanityProductCard({
       >
         $70
       </div>
-      <div
-        className="flex items-center gap-1.5 flex-wrap"
-        style={{ marginTop: "10px" }}
-      >
-        {COLOR_SWATCHES.map((s, i) => (
-          <span
-            key={s.name}
-            aria-label={s.name}
-            title={s.name}
-            className="inline-block rounded-full"
-            style={{
-              width: "16px",
-              height: "16px",
-              backgroundColor: s.swatch,
-              boxShadow:
-                i === activeIndex
-                  ? "0 0 0 1px hsl(var(--background)), 0 0 0 2px hsl(var(--foreground))"
-                  : "inset 0 0 0 1px rgba(0,0,0,0.12)",
-            }}
-          />
-        ))}
-      </div>
+      <ProductReviews className="mt-[10px]" />
     </Link>
   );
 }
+
 
 
 
