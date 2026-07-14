@@ -14,27 +14,17 @@ export function Footer() {
   return (
     <footer className="bg-background text-foreground">
       <div className="mx-auto max-w-[1600px] px-6 md:px-10 py-16 md:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
-          {/* Left column: logo, newsletter, brand statement */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-8">
+          {/* Logo */}
           <div className="md:col-span-5">
             <img
               src={logoBlack.url}
               alt="Dahlia"
               className="h-24 md:h-32 w-auto"
             />
-            <h3 className="mt-8 font-sans text-base md:text-lg font-medium tracking-wide">
-              Enter the world of Dahlia
-            </h3>
-            <NewsletterForm />
-            <p className="mt-8 max-w-md text-sm text-muted-foreground leading-relaxed">
-              Dahlia is a small-batch vanity case studio imagined in Paris and
-              crafted by hand. Shaped by a Parisian eye and expressed through
-              modern leatherwork, each piece is designed to hold the small
-              rituals that travel with you.
-            </p>
           </div>
 
-          {/* Right column: navigation links */}
+          {/* Navigation: right side, in front of the newsletter */}
           <div className="md:col-span-7 md:flex md:justify-end">
             <div>
               <ul className="space-y-3 text-sm">
@@ -86,6 +76,23 @@ export function Footer() {
               </div>
             </div>
           </div>
+
+          {/* Newsletter and brand statement */}
+          <div className="md:col-span-5">
+            <h3 className="font-sans text-base md:text-lg font-medium tracking-wide">
+              Enter the world of Dahlia
+            </h3>
+            <NewsletterForm />
+            <p className="mt-8 max-w-md text-sm text-muted-foreground leading-relaxed">
+              Dahlia is a small-batch vanity case studio imagined in Paris and
+              crafted by hand. Shaped by a Parisian eye and expressed through
+              modern leatherwork, each piece is designed to hold the small
+              rituals that travel with you.
+            </p>
+          </div>
+
+          {/* Empty right column to preserve grid alignment */}
+          <div className="hidden md:col-span-7 md:block" />
         </div>
       </div>
 
