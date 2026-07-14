@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ShoppingBag } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
+import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
 
 export function Header() {
   const items = useCartStore((s) => s.items);
@@ -10,9 +11,8 @@ export function Header() {
   return (
     <header className="fixed top-0 inset-x-0 z-40 bg-background/70 backdrop-blur-md border-b border-border/40">
       <div className="mx-auto max-w-[1600px] px-6 md:px-10 h-16 flex items-center justify-between">
-        <Link to="/" className="font-serif text-2xl tracking-tight">
-          <span className="font-script text-3xl leading-none">Maison</span>{" "}
-          <span className="uppercase text-sm tracking-[0.3em] align-middle">Yasmine</span>
+        <Link to="/" aria-label="Dahlia — home" className="flex items-center">
+          <img src={logoBlack.url} alt="Dahlia" className="h-8 md:h-10 w-auto" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-10 eyebrow">
@@ -22,7 +22,7 @@ export function Header() {
           <a href="#story" className="hover:text-accent transition-colors">
             About
           </a>
-          <a href="mailto:hello@maisonyasmine.com" className="hover:text-accent transition-colors">
+          <a href="mailto:hello@dahlia-paris.com" className="hover:text-accent transition-colors">
             Contact
           </a>
         </nav>

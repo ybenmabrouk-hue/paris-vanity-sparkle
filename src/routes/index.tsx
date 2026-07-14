@@ -3,6 +3,7 @@ import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { Suspense } from "react";
 import { fetchProducts, formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { ImageSlot } from "@/components/site/ImageSlot";
+import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
 
 const productsQuery = queryOptions({
   queryKey: ["products", "home"],
@@ -33,7 +34,7 @@ function Hero() {
   return (
     <section className="relative -mt-16 grid md:grid-cols-2 min-h-screen">
       <ImageSlot
-        label="Maison Yasmine vanity cases — hero still life"
+        label="Dahlia vanity cases — hero still life"
         caption="Hero — product still life"
         className="order-2 md:order-1 min-h-[50vh] md:min-h-screen border-0 bg-secondary"
       />
@@ -155,14 +156,12 @@ function BrandStatement() {
   return (
     <section id="story" className="px-6 md:px-10 py-24 md:py-32 bg-secondary/40 text-center">
       <div className="max-w-2xl mx-auto">
-        <div className="font-script text-5xl mb-8" aria-hidden="true">
-          M
-        </div>
+        <img src={logoBlack.url} alt="Dahlia" className="h-14 md:h-16 w-auto mx-auto mb-8" />
         <p className="eyebrow text-muted-foreground mb-6">
           Imagined in Paris. Crafted by hand.
         </p>
         <p className="text-lg md:text-xl leading-relaxed text-foreground/80">
-          Maison Yasmine is a modern leather-led lifestyle brand shaped around the
+          Dahlia is a modern leather-led lifestyle brand shaped around the
           rituals of self and travel, where the objects you carry become part of
           everyday life. Small batch. Considered. Made to keep.
         </p>
