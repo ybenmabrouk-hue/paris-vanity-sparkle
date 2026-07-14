@@ -3,6 +3,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ImageSlot } from "@/components/site/ImageSlot";
 import { ProductReviews } from "@/components/site/ProductReviews";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
+import monogrammeWhite from "@/assets/dahlia-monogramme-white.png.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
