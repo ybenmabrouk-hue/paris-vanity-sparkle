@@ -4,6 +4,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { ArrowRight, Facebook, Instagram } from "lucide-react";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
+import { ImageSlot } from "@/components/site/ImageSlot";
 import { subscribeToNewsletter } from "@/lib/newsletter.functions";
 
 const emailSchema = z.object({
@@ -13,7 +14,9 @@ const emailSchema = z.object({
 export function Footer() {
   return (
     <footer className="bg-background text-foreground">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-10 py-16 md:py-24">
+      <div className="mx-auto max-w-[1600px] px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24">
+        <SocialFeed />
+
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-8">
           {/* Logo */}
           <div className="md:col-span-5">
@@ -100,6 +103,44 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function SocialFeed() {
+  const posts = [
+    { label: "Dahlia vanity case — social post 1", caption: "Post 1" },
+    { label: "Dahlia vanity case — social post 2", caption: "Post 2" },
+    { label: "Dahlia vanity case — social post 3", caption: "Post 3" },
+    { label: "Dahlia vanity case — social post 4", caption: "Post 4" },
+    { label: "Dahlia vanity case — social post 5", caption: "Post 5" },
+    { label: "Dahlia vanity case — social post 6", caption: "Post 6" },
+  ];
+
+  return (
+    <section className="mb-16 md:mb-24 text-center">
+      <a
+        href="https://instagram.com"
+        target="_blank"
+        rel="noreferrer"
+        className="inline-block font-script text-5xl md:text-7xl hover:text-accent transition-colors"
+      >
+        @dahlia
+      </a>
+      <p className="mt-3 text-sm md:text-base text-muted-foreground">
+        A case for beauty, since 2026.
+      </p>
+
+      <div className="mt-10 grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
+        {posts.map((post) => (
+          <ImageSlot
+            key={post.label}
+            label={post.label}
+            caption={post.caption}
+            className="aspect-square w-full border-0"
+          />
+        ))}
+      </div>
+    </section>
   );
 }
 
