@@ -132,6 +132,53 @@
     font-family: var(--font-kuenstler);
     font-weight: 700;
   }
+  .dahlia-instagram-mark {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    font-family: var(--font-kuenstler);
+    font-size: clamp(54px, 8vw, 104px);
+    font-weight: 700;
+    line-height: 0.82;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+  .dahlia-instagram-at {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.72em;
+    height: 0.72em;
+    margin-right: -0.02em;
+    transform: translateY(-0.02em);
+  }
+  .dahlia-instagram-at > span {
+    position: relative;
+    z-index: 1;
+    font: inherit;
+    transform: translate(-0.01em, 0.03em);
+  }
+  .dahlia-instagram-at::before {
+    content: "";
+    position: absolute;
+    inset: 0.06em 0.02em 0.08em 0.03em;
+    border: 0.025em solid currentColor;
+    border-radius: 50%;
+    transform: rotate(-10deg);
+  }
+  .dahlia-instagram-at::after {
+    content: "";
+    position: absolute;
+    right: -0.07em;
+    bottom: 0.07em;
+    width: 0.23em;
+    height: 0.025em;
+    background: currentColor;
+    border-radius: 999px;
+    transform: rotate(-30deg);
+    transform-origin: left center;
+  }
   .eyebrow {
     font-family: var(--font-sans);
     font-size: 0.7rem;
