@@ -3,6 +3,7 @@ import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { Suspense } from "react";
 import { fetchProducts, formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { ImageSlot } from "@/components/site/ImageSlot";
+import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
 
 const productsQuery = queryOptions({
   queryKey: ["products", "home"],
