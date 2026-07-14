@@ -154,10 +154,10 @@ function SocialFeed() {
         className="inline-block text-foreground hover:opacity-70 transition-opacity"
       >
         <span
-          className="font-serif"
+          className="font-kuenstler"
           style={{ fontSize: "clamp(28px, 5vw, 48px)", lineHeight: 1.1 }}
         >
-          Dahlia on social
+          With Dahlia
         </span>
       </a>
       <p
