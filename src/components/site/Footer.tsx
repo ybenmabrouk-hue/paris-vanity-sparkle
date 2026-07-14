@@ -23,7 +23,8 @@ export function Footer() {
       </div>
 
       {/* Sept-style 4-block footer */}
-      <div className="mx-auto max-w-[1600px] px-6 md:px-10 bg-petale" style={{ paddingBlockEnd: "clamp(30px, 4vw, 56px)" }}>
+      <div className="bg-petale">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-10" style={{ paddingBlockEnd: "clamp(30px, 4vw, 56px)" }}>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
           {/* Block 1: logo + newsletter + brand statement */}
           <div className="md:col-span-1">
