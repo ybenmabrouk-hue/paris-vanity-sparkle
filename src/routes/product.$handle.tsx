@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { useMemo, useState, Suspense } from "react";
-import { Loader2, Minus, Plus } from "lucide-react";
+import { Loader2, ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import { fetchProductByHandle, formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 
@@ -59,26 +59,45 @@ function ProductPage() {
   );
 }
 
+/* Map color option values to swatch hex. */
+const COLOR_SWATCHES: Record<string, string> = {
+  black: "#111111",
+  beige: "#d9c6a5",
+  brown: "#6b4a2b",
+  pink: "#e8b5c0",
+  burgundy: "#6b1f2b",
+};
+
+function swatchColor(value: string): string {
+  return COLOR_SWATCHES[value.toLowerCase()] ?? "#cccccc";
+}
+
 function ProductDetail({ handle }: { handle: string }) {
   const { data: product } = useSuspenseQuery(productQueryOptions(handle));
   const images = product.images.edges;
   const variants = product.variants.edges;
   const [variantId, setVariantId] = useState(variants[0]?.node.id);
-  const [qty, setQty] = useState(1);
+  const [qty] = useState(1);
+  const [activeImage, setActiveImage] = useState(0);
 
   const selectedVariant = useMemo(
     () => variants.find((v) => v.node.id === variantId)?.node ?? variants[0]?.node,
     [variantId, variants],
   );
 
+  const colorOption = product.options.find((o) => o.name.toLowerCase() === "color" || o.name.toLowerCase() === "colour");
+  const selectedColor = selectedVariant?.selectedOptions.find(
+    (o) => o.name.toLowerCase() === "color" || o.name.toLowerCase() === "colour",
+  )?.value;
+
   const addItem = useCartStore((s) => s.addItem);
   const isLoading = useCartStore((s) => s.isLoading);
 
-  // Reconstruct a ShopifyProduct wrapper so cart items keep the expected shape.
   const productWrap: ShopifyProduct = { node: product };
+  const inStock = !!selectedVariant?.availableForSale;
 
   const handleAdd = async () => {
-    if (!selectedVariant) return;
+    if (!selectedVariant || !inStock) return;
     await addItem({
       product: productWrap,
       variantId: selectedVariant.id,
@@ -89,10 +108,18 @@ function ProductDetail({ handle }: { handle: string }) {
     });
   };
 
+  const handleNotify = () => {
+    // Placeholder: no notify backend yet.
+    alert("We'll let you know when this piece is back.");
+  };
+
+  const hasImages = images.length > 0;
+  const mainImage = hasImages ? images[activeImage] ?? images[0] : null;
+
   return (
-    <article className="px-6 md:px-10 pt-10 pb-24">
-      <div className="max-w-[1600px] mx-auto">
-        <nav className="eyebrow text-muted-foreground mb-8">
+    <article className="px-4 md:px-10 pt-10 pb-24 bg-background">
+      <div className="max-w-[1500px] mx-auto">
+        <nav className="eyebrow text-muted-foreground mb-8 text-xs">
           <Link to="/" className="hover:text-accent">Home</Link>
           <span className="mx-2">/</span>
           <Link to="/collection" className="hover:text-accent">Collection</Link>
@@ -100,119 +127,146 @@ function ProductDetail({ handle }: { handle: string }) {
           <span>{product.title}</span>
         </nav>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {images.length === 0 ? (
-              <div
-                role="img"
-                aria-label={`${product.title} — product image`}
-                className="aspect-[4/5] bg-muted border border-dashed border-border flex items-center justify-center text-muted-foreground md:col-span-2"
-              >
-                <span className="eyebrow text-xs">Product image</span>
-              </div>
-            ) : (
-              images.map((img, i) => (
-                <div
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(360px,460px)] gap-10 lg:gap-16">
+          {/* Gallery */}
+          <div className="flex gap-4">
+            {/* Thumbnails */}
+            <div className="hidden md:flex flex-col gap-3 w-20 shrink-0">
+              {images.slice(0, 6).map((img, i) => (
+                <button
                   key={img.node.url}
-                  className={`aspect-[4/5] bg-muted overflow-hidden ${
-                    images.length > 1 && i === 0 ? "md:col-span-2" : ""
+                  onClick={() => setActiveImage(i)}
+                  aria-label={`View image ${i + 1}`}
+                  className={`aspect-square bg-muted overflow-hidden border transition-colors ${
+                    activeImage === i ? "border-foreground" : "border-transparent hover:border-border"
                   }`}
                 >
                   <img
                     src={img.node.url}
-                    alt={img.node.altText ?? product.title}
-                    loading={i === 0 ? "eager" : "lazy"}
+                    alt=""
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
+                </button>
+              ))}
+            </div>
+
+            {/* Main image */}
+            <div className="relative flex-1 bg-muted aspect-square overflow-hidden">
+              {mainImage ? (
+                <img
+                  key={mainImage.node.url}
+                  src={mainImage.node.url}
+                  alt={mainImage.node.altText ?? product.title}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-muted-foreground eyebrow text-xs">
+                  Product image
                 </div>
-              ))
-            )}
+              )}
+              {images.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setActiveImage((i) => (i - 1 + images.length) % images.length)}
+                    aria-label="Previous image"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center rounded-full bg-background/80 hover:bg-background transition-colors"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={() => setActiveImage((i) => (i + 1) % images.length)}
+                    aria-label="Next image"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center rounded-full bg-background/80 hover:bg-background transition-colors"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                </>
+              )}
+            </div>
           </div>
 
-          <div className="md:sticky md:top-24 md:self-start">
-            <div className="eyebrow text-muted-foreground">Vanity Case</div>
-            <h1 className="font-serif text-4xl md:text-5xl leading-tight mt-3">
-              {product.title}
-            </h1>
-            <div className="text-2xl font-serif mt-4">
-              {selectedVariant && formatPrice(selectedVariant.price.amount, selectedVariant.price.currencyCode)}
-            </div>
-
-            <div
-              className="prose prose-neutral mt-8 text-muted-foreground leading-relaxed whitespace-pre-line max-w-none"
-            >
-              {product.description || "A Dahlia vanity case."}
-            </div>
-
-            {product.options.map((opt) => {
-              if (opt.values.length <= 1 && opt.name.toLowerCase() === "title") return null;
-              return (
-                <div key={opt.name} className="mt-8">
-                  <div className="eyebrow mb-3">{opt.name}</div>
-                  <div className="flex flex-wrap gap-2">
-                    {opt.values.map((value) => {
-                      const match = variants.find((v) =>
-                        v.node.selectedOptions.some(
-                          (o) => o.name === opt.name && o.value === value,
-                        ),
-                      );
-                      const isActive = selectedVariant?.selectedOptions.some(
-                        (o) => o.name === opt.name && o.value === value,
-                      );
-                      return (
-                        <button
-                          key={value}
-                          onClick={() => match && setVariantId(match.node.id)}
-                          disabled={!match?.node.availableForSale}
-                          className={`px-4 py-2 border text-sm transition-colors ${
-                            isActive
-                              ? "border-foreground bg-foreground text-background"
-                              : "border-border hover:border-foreground"
-                          } disabled:opacity-40 disabled:line-through`}
-                        >
-                          {value}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-
-            <div className="mt-10 flex items-stretch gap-3">
-              <div className="flex items-center border border-border">
-                <button
-                  className="w-11 h-12 flex items-center justify-center hover:bg-muted"
-                  onClick={() => setQty(Math.max(1, qty - 1))}
-                  aria-label="Decrease quantity"
-                >
-                  <Minus className="h-4 w-4" />
-                </button>
-                <span className="w-10 text-center">{qty}</span>
-                <button
-                  className="w-11 h-12 flex items-center justify-center hover:bg-muted"
-                  onClick={() => setQty(qty + 1)}
-                  aria-label="Increase quantity"
-                >
-                  <Plus className="h-4 w-4" />
-                </button>
-              </div>
+          {/* Info panel */}
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <div className="flex items-start justify-between gap-4">
+              <h1 className="font-serif text-4xl md:text-5xl leading-none">
+                {product.title}
+              </h1>
               <button
-                onClick={handleAdd}
-                disabled={isLoading || !selectedVariant?.availableForSale}
-                className="flex-1 h-12 bg-foreground text-background eyebrow hover:bg-accent transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+                aria-label="Add to wishlist"
+                className="shrink-0 h-10 w-10 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors"
               >
-                {isLoading ? (
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                ) : selectedVariant?.availableForSale ? (
-                  "Add to bag"
-                ) : (
-                  "Sold out"
-                )}
+                <Heart className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="mt-10 pt-8 border-t border-border/60 grid grid-cols-2 gap-4 text-xs text-muted-foreground">
+            <div className="text-lg mt-6">
+              {selectedVariant &&
+                formatPrice(selectedVariant.price.amount, selectedVariant.price.currencyCode)}
+            </div>
+
+            {colorOption && (
+              <div className="mt-10">
+                <div className="text-sm mb-4">
+                  Colour: <span className="text-muted-foreground">{selectedColor}</span>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {colorOption.values.map((value) => {
+                    const match = variants.find((v) =>
+                      v.node.selectedOptions.some(
+                        (o) => o.name === colorOption.name && o.value === value,
+                      ),
+                    );
+                    const isActive = selectedColor === value;
+                    const disabled = !match;
+                    return (
+                      <button
+                        key={value}
+                        onClick={() => match && setVariantId(match.node.id)}
+                        disabled={disabled}
+                        aria-label={value}
+                        title={value}
+                        className={`relative h-9 w-9 rounded-full border transition-all ${
+                          isActive
+                            ? "border-foreground ring-1 ring-foreground ring-offset-2 ring-offset-background"
+                            : "border-foreground/20 hover:border-foreground/60"
+                        } disabled:opacity-30`}
+                        style={{ backgroundColor: swatchColor(value) }}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-10 space-y-3">
+              <button
+                onClick={handleAdd}
+                disabled={isLoading || !inStock}
+                className="w-full h-14 border border-foreground uppercase tracking-[0.2em] text-sm hover:bg-foreground hover:text-background transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-foreground flex items-center justify-center gap-2"
+              >
+                {isLoading ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  "Add to cart"
+                )}
+              </button>
+
+              {!inStock && (
+                <button
+                  onClick={handleNotify}
+                  className="w-full h-14 bg-muted text-foreground/70 uppercase tracking-[0.2em] text-sm hover:bg-muted/80 transition-colors"
+                >
+                  Notify me when available
+                </button>
+              )}
+            </div>
+
+            <div className="mt-10 text-sm leading-relaxed text-foreground/80 whitespace-pre-line">
+              {product.description || "A Dahlia vanity case."}
+            </div>
+
+            <div className="mt-10 pt-8 border-t border-foreground/15 grid grid-cols-2 gap-6 text-xs text-muted-foreground">
               <div>
                 <div className="eyebrow text-foreground mb-1">Shipping</div>
                 Worldwide. Free above €300.
