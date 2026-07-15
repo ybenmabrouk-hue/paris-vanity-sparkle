@@ -40,12 +40,19 @@ export function SocialFeed() {
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              className="relative block aspect-square overflow-hidden bg-secondary"
+              aria-label={`View Dahlia post ${i + 1} on Instagram`}
+              className="relative block aspect-square overflow-hidden bg-secondary group transition-shadow duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/20 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              <ImageSlot
-                label={`Instagram ${i + 1}`}
-                caption={`@dahlia ${i + 1}`}
-                className="absolute inset-0 border-0"
+              <span aria-hidden="true" className="absolute inset-0">
+                <ImageSlot
+                  label={`Instagram ${i + 1}`}
+                  caption={`@dahlia ${i + 1}`}
+                  className="absolute inset-0 border-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
+              </span>
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-foreground/0 transition-colors duration-500 group-hover:bg-foreground/5"
               />
             </a>
           ))}
