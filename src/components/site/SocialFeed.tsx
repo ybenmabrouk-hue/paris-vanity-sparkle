@@ -1,0 +1,56 @@
+import { ImageSlot } from "@/components/site/ImageSlot";
+
+const TILES = Array.from({ length: 6 });
+
+export function SocialFeed() {
+  return (
+    <section
+      className="bg-background"
+      style={{
+        paddingBlockStart: "clamp(2.5rem, 2.0122rem + 2.0813vw, 4rem)",
+        paddingBlockEnd: "clamp(2.5rem, 2.0122rem + 2.0813vw, 4rem)",
+      }}
+    >
+      <div className="mx-auto max-w-[1600px]">
+        <div className="text-center px-6">
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noreferrer"
+            className="font-garamond italic inline-block hover:opacity-70 transition"
+            style={{ fontSize: "34px", fontWeight: 300, lineHeight: 1.1 }}
+          >
+            @dahlia
+          </a>
+          <p
+            className="mt-3 text-muted-foreground"
+            style={{ fontSize: "14px", lineHeight: "20px" }}
+          >
+            A case for beauty, since 2016.
+          </p>
+        </div>
+
+        <div
+          className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-6"
+          style={{ gap: "clamp(8px, 1vw, 16px)" }}
+        >
+          {TILES.map((_, i) => (
+            <a
+              key={i}
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              className="relative block aspect-square overflow-hidden bg-secondary"
+            >
+              <ImageSlot
+                label={`Instagram ${i + 1}`}
+                caption={`@dahlia ${i + 1}`}
+                className="absolute inset-0 border-0"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { ImageSlot } from "@/components/site/ImageSlot";
+import { SocialFeed } from "@/components/site/SocialFeed";
 import { ProductReviews } from "@/components/site/ProductReviews";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
 import monogrammeWhite from "@/assets/dahlia-monogramme-white.png.asset.json";
@@ -17,6 +18,7 @@ function Home() {
       <Banner />
       <CollectionCarousel />
       <TextBanner />
+      <SocialFeed />
     </div>
   );
 }
