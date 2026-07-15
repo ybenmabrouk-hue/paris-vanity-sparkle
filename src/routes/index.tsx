@@ -18,6 +18,7 @@ function Home() {
       <Banner />
       <CollectionCarousel />
       <TextBanner />
+      <SocialFeed />
     </div>
   );
 }
