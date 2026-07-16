@@ -123,64 +123,33 @@ function ProductDetail({ handle }: { handle: string }) {
           <span>{product.title}</span>
         </nav>
 
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(360px,460px)] gap-10 lg:gap-16">
-          {/* Gallery */}
-          <div className="flex gap-4">
-            {/* Thumbnails */}
-            <div className="hidden md:flex flex-col gap-3 w-20 shrink-0">
-              {images.slice(0, 6).map((img, i) => (
-                <button
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,420px)] gap-8 lg:gap-14">
+          {/* Gallery — étoile-style: full-bleed 2-column image grid, all photos visible */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
+            {images.length > 0 ? (
+              images.map((img, i) => (
+                <div
                   key={img.node.url}
-                  onClick={() => setActiveImage(i)}
-                  aria-label={`View image ${i + 1}`}
-                  className={`aspect-square bg-muted overflow-hidden border transition-colors ${
-                    activeImage === i ? "border-foreground" : "border-transparent hover:border-border"
+                  className={`relative bg-muted aspect-square overflow-hidden ${
+                    // First image spans both columns for hero effect
+                    i === 0 ? "md:col-span-2 md:aspect-[4/3]" : ""
                   }`}
                 >
                   <img
                     src={img.node.url}
-                    alt=""
+                    alt={img.node.altText ?? product.title}
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading={i < 2 ? "eager" : "lazy"}
                   />
-                </button>
-              ))}
-            </div>
-
-            {/* Main image */}
-            <div className="relative flex-1 bg-muted aspect-square overflow-hidden">
-              {mainImage ? (
-                <img
-                  key={mainImage.node.url}
-                  src={mainImage.node.url}
-                  alt={mainImage.node.altText ?? product.title}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-muted-foreground eyebrow text-xs">
-                  Product image
                 </div>
-              )}
-              {images.length > 1 && (
-                <>
-                  <button
-                    onClick={() => setActiveImage((i) => (i - 1 + images.length) % images.length)}
-                    aria-label="Previous image"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center rounded-full bg-background/80 hover:bg-background transition-colors"
-                  >
-                    <ChevronLeft className="h-5 w-5" />
-                  </button>
-                  <button
-                    onClick={() => setActiveImage((i) => (i + 1) % images.length)}
-                    aria-label="Next image"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center rounded-full bg-background/80 hover:bg-background transition-colors"
-                  >
-                    <ChevronRight className="h-5 w-5" />
-                  </button>
-                </>
-              )}
-            </div>
+              ))
+            ) : (
+              <div className="md:col-span-2 aspect-[4/3] bg-muted flex items-center justify-center text-muted-foreground eyebrow text-xs">
+                Product image
+              </div>
+            )}
           </div>
+
 
           {/* Info panel */}
           <div className="lg:sticky lg:top-24 lg:self-start">
