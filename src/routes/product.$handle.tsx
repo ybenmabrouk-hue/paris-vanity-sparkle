@@ -78,6 +78,7 @@ function ProductDetail({ handle }: { handle: string }) {
   const variants = product.variants.edges;
   const [variantId, setVariantId] = useState(variants[0]?.node.id);
   const [qty] = useState(1);
+  const [activeImage, setActiveImage] = useState(0);
 
   const selectedVariant = useMemo(
     () => variants.find((v) => v.node.id === variantId)?.node ?? variants[0]?.node,
