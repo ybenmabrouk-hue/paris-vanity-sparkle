@@ -78,7 +78,6 @@ function ProductDetail({ handle }: { handle: string }) {
   const variants = product.variants.edges;
   const [variantId, setVariantId] = useState(variants[0]?.node.id);
   const [qty] = useState(1);
-  const [activeImage, setActiveImage] = useState(0);
 
   const selectedVariant = useMemo(
     () => variants.find((v) => v.node.id === variantId)?.node ?? variants[0]?.node,
@@ -109,12 +108,9 @@ function ProductDetail({ handle }: { handle: string }) {
   };
 
   const handleNotify = () => {
-    // Placeholder: no notify backend yet.
     alert("We'll let you know when this piece is back.");
   };
 
-  const hasImages = images.length > 0;
-  const mainImage = hasImages ? images[activeImage] ?? images[0] : null;
 
   return (
     <article className="px-4 md:px-10 pt-10 pb-24 bg-background">
