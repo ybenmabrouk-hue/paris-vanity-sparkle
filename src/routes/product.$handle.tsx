@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { useMemo, useState, Suspense } from "react";
-import { Loader2, Heart } from "lucide-react";
+import { Loader2, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { fetchProductByHandle, formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 
@@ -78,6 +78,7 @@ function ProductDetail({ handle }: { handle: string }) {
   const variants = product.variants.edges;
   const [variantId, setVariantId] = useState(variants[0]?.node.id);
   const [qty] = useState(1);
+  const [activeImage, setActiveImage] = useState(0);
 
   const selectedVariant = useMemo(
     () => variants.find((v) => v.node.id === variantId)?.node ?? variants[0]?.node,
@@ -123,32 +124,73 @@ function ProductDetail({ handle }: { handle: string }) {
           <span>{product.title}</span>
         </nav>
 
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(340px,420px)] gap-8 lg:gap-14">
-          {/* Gallery — étoile-style: full-bleed 2-column image grid, all photos visible */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
-            {images.length > 0 ? (
-              images.map((img, i) => (
-                <div
-                  key={img.node.url}
-                  className={`relative bg-muted aspect-square overflow-hidden ${
-                    // First image spans both columns for hero effect
-                    i === 0 ? "md:col-span-2 md:aspect-[4/3]" : ""
-                  }`}
-                >
-                  <img
-                    src={img.node.url}
-                    alt={img.node.altText ?? product.title}
-                    className="w-full h-full object-cover"
-                    loading={i < 2 ? "eager" : "lazy"}
-                  />
-                </div>
-              ))
+        <div className="grid lg:grid-cols-[80px_minmax(0,1fr)_minmax(340px,420px)] gap-3 lg:gap-8 xl:gap-12">
+          {/* Thumbnails — vertical rail */}
+          <div className="hidden lg:flex flex-col gap-3">
+            {images.slice(0, 8).map((img, i) => (
+              <button
+                key={img.node.url}
+                onClick={() => setActiveImage(i)}
+                aria-label={`View image ${i + 1}`}
+                className={`aspect-square bg-muted overflow-hidden rounded-[4px] transition-opacity ${
+                  activeImage === i ? "opacity-100 ring-1 ring-foreground/70" : "opacity-70 hover:opacity-100"
+                }`}
+              >
+                <img src={img.node.url} alt="" className="w-full h-full object-cover" loading="lazy" />
+              </button>
+            ))}
+          </div>
+
+          {/* Main image — large, étoile proportions */}
+          <div className="relative bg-muted rounded-[4px] overflow-hidden aspect-square lg:aspect-[4/3.2]">
+            {images[activeImage] ? (
+              <img
+                key={images[activeImage].node.url}
+                src={images[activeImage].node.url}
+                alt={images[activeImage].node.altText ?? product.title}
+                className="w-full h-full object-cover"
+              />
             ) : (
-              <div className="md:col-span-2 aspect-[4/3] bg-muted flex items-center justify-center text-muted-foreground eyebrow text-xs">
+              <div className="w-full h-full flex items-center justify-center text-muted-foreground eyebrow text-xs">
                 Product image
               </div>
             )}
+            {images.length > 1 && (
+              <>
+                <button
+                  onClick={() => setActiveImage((i) => (i - 1 + images.length) % images.length)}
+                  aria-label="Previous image"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors"
+                >
+                  <ChevronLeft className="h-6 w-6" strokeWidth={1.25} />
+                </button>
+                <button
+                  onClick={() => setActiveImage((i) => (i + 1) % images.length)}
+                  aria-label="Next image"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors"
+                >
+                  <ChevronRight className="h-6 w-6" strokeWidth={1.25} />
+                </button>
+              </>
+            )}
           </div>
+
+          {/* Mobile thumbnail strip */}
+          <div className="lg:hidden flex gap-2 overflow-x-auto -mx-4 px-4 pb-1 order-last">
+            {images.slice(0, 8).map((img, i) => (
+              <button
+                key={img.node.url}
+                onClick={() => setActiveImage(i)}
+                aria-label={`View image ${i + 1}`}
+                className={`shrink-0 h-16 w-16 bg-muted overflow-hidden rounded-[4px] transition-opacity ${
+                  activeImage === i ? "opacity-100 ring-1 ring-foreground/70" : "opacity-70"
+                }`}
+              >
+                <img src={img.node.url} alt="" className="w-full h-full object-cover" loading="lazy" />
+              </button>
+            ))}
+          </div>
+
 
 
           {/* Info panel */}
