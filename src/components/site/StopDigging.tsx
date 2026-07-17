@@ -3,8 +3,8 @@ import { ImageSlot } from "./ImageSlot";
 /**
  * Reassurance + storytelling section.
  * Left: title + copy (with breathing room from the edge).
- * Right: two media tiles flush to the right edge of the viewport — a video
- * slot (hand digging in a makeup pouch) and a supporting photo.
+ * Right: two lifestyle photos side-by-side, touching, flush to the right edge
+ * of the viewport — echoing Sept's split-screen hero.
  */
 export function StopDigging() {
   return (
@@ -32,10 +32,21 @@ export function StopDigging() {
           </div>
         </div>
 
-        {/* Right — single video tile flush to the right edge */}
-        <div className="w-full">
-          <div className="aspect-[3/4] bg-muted overflow-hidden">
-            <ImageSlot label="video — hand digging" className="h-full w-full" />
+        {/* Right — two lifestyle photos touching, flush to the right edge */}
+        <div className="flex w-full h-full">
+          <div className="flex-1 bg-muted overflow-hidden">
+            <ImageSlot
+              label="lifestyle image — vanity case 1"
+              className="h-full w-full"
+              caption="lifestyle image 1"
+            />
+          </div>
+          <div className="flex-1 bg-muted overflow-hidden">
+            <ImageSlot
+              label="lifestyle image — vanity case 2"
+              className="h-full w-full"
+              caption="lifestyle image 2"
+            />
           </div>
         </div>
       </div>
