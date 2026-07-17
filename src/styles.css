@@ -271,3 +271,4 @@
   will-change: transform;
 }
 .marquee-track:hover { animation-play-state: paused; }
+.marquee-paused { animation-play-state: paused !important; }
