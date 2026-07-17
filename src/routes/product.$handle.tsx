@@ -4,6 +4,7 @@ import { useMemo, useState, Suspense } from "react";
 import { Loader2, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { fetchProductByHandle, formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
+import { ProductReviews } from "@/components/site/ProductReviews";
 
 const productQueryOptions = (handle: string) =>
   queryOptions({
@@ -124,79 +125,77 @@ function ProductDetail({ handle }: { handle: string }) {
           <span>{product.title}</span>
         </nav>
 
-        <div className="grid lg:grid-cols-[80px_minmax(0,1fr)_minmax(340px,420px)] gap-3 lg:gap-8 xl:gap-12">
-          {/* Thumbnails — vertical rail */}
-          <div className="hidden lg:flex flex-col gap-3">
-            {images.slice(0, 8).map((img, i) => (
-              <button
-                key={img.node.url}
-                onClick={() => setActiveImage(i)}
-                aria-label={`View image ${i + 1}`}
-                className={`aspect-square bg-muted overflow-hidden rounded-[4px] transition-opacity ${
-                  activeImage === i ? "opacity-100 ring-1 ring-foreground/70" : "opacity-70 hover:opacity-100"
-                }`}
-              >
-                <img src={img.node.url} alt="" className="w-full h-full object-cover" loading="lazy" />
-              </button>
-            ))}
-          </div>
-
-          {/* Main image — large, étoile proportions */}
-          <div className="relative bg-muted rounded-[4px] overflow-hidden aspect-square lg:aspect-[4/3.2]">
-            {images[activeImage] ? (
-              <img
-                key={images[activeImage].node.url}
-                src={images[activeImage].node.url}
-                alt={images[activeImage].node.altText ?? product.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-muted-foreground eyebrow text-xs">
-                Product image
-              </div>
-            )}
-            {images.length > 1 && (
-              <>
+        <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(300px,390px)] xl:grid-cols-[minmax(0,940px)_420px] gap-8 md:gap-10 xl:gap-16 items-start">
+          {/* Left side — thumbnails next to the main product image */}
+          <div className="grid md:grid-cols-[72px_minmax(0,1fr)] gap-3 md:gap-5">
+            <div className="hidden md:flex flex-col gap-3">
+              {images.slice(0, 8).map((img, i) => (
                 <button
-                  onClick={() => setActiveImage((i) => (i - 1 + images.length) % images.length)}
-                  aria-label="Previous image"
-                  className="absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors"
+                  key={img.node.url}
+                  onClick={() => setActiveImage(i)}
+                  aria-label={`View image ${i + 1}`}
+                  className={`aspect-[4/5] bg-muted overflow-hidden rounded-[2px] transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground ${
+                    activeImage === i ? "opacity-100" : "opacity-55 hover:opacity-100"
+                  }`}
                 >
-                  <ChevronLeft className="h-6 w-6" strokeWidth={1.25} />
+                  <img src={img.node.url} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </button>
+              ))}
+            </div>
+
+            <div className="relative bg-muted rounded-[2px] overflow-hidden aspect-[4/5] md:min-h-[620px]">
+              {images[activeImage] ? (
+                <img
+                  key={images[activeImage].node.url}
+                  src={images[activeImage].node.url}
+                  alt={images[activeImage].node.altText ?? product.title}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-muted-foreground eyebrow text-xs">
+                  Product image
+                </div>
+              )}
+              {images.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setActiveImage((i) => (i - 1 + images.length) % images.length)}
+                    aria-label="Previous image"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground"
+                  >
+                    <ChevronLeft className="h-6 w-6" strokeWidth={1.25} />
+                  </button>
+                  <button
+                    onClick={() => setActiveImage((i) => (i + 1) % images.length)}
+                    aria-label="Next image"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground"
+                  >
+                    <ChevronRight className="h-6 w-6" strokeWidth={1.25} />
+                  </button>
+                </>
+              )}
+            </div>
+
+            <div className="md:hidden flex gap-2 overflow-x-auto -mx-4 px-4 pb-1">
+              {images.slice(0, 8).map((img, i) => (
                 <button
-                  onClick={() => setActiveImage((i) => (i + 1) % images.length)}
-                  aria-label="Next image"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors"
+                  key={img.node.url}
+                  onClick={() => setActiveImage(i)}
+                  aria-label={`View image ${i + 1}`}
+                  className={`shrink-0 h-16 w-13 bg-muted overflow-hidden rounded-[2px] transition-opacity ${
+                    activeImage === i ? "opacity-100 ring-1 ring-foreground/70" : "opacity-70"
+                  }`}
                 >
-                  <ChevronRight className="h-6 w-6" strokeWidth={1.25} />
+                  <img src={img.node.url} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </button>
-              </>
-            )}
+              ))}
+            </div>
           </div>
 
-          {/* Mobile thumbnail strip */}
-          <div className="lg:hidden flex gap-2 overflow-x-auto -mx-4 px-4 pb-1 order-last">
-            {images.slice(0, 8).map((img, i) => (
-              <button
-                key={img.node.url}
-                onClick={() => setActiveImage(i)}
-                aria-label={`View image ${i + 1}`}
-                className={`shrink-0 h-16 w-16 bg-muted overflow-hidden rounded-[4px] transition-opacity ${
-                  activeImage === i ? "opacity-100 ring-1 ring-foreground/70" : "opacity-70"
-                }`}
-              >
-                <img src={img.node.url} alt="" className="w-full h-full object-cover" loading="lazy" />
-              </button>
-            ))}
-          </div>
-
-
-
-          {/* Info panel */}
-          <div className="lg:sticky lg:top-24 lg:self-start">
+          {/* Right side — product information */}
+          <div className="md:sticky md:top-24 md:self-start">
             <div className="flex items-start justify-between gap-4">
-              <h1 className="font-serif text-4xl md:text-5xl leading-none">
+              <h1 className="font-serif text-[34px] leading-none">
                 {product.title}
               </h1>
               <button
@@ -207,14 +206,16 @@ function ProductDetail({ handle }: { handle: string }) {
               </button>
             </div>
 
-            <div className="text-lg mt-6">
+            <div className="text-[15px] mt-5">
               {selectedVariant &&
                 formatPrice(selectedVariant.price.amount, selectedVariant.price.currencyCode)}
             </div>
 
+            <ProductReviews className="mt-4" />
+
             {colorOption && (
-              <div className="mt-10">
-                <div className="text-sm mb-4">
+              <div className="mt-8">
+                <div className="text-[13px] mb-4">
                   Colour: <span className="text-muted-foreground">{selectedColor}</span>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -246,11 +247,11 @@ function ProductDetail({ handle }: { handle: string }) {
               </div>
             )}
 
-            <div className="mt-10 space-y-3">
+            <div className="mt-8 space-y-3">
               <button
                 onClick={handleAdd}
                 disabled={isLoading || !inStock}
-                className="w-full h-14 border border-foreground uppercase tracking-[0.2em] text-sm hover:bg-foreground hover:text-background transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-foreground flex items-center justify-center gap-2"
+                className="w-full h-13 border border-foreground uppercase tracking-[0.16em] text-[12px] hover:bg-foreground hover:text-background transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-foreground flex items-center justify-center gap-2"
               >
                 {isLoading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -262,14 +263,14 @@ function ProductDetail({ handle }: { handle: string }) {
               {!inStock && (
                 <button
                   onClick={handleNotify}
-                  className="w-full h-14 bg-muted text-foreground/70 uppercase tracking-[0.2em] text-sm hover:bg-muted/80 transition-colors"
+                  className="w-full h-13 bg-muted text-foreground/70 uppercase tracking-[0.16em] text-[12px] hover:bg-muted/80 transition-colors"
                 >
                   Notify me when available
                 </button>
               )}
             </div>
 
-            <div className="mt-10 text-sm leading-relaxed text-foreground/80 whitespace-pre-line">
+            <div className="mt-8 pt-8 border-t border-foreground/15 text-[13px] leading-relaxed text-foreground/80 whitespace-pre-line">
               {product.description || "A Dahlia vanity case."}
             </div>
 
