@@ -6,6 +6,7 @@ import { fetchProductByHandle, formatPrice, type ShopifyProduct } from "@/lib/sh
 import { useCartStore } from "@/stores/cartStore";
 import { ProductReviews } from "@/components/site/ProductReviews";
 import { UGCGallery } from "@/components/site/UGCGallery";
+import { Marquee } from "@/components/site/Marquee";
 
 const productQueryOptions = (handle: string) =>
   queryOptions({
@@ -340,6 +341,9 @@ function ProductDetail({ handle }: { handle: string }) {
           </div>
         </div>
       </div>
+
+      <Marquee />
+
       <UGCGallery />
     </article>
   );
