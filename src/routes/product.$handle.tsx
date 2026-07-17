@@ -252,7 +252,7 @@ function ProductDetail({ handle }: { handle: string }) {
             {colorOption && (
               <div className="mt-8">
                 <div className="text-[13px] mb-4">
-                  Colour: <span className="text-muted-foreground">{selectedColor}</span>
+                  colour: <span className="text-muted-foreground">{selectedColor}</span>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {colorOption.values.map((value) => {
