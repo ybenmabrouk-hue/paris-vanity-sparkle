@@ -37,8 +37,8 @@ function CollectionPage() {
       >
         <div className="max-w-[1600px] mx-auto">
           <h1
-            className="font-kuenstler tracking-tight"
-            style={{ fontSize: "clamp(24px, 3vw, 36px)", lineHeight: "1" }}
+            className="font-sans italic text-black tracking-tight"
+            style={{ fontSize: "clamp(40px, 6vw, 72px)", fontWeight: 300, letterSpacing: "0.01em", lineHeight: "1.05" }}
           >
             Collection
           </h1>
