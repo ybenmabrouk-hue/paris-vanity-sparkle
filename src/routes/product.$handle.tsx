@@ -353,6 +353,8 @@ function ProductDetail({ handle }: { handle: string }) {
       </div>
 
       <StopDigging />
+
+      <WashableInterior />
     </article>
   );
 }
