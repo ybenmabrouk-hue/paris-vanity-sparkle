@@ -3,7 +3,7 @@ import { Truck, RefreshCcw, ShieldCheck, Headphones, HeartHandshake } from "luci
 const ITEMS = [
   {
     icon: Truck,
-    label: "free worldwide shipping",
+    label: "delivered in 3-5 days",
   },
   {
     icon: RefreshCcw,
