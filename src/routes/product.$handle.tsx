@@ -361,6 +361,8 @@ function ProductDetail({ handle }: { handle: string }) {
 
       <LifestyleStory />
 
+      <ReassuranceIcons />
+
       <ReviewsSection />
     </article>
   );
