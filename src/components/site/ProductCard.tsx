@@ -48,7 +48,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
           {p.title}
           <br />
           <span className="text-muted-foreground" style={{ fontSize: "13px" }}>
-            Vanity Case / Petit
+            vanity case / petit
           </span>
         </div>
         <div

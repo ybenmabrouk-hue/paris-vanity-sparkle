@@ -46,7 +46,7 @@ export function Marquee() {
                 onClick={() => setSpeedIndex(i)}
                 aria-label={`Set speed ${s.label}`}
                 aria-pressed={speedIndex === i}
-                className={`h-7 px-2 text-[10px] uppercase tracking-wider border rounded-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black ${
+                className={`h-7 px-2 text-[10px] tracking-wider border rounded-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black ${
                   speedIndex === i
                     ? "bg-black text-white border-black"
                     : "bg-white text-black border-black/20 hover:border-black"
