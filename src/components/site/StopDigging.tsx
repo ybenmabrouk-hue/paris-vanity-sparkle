@@ -32,13 +32,10 @@ export function StopDigging() {
           </div>
         </div>
 
-        {/* Right — two media tiles flush to the right edge */}
-        <div className="grid grid-cols-2 gap-2 md:gap-3">
+        {/* Right — single video tile flush to the right edge */}
+        <div className="w-full">
           <div className="aspect-[3/4] bg-muted overflow-hidden">
             <ImageSlot label="video — hand digging" className="h-full w-full" />
-          </div>
-          <div className="aspect-[3/4] bg-muted overflow-hidden">
-            <ImageSlot label="photo — organised vanity" className="h-full w-full" />
           </div>
         </div>
       </div>
