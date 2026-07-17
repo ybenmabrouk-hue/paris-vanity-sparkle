@@ -341,6 +341,9 @@ function ProductDetail({ handle }: { handle: string }) {
           </div>
         </div>
       </div>
+
+      <Marquee />
+
       <UGCGallery />
     </article>
   );
