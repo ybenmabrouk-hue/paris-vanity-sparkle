@@ -17,16 +17,16 @@ export function SocialFeed() {
             href="https://instagram.com"
             target="_blank"
             rel="noreferrer"
-            className="font-garamond italic inline-block hover:opacity-70 transition"
-            style={{ fontSize: "34px", fontWeight: 300, lineHeight: 1.1 }}
+            className="font-kuenstler inline-block hover:opacity-70 transition"
+            style={{ fontSize: "clamp(40px, 7vw, 72px)", lineHeight: 1.1 }}
           >
-            @dahlia
+            with dahlia
           </a>
           <p
             className="mt-3 text-muted-foreground"
             style={{ fontSize: "14px", lineHeight: "20px" }}
           >
-            A case for beauty, since 2016.
+            a case for beauty, since 2016.
           </p>
         </div>
 

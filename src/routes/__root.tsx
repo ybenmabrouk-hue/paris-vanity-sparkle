@@ -22,13 +22,13 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-serif text-6xl">Page not found</h1>
+        <h1 className="font-serif text-6xl">page not found</h1>
         <p className="mt-4 text-sm text-muted-foreground">
-          The page you're looking for has wandered off.
+          the page you're looking for has wandered off.
         </p>
         <div className="mt-8">
           <Link to="/" className="eyebrow underline underline-offset-4 hover:text-accent">
-            Return home
+            return home
           </Link>
         </div>
       </div>
@@ -46,17 +46,17 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-serif text-3xl">Something went wrong</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Please try again.</p>
+        <h1 className="font-serif text-3xl">something went wrong</h1>
+        <p className="mt-2 text-sm text-muted-foreground">please try again.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <button
             onClick={() => { router.invalidate(); reset(); }}
             className="eyebrow px-6 py-3 bg-foreground text-background hover:bg-accent transition-colors"
           >
-            Try again
+            try again
           </button>
           <a href="/" className="eyebrow px-6 py-3 border border-border hover:bg-muted">
-            Go home
+            go home
           </a>
         </div>
       </div>

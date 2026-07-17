@@ -8,7 +8,7 @@ type ProductReviewsProps = {
 
 export function ProductReviews({
   rating = 4.9,
-  label = "Stars",
+  label = "stars",
   className = "",
 }: ProductReviewsProps) {
   return (

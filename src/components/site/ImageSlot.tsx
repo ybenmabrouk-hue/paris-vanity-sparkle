@@ -25,7 +25,7 @@ export function ImageSlot({
       )}
     >
       <span className="eyebrow text-xs px-4 text-center">
-        {caption ?? "Image coming soon"}
+        {caption ?? "image coming soon"}
       </span>
     </div>
   );

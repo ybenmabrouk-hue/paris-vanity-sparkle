@@ -19,12 +19,12 @@ export function Footer() {
           {/* Left: newsletter */}
           <div className="max-w-xl">
             <p
-              className="font-serif"
+              className="font-sans"
               style={{ fontSize: "14px", lineHeight: "22px" }}
             >
-              Sign up for $15 off your first purchase and to be the first to hear
-              about all things Dahlia: exclusive sales, new arrivals, events and
-              more. Join the inner circle.
+              sign up for $15 off your first purchase and be the first to hear
+              about all things dahlia: exclusive sales, new arrivals, events and
+              more. join the inner circle.
             </p>
             <div className="mt-6">
               <NewsletterForm />
@@ -34,27 +34,27 @@ export function Footer() {
           {/* Right: link columns */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:justify-self-end lg:pl-16 lg:border-l lg:border-foreground/20 w-full">
             <ul className="space-y-4" style={{ fontSize: "14px", lineHeight: "20px" }}>
-              <li><Link to="/about" className="hover:opacity-60 transition">About Us</Link></li>
-              <li><a href="#" className="hover:opacity-60 transition">Account</a></li>
-              <li><a href="mailto:hello@dahlia-paris.com" className="hover:opacity-60 transition">Contact</a></li>
-              <li><a href="#" className="hover:opacity-60 transition">Dahlia Hub</a></li>
-              <li><a href="#" className="hover:opacity-60 transition">E-Gift Card</a></li>
-              <li><a href="#" className="hover:opacity-60 transition">Reviews</a></li>
+              <li><Link to="/about" className="hover:opacity-60 transition">about us</Link></li>
+              <li><a href="#" className="hover:opacity-60 transition">account</a></li>
+              <li><a href="mailto:hello@dahlia-paris.com" className="hover:opacity-60 transition">contact</a></li>
+              <li><a href="#" className="hover:opacity-60 transition">dahlia hub</a></li>
+              <li><a href="#" className="hover:opacity-60 transition">e-gift card</a></li>
+              <li><a href="#" className="hover:opacity-60 transition">reviews</a></li>
             </ul>
             <ul className="space-y-4" style={{ fontSize: "14px", lineHeight: "20px" }}>
-              <li><Link to="/shipping" className="hover:opacity-60 transition">Shipping & Returns</Link></li>
-              <li><a href="#" className="hover:opacity-60 transition">Warranty</a></li>
-              <li><a href="#" className="hover:opacity-60 transition">Make A Return</a></li>
-              <li><Link to="/privacy" className="hover:opacity-60 transition">Terms & Conditions</Link></li>
-              <li><Link to="/privacy" className="hover:opacity-60 transition">Privacy Policy</Link></li>
-              <li><a href="#" className="hover:opacity-60 transition">EU Right of Withdrawal</a></li>
+              <li><Link to="/shipping" className="hover:opacity-60 transition">shipping & returns</Link></li>
+              <li><a href="#" className="hover:opacity-60 transition">warranty</a></li>
+              <li><a href="#" className="hover:opacity-60 transition">make a return</a></li>
+              <li><Link to="/privacy" className="hover:opacity-60 transition">terms & conditions</Link></li>
+              <li><Link to="/privacy" className="hover:opacity-60 transition">privacy policy</Link></li>
+              <li><a href="#" className="hover:opacity-60 transition">eu right of withdrawal</a></li>
             </ul>
             <ul className="space-y-4" style={{ fontSize: "14px", lineHeight: "20px" }}>
-              <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Instagram</a></li>
-              <li><a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Facebook</a></li>
-              <li><a href="https://tiktok.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">TikTok</a></li>
-              <li><a href="https://pinterest.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Pinterest</a></li>
-              <li><a href="https://youtube.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Youtube</a></li>
+              <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">instagram</a></li>
+              <li><a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">facebook</a></li>
+              <li><a href="https://tiktok.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">tiktok</a></li>
+              <li><a href="https://pinterest.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">pinterest</a></li>
+              <li><a href="https://youtube.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">youtube</a></li>
             </ul>
           </div>
         </div>
@@ -63,8 +63,8 @@ export function Footer() {
           className="mt-16 pt-6 border-t border-foreground/20 flex flex-wrap justify-between gap-4"
           style={{ fontSize: "11px", lineHeight: "16px", letterSpacing: "0.04em" }}
         >
-          <p>© {new Date().getFullYear()} Dahlia. All rights reserved.</p>
-          <p>Imagined in Paris. Crafted by hand.</p>
+          <p>© {new Date().getFullYear()} dahlia. all rights reserved.</p>
+          <p>imagined in paris. crafted by hand.</p>
         </div>
       </div>
     </footer>
@@ -102,14 +102,14 @@ function NewsletterForm() {
   return (
     <form onSubmit={handleSubmit} className="w-full">
       <div className="flex items-stretch gap-3">
-        <input
+          <input
           type="email"
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Your email"
+          placeholder="your email"
           aria-label="Email address for newsletter"
-          className="flex-1 bg-transparent border border-foreground/70 px-4 py-3 outline-none placeholder:text-foreground/60 italic font-serif focus:border-foreground transition"
+          className="flex-1 bg-transparent border border-foreground/70 px-4 py-3 outline-none placeholder:text-foreground/60 italic font-sans focus:border-foreground transition"
           style={{ fontSize: "14px", lineHeight: "20px" }}
           maxLength={255}
         />
@@ -118,7 +118,7 @@ function NewsletterForm() {
           className="bg-foreground text-background px-10 py-3 hover:opacity-80 transition"
           style={{ fontSize: "13px", letterSpacing: "0.06em" }}
         >
-          Submit
+          submit
         </button>
       </div>
       {status !== "idle" && (

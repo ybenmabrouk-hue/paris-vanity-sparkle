@@ -40,13 +40,13 @@ function CollectionPage() {
             className="font-sans italic text-black tracking-tight"
             style={{ fontSize: "clamp(40px, 6vw, 72px)", fontWeight: 300, letterSpacing: "0.01em", lineHeight: "1.05" }}
           >
-            Collection
+            collection
           </h1>
           <p
             className="mt-3 max-w-2xl mx-auto md:mx-0 text-muted-foreground"
             style={{ fontSize: "clamp(12px, 1vw, 15px)", lineHeight: "clamp(15px, 1.6vw, 22px)" }}
           >
-            The collection begins at our atelier. Shaped by a Parisian eye and
+            the collection begins at our atelier. shaped by a parisian eye and
             crafted through modern leatherwork, each piece is designed to hold
             the small rituals that travel with you.
           </p>

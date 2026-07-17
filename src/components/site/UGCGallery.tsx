@@ -16,14 +16,14 @@ export function UGCGallery() {
     <section className="w-full bg-background py-14 md:py-20">
       <div className="max-w-[1400px] mx-auto px-6">
         <h2
-          className="font-sans text-center mb-6 md:mb-8 text-black font-bold uppercase"
+          className="font-sans text-center mb-6 md:mb-8 text-black font-bold"
           style={{
             fontSize: "clamp(18px, 2.2vw, 28px)",
             letterSpacing: "0.04em",
             lineHeight: 1.1,
           }}
         >
-          The Dahlia Vanity Case &amp; You
+          the dahlia vanity case &amp; you
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
@@ -45,8 +45,8 @@ export function UGCGallery() {
               ) : (
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-foreground/40">
                   <Play className="w-8 h-8" strokeWidth={1.25} />
-                  <span className="text-[11px] uppercase tracking-[0.16em]">
-                    Video {i + 1}
+                  <span className="text-[11px] tracking-[0.14em]">
+                    video {i + 1}
                   </span>
                 </div>
               )}
