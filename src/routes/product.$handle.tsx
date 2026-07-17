@@ -73,6 +73,16 @@ function swatchColor(value: string): string {
   return COLOR_SWATCHES[value.toLowerCase()] ?? "#cccccc";
 }
 
+/* Choose light or dark text for a given hex swatch for readability. */
+function textColorForSwatch(value: string): string {
+  const hex = swatchColor(value).replace("#", "");
+  const r = parseInt(hex.slice(0, 2), 16);
+  const g = parseInt(hex.slice(2, 4), 16);
+  const b = parseInt(hex.slice(4, 6), 16);
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return luminance > 0.6 ? "#111111" : "#ffffff";
+}
+
 function ProductDetail({ handle }: { handle: string }) {
   const { data: product } = useSuspenseQuery(productQueryOptions(handle));
   const images = product.images.edges;
@@ -275,7 +285,15 @@ function ProductDetail({ handle }: { handle: string }) {
               <button
                 onClick={handleAdd}
                 disabled={isLoading || !inStock}
-                className="w-full h-13 border border-foreground uppercase tracking-[0.16em] text-[12px] hover:bg-foreground hover:text-background transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-foreground flex items-center justify-center gap-2"
+                className="w-full h-13 border border-transparent uppercase tracking-[0.16em] text-[12px] transition-colors disabled:opacity-40 disabled:hover:opacity-40 flex items-center justify-center gap-2"
+                style={
+                  selectedColor
+                    ? {
+                        backgroundColor: swatchColor(selectedColor),
+                        color: textColorForSwatch(selectedColor),
+                      }
+                    : { backgroundColor: "#111111", color: "#ffffff" }
+                }
               >
                 {isLoading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
