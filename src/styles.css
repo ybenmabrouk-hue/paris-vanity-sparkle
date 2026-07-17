@@ -266,7 +266,7 @@
   to { transform: translateX(-25%); }
 }
 .marquee-track {
-  animation: marquee-slide 40s linear infinite;
+  animation: marquee-slide 12s linear infinite;
   will-change: transform;
 }
 .marquee-track:hover { animation-play-state: paused; }
