@@ -5,6 +5,7 @@ import { Loader2, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { fetchProductByHandle, formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { ProductReviews } from "@/components/site/ProductReviews";
+import { UGCGallery } from "@/components/site/UGCGallery";
 
 const productQueryOptions = (handle: string) =>
   queryOptions({
@@ -339,6 +340,7 @@ function ProductDetail({ handle }: { handle: string }) {
           </div>
         </div>
       </div>
+      <UGCGallery />
     </article>
   );
 }
