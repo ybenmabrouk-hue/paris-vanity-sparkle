@@ -8,6 +8,7 @@ import { ProductReviews } from "@/components/site/ProductReviews";
 import { UGCGallery } from "@/components/site/UGCGallery";
 import { Marquee } from "@/components/site/Marquee";
 import { StopDigging } from "@/components/site/StopDigging";
+import { WashableInterior } from "@/components/site/WashableInterior";
 
 const productQueryOptions = (handle: string) =>
   queryOptions({
