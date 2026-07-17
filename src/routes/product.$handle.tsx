@@ -359,6 +359,8 @@ function ProductDetail({ handle }: { handle: string }) {
       <WashableInterior />
 
       <LifestyleStory />
+
+      <ReviewsSection />
     </article>
   );
 }
