@@ -16,12 +16,11 @@ export function UGCGallery() {
     <section className="w-full bg-background py-14 md:py-20">
       <div className="max-w-[1400px] mx-auto px-6">
         <h2
-          className="font-sans text-center mb-10 md:mb-14 text-black italic"
+          className="font-sans text-center mb-6 md:mb-8 text-black font-bold uppercase"
           style={{
-            fontSize: "clamp(40px, 6vw, 72px)",
-            fontWeight: 300,
-            letterSpacing: "0.01em",
-            lineHeight: 1.05,
+            fontSize: "clamp(18px, 2.2vw, 28px)",
+            letterSpacing: "0.04em",
+            lineHeight: 1.1,
           }}
         >
           The Dahlia Vanity Case &amp; You
