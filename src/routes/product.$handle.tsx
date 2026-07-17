@@ -272,20 +272,10 @@ function ProductDetail({ handle }: { handle: string }) {
               )}
             </div>
 
-            <div className="mt-8 pt-8 border-t border-foreground/15 text-[13px] leading-relaxed text-foreground/80 whitespace-pre-line">
+            <div className="mt-8 text-[13px] leading-relaxed text-foreground/80 whitespace-pre-line">
               {product.description || "A Dahlia vanity case."}
             </div>
 
-            <div className="mt-10 pt-8 border-t border-foreground/15 grid grid-cols-2 gap-6 text-xs text-muted-foreground">
-              <div>
-                <div className="eyebrow text-foreground mb-1">Shipping</div>
-                Worldwide. Free above €300.
-              </div>
-              <div>
-                <div className="eyebrow text-foreground mb-1">Made</div>
-                By hand in Paris, in small batches.
-              </div>
-            </div>
           </div>
         </div>
       </div>
