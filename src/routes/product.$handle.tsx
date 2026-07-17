@@ -10,6 +10,7 @@ import { Marquee } from "@/components/site/Marquee";
 import { StopDigging } from "@/components/site/StopDigging";
 import { WashableInterior } from "@/components/site/WashableInterior";
 import { LifestyleStory } from "@/components/site/LifestyleStory";
+import { ReviewsSection } from "@/components/site/ReviewsSection";
 
 const productQueryOptions = (handle: string) =>
   queryOptions({
@@ -358,6 +359,8 @@ function ProductDetail({ handle }: { handle: string }) {
       <WashableInterior />
 
       <LifestyleStory />
+
+      <ReviewsSection />
     </article>
   );
 }
