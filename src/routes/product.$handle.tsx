@@ -285,7 +285,15 @@ function ProductDetail({ handle }: { handle: string }) {
               <button
                 onClick={handleAdd}
                 disabled={isLoading || !inStock}
-                className="w-full h-13 border border-foreground uppercase tracking-[0.16em] text-[12px] hover:bg-foreground hover:text-background transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-foreground flex items-center justify-center gap-2"
+                className="w-full h-13 border border-transparent uppercase tracking-[0.16em] text-[12px] transition-colors disabled:opacity-40 disabled:hover:opacity-40 flex items-center justify-center gap-2"
+                style={
+                  selectedColor
+                    ? {
+                        backgroundColor: swatchColor(selectedColor),
+                        color: textColorForSwatch(selectedColor),
+                      }
+                    : { backgroundColor: "#111111", color: "#ffffff" }
+                }
               >
                 {isLoading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
