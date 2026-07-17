@@ -13,7 +13,7 @@ import { Toaster } from "sonner";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/site/Header";
-import { Marquee } from "../components/site/Marquee";
+
 import { Footer } from "../components/site/Footer";
 import { CartDrawer } from "../components/site/CartDrawer";
 import { useCartSync } from "../hooks/useCartSync";
@@ -121,7 +121,6 @@ function AppShell() {
     <>
       <Header />
       <main className="pt-16">
-        <Marquee />
         <Outlet />
       </main>
       <Footer />
