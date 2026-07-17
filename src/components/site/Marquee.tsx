@@ -9,11 +9,11 @@ export function Marquee() {
   const items = [...MESSAGES, ...MESSAGES, ...MESSAGES, ...MESSAGES];
   return (
     <div className="w-full overflow-hidden border-y border-black/10 bg-background">
-      <div className="marquee-track flex whitespace-nowrap py-3">
+      <div className="marquee-track flex whitespace-nowrap py-4">
         {items.map((m, i) => (
           <span
             key={i}
-            className="mx-10 text-sm tracking-wide text-foreground/80"
+            className="mx-10 text-base md:text-lg tracking-wide text-black"
           >
             {m}
           </span>
