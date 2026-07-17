@@ -121,12 +121,11 @@ export function ReviewsSection() {
     <section className="w-full bg-white text-black">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-20 md:py-28">
         <header className="text-center mb-12 md:mb-16">
-          <p className="text-[11px] tracking-[0.18em] text-black/60 mb-3">reviews</p>
           <h2
             className="font-sans italic"
             style={{ fontWeight: 300, fontSize: "clamp(32px, 5vw, 56px)", lineHeight: 1.05, letterSpacing: "0.01em" }}
           >
-            what people are saying
+            reviews
           </h2>
         </header>
 
