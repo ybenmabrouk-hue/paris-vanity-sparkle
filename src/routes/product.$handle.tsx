@@ -86,10 +86,15 @@ function ProductDetail({ handle }: { handle: string }) {
     [variantId, variants],
   );
 
-  const colorOption = product.options.find((o) => o.name.toLowerCase() === "color" || o.name.toLowerCase() === "colour");
-  const selectedColor = selectedVariant?.selectedOptions.find(
-    (o) => o.name.toLowerCase() === "color" || o.name.toLowerCase() === "colour",
-  )?.value;
+  // Detect the color option: prefer named "color"/"colour", otherwise fall back
+  // to any option whose values match known color swatch names.
+  const isColorName = (v: string) => v.toLowerCase() in COLOR_SWATCHES;
+  const colorOption =
+    product.options.find((o) => ["color", "colour"].includes(o.name.toLowerCase())) ??
+    product.options.find((o) => o.values.some(isColorName));
+  const selectedColor = colorOption
+    ? selectedVariant?.selectedOptions.find((o) => o.name === colorOption.name)?.value
+    : undefined;
 
   // When the selected color changes, switch the main image to match (by altText, then by index).
   useEffect(() => {
