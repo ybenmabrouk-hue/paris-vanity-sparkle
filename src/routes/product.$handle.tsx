@@ -206,12 +206,14 @@ function ProductDetail({ handle }: { handle: string }) {
               </button>
             </div>
 
-            <div className="text-[15px] mt-5">
-              {selectedVariant &&
-                formatPrice(selectedVariant.price.amount, selectedVariant.price.currencyCode)}
+            <div className="mt-5 flex items-center justify-between gap-4">
+              <div className="text-[15px]">
+                {selectedVariant &&
+                  formatPrice(selectedVariant.price.amount, selectedVariant.price.currencyCode)}
+              </div>
+              <ProductReviews />
             </div>
 
-            <ProductReviews className="mt-4" />
 
             {colorOption && (
               <div className="mt-8">
