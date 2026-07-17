@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
-import { useMemo, useState, Suspense } from "react";
+import { useEffect, useMemo, useState, Suspense } from "react";
 import { Loader2, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { fetchProductByHandle, formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
@@ -90,6 +90,23 @@ function ProductDetail({ handle }: { handle: string }) {
   const selectedColor = selectedVariant?.selectedOptions.find(
     (o) => o.name.toLowerCase() === "color" || o.name.toLowerCase() === "colour",
   )?.value;
+
+  // When the selected color changes, switch the main image to match (by altText, then by index).
+  useEffect(() => {
+    if (!selectedColor || images.length === 0) return;
+    const needle = selectedColor.toLowerCase();
+    const byAlt = images.findIndex((img) =>
+      (img.node.altText ?? "").toLowerCase().includes(needle),
+    );
+    if (byAlt >= 0) {
+      setActiveImage(byAlt);
+      return;
+    }
+    if (colorOption) {
+      const idx = colorOption.values.findIndex((v) => v.toLowerCase() === needle);
+      if (idx >= 0 && idx < images.length) setActiveImage(idx);
+    }
+  }, [selectedColor, colorOption, images]);
 
   const addItem = useCartStore((s) => s.addItem);
   const isLoading = useCartStore((s) => s.isLoading);
