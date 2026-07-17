@@ -285,7 +285,7 @@ function ProductDetail({ handle }: { handle: string }) {
               <button
                 onClick={handleAdd}
                 disabled={isLoading || !inStock}
-                className="w-full h-13 border border-transparent uppercase tracking-[0.16em] text-[12px] transition-colors duration-300 disabled:opacity-40 disabled:hover:opacity-40 flex items-center justify-center gap-2"
+                className="w-full h-13 border border-transparent uppercase tracking-[0.16em] text-[12px] transition-colors duration-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 style={
                   selectedColor
                     ? {
