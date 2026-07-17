@@ -261,3 +261,13 @@
     font-weight: 500;
   }
 }
+
+@keyframes marquee-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-25%); }
+}
+.marquee-track {
+  animation: marquee-slide 40s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover { animation-play-state: paused; }
