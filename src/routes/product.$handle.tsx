@@ -285,15 +285,34 @@ function ProductDetail({ handle }: { handle: string }) {
               <button
                 onClick={handleAdd}
                 disabled={isLoading || !inStock}
-                className="w-full h-13 border border-transparent uppercase tracking-[0.16em] text-[12px] transition-colors disabled:opacity-40 disabled:hover:opacity-40 flex items-center justify-center gap-2"
+                className="w-full h-13 border border-transparent uppercase tracking-[0.16em] text-[12px] transition-colors duration-300 disabled:opacity-40 disabled:hover:opacity-40 flex items-center justify-center gap-2"
                 style={
                   selectedColor
                     ? {
                         backgroundColor: swatchColor(selectedColor),
                         color: textColorForSwatch(selectedColor),
-                      }
+                        // Persist the same paint for both rest and hover states.
+                        "--btn-bg": swatchColor(selectedColor),
+                        "--btn-fg": textColorForSwatch(selectedColor),
+                      } as React.CSSProperties
                     : { backgroundColor: "#111111", color: "#ffffff" }
                 }
+                onMouseEnter={(e) => {
+                  const target = e.currentTarget;
+                  if (selectedColor) {
+                    target.style.backgroundColor = "var(--btn-bg)";
+                    target.style.color = "var(--btn-fg)";
+                    target.style.filter = "brightness(0.95)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  const target = e.currentTarget;
+                  if (selectedColor) {
+                    target.style.backgroundColor = "var(--btn-bg)";
+                    target.style.color = "var(--btn-fg)";
+                    target.style.filter = "none";
+                  }
+                }}
               >
                 {isLoading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -301,6 +320,7 @@ function ProductDetail({ handle }: { handle: string }) {
                   "Add to cart"
                 )}
               </button>
+
 
               {!inStock && (
                 <button
