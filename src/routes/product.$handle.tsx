@@ -7,6 +7,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { ProductReviews } from "@/components/site/ProductReviews";
 import { UGCGallery } from "@/components/site/UGCGallery";
 import { Marquee } from "@/components/site/Marquee";
+import { StopDigging } from "@/components/site/StopDigging";
 
 const productQueryOptions = (handle: string) =>
   queryOptions({
@@ -349,6 +350,8 @@ function ProductDetail({ handle }: { handle: string }) {
       <div className="mt-16 md:mt-24">
         <UGCGallery />
       </div>
+
+      <StopDigging />
     </article>
   );
 }
