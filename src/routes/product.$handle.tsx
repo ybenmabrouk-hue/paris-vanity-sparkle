@@ -342,9 +342,13 @@ function ProductDetail({ handle }: { handle: string }) {
         </div>
       </div>
 
-      <Marquee />
+      <div className="mt-16 md:mt-24">
+        <Marquee />
+      </div>
 
-      <UGCGallery />
+      <div className="mt-10 md:mt-14">
+        <UGCGallery />
+      </div>
     </article>
   );
 }

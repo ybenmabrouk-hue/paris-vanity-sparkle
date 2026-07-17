@@ -13,15 +13,15 @@ const UGC_VIDEOS: UGC[] = [
 
 export function UGCGallery() {
   return (
-    <section className="w-full bg-background py-16 md:py-24">
+    <section className="w-full bg-background py-14 md:py-20">
       <div className="max-w-[1400px] mx-auto px-6">
         <h2
-          className="text-center mb-10 md:mb-14 italic"
+          className="font-sans text-center mb-10 md:mb-14 text-black italic"
           style={{
-            fontFamily: '"Garamond Condensed Light Italic", "ITC Garamond", Garamond, serif',
-            fontSize: "34px",
+            fontSize: "clamp(40px, 6vw, 72px)",
             fontWeight: 300,
             letterSpacing: "0.01em",
+            lineHeight: 1.05,
           }}
         >
           The Dahlia Vanity Case &amp; You
