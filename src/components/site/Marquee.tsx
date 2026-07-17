@@ -8,9 +8,10 @@ const MESSAGES = [
 ];
 
 const SPEEDS = [
-  { label: "0.5x", duration: 80 },
-  { label: "1x", duration: 40 },
-  { label: "2x", duration: 20 },
+  { label: "0.5x", duration: 24 },
+  { label: "1x", duration: 12 },
+  { label: "2x", duration: 6 },
+  { label: "3x", duration: 3 },
 ];
 
 export function Marquee() {
