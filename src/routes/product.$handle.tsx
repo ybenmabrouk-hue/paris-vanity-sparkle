@@ -45,9 +45,9 @@ function NotFound() {
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
       <h1 className="font-serif text-4xl">Piece not found</h1>
-      <p className="text-muted-foreground mt-2">This vanity case couldn't be located.</p>
+      <p className="text-muted-foreground mt-2">this vanity case couldn't be located.</p>
       <Link to="/collection" className="eyebrow mt-8 underline underline-offset-4 hover:text-accent">
-        Back to the collection
+        back to the collection
       </Link>
     </div>
   );
@@ -152,9 +152,9 @@ function ProductDetail({ handle }: { handle: string }) {
     <article className="px-4 md:px-10 pt-10 pb-24 bg-background">
       <div className="max-w-[1500px] mx-auto">
         <nav className="eyebrow text-muted-foreground mb-8 text-xs">
-          <Link to="/" className="hover:text-accent">Home</Link>
+          <Link to="/" className="hover:text-accent">home</Link>
           <span className="mx-2">/</span>
-          <Link to="/collection" className="hover:text-accent">Collection</Link>
+          <Link to="/collection" className="hover:text-accent">collection</Link>
           <span className="mx-2">/</span>
           <span>{product.title}</span>
         </nav>
@@ -187,7 +187,7 @@ function ProductDetail({ handle }: { handle: string }) {
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-muted-foreground eyebrow text-xs">
-                  Product image
+                  product image
                 </div>
               )}
               {images.length > 1 && (
@@ -287,7 +287,7 @@ function ProductDetail({ handle }: { handle: string }) {
               <button
                 onClick={handleAdd}
                 disabled={isLoading || !inStock}
-                className="w-full h-13 border border-transparent uppercase tracking-[0.16em] text-[12px] transition-colors duration-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full h-13 border border-transparent tracking-[0.14em] text-[12px] transition-colors duration-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 style={
                   selectedColor
                     ? {
@@ -319,7 +319,7 @@ function ProductDetail({ handle }: { handle: string }) {
                 {isLoading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
                 ) : (
-                  "Add to cart"
+                  "add to cart"
                 )}
               </button>
 
@@ -327,9 +327,9 @@ function ProductDetail({ handle }: { handle: string }) {
               {!inStock && (
                 <button
                   onClick={handleNotify}
-                  className="w-full h-13 bg-muted text-foreground/70 uppercase tracking-[0.16em] text-[12px] hover:bg-muted/80 transition-colors"
+                  className="w-full h-13 bg-muted text-foreground/70 tracking-[0.14em] text-[12px] hover:bg-muted/80 transition-colors"
                 >
-                  Notify me when available
+                  notify me when available
                 </button>
               )}
             </div>
