@@ -15,7 +15,7 @@ const ITEMS = [
   },
   {
     icon: HeartHandshake,
-    label: "handcrafted with care",
+    label: "prepared with care",
   },
   {
     icon: Headphones,
