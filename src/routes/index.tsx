@@ -76,7 +76,7 @@ function CollectionCarousel() {
     >
       <div className="max-w-[1600px] mx-auto">
         <div className="mb-8 md:mb-12 text-left">
-          <h2 className="font-sans italic text-black leading-[1.05] tracking-tight" style={{ fontSize: "clamp(40px, 6vw, 72px)", fontWeight: 300, letterSpacing: "0.01em" }}>
+          <h2 className="font-garamond text-black leading-[1.05] tracking-tight" style={{ fontSize: "clamp(40px, 6vw, 72px)", fontWeight: 300, letterSpacing: "0.01em" }}>
             collection
           </h2>
           <p className="mt-2 md:mt-3 text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-muted-foreground max-w-3xl">
@@ -159,7 +159,7 @@ function TextBanner() {
           style={{ width: "clamp(140px, 22vw, 320px)", height: "auto" }}
         />
         <h2
-          className="font-sans italic"
+          className="font-garamond"
           style={{
             fontWeight: 300,
             letterSpacing: "0.01em",

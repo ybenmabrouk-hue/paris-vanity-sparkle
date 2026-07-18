@@ -14,7 +14,7 @@ export function StopDigging() {
         <div className="flex items-center px-6 md:pl-[6vw] md:pr-10 py-10 md:py-0">
           <div className="max-w-[440px]">
             <h2
-              className="font-serif font-light italic text-foreground leading-[0.95] tracking-[-0.01em]"
+              className="font-garamond text-foreground leading-[0.95] tracking-[-0.01em]"
               style={{ fontSize: "clamp(56px, 8vw, 120px)" }}
             >
               stop

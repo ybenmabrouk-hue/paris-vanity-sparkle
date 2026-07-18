@@ -220,7 +220,7 @@ export function ReviewsSection() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-20 md:py-28">
         <header className="text-center mb-12 md:mb-16">
           <h2
-            className="font-sans italic"
+            className="font-garamond"
             style={{ fontWeight: 300, fontSize: "clamp(32px, 5vw, 56px)", lineHeight: 1.05, letterSpacing: "0.01em" }}
           >
             reviews
