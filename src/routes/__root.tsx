@@ -13,6 +13,7 @@ import { Toaster } from "sonner";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/site/Header";
+import { TopBanner } from "../components/site/TopBanner";
 
 import { Footer } from "../components/site/Footer";
 import { CartDrawer } from "../components/site/CartDrawer";
@@ -119,11 +120,16 @@ function AppShell() {
   useCartSync();
   return (
     <>
-      <Header />
-      <main className="pt-16">
-        <Outlet />
-      </main>
-      <Footer />
+      <div className="fixed top-0 inset-x-0 z-50">
+        <TopBanner />
+      </div>
+      <div className="pt-10">
+        <Header />
+        <main className="pt-16">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
       <CartDrawer />
       <Toaster position="top-center" />
     </>

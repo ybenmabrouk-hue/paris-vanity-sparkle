@@ -9,7 +9,7 @@ export function Header() {
   const totalItems = items.reduce((s, i) => s + i.quantity, 0);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-40">
+    <header className="fixed top-10 inset-x-0 z-40 bg-background">
       <div className="mx-auto max-w-[1800px] px-8 md:px-12 h-24 flex items-center justify-between">
         <Link to="/" aria-label="Dahlia — home" className="flex items-center">
           <img src={logoBlack.url} alt="Dahlia" className="h-10 md:h-12 w-auto" />
