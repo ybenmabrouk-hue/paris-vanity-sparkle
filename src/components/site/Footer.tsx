@@ -64,7 +64,7 @@ export function Footer() {
           style={{ fontSize: "11px", lineHeight: "16px", letterSpacing: "0.04em" }}
         >
           <p>© {new Date().getFullYear()} dahlia. all rights reserved.</p>
-          <p>imagined in paris. crafted by hand.</p>
+          <p className="font-garamond">imagined in paris. crafted by hand.</p>
         </div>
       </div>
     </footer>

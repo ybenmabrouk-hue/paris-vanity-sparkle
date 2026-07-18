@@ -17,7 +17,7 @@ export function SocialFeed() {
             href="https://instagram.com"
             target="_blank"
             rel="noreferrer"
-            className="font-kuenstler inline-block hover:opacity-70 transition"
+            className="font-garamond inline-block hover:opacity-70 transition"
             style={{ fontSize: "clamp(40px, 7vw, 72px)", lineHeight: 1.1 }}
           >
             with dahlia

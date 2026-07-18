@@ -50,7 +50,7 @@ export const Route = createFileRoute("/product/$handle")({
 function NotFound() {
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
-      <h1 className="font-serif text-4xl">Piece not found</h1>
+      <h1 className="font-garamond text-4xl">Piece not found</h1>
       <p className="text-muted-foreground mt-2">this vanity case couldn't be located.</p>
       <Link to="/collection" className="eyebrow mt-8 underline underline-offset-4 hover:text-accent">
         back to the collection
@@ -243,7 +243,7 @@ function ProductDetail({ handle }: { handle: string }) {
           {/* Right side — product information */}
           <div className="md:sticky md:top-24 md:self-start">
             <div className="flex items-start justify-between gap-4">
-              <h1 className="font-serif text-[34px] leading-none">
+              <h1 className="font-garamond text-[34px] leading-none">
                 {product.title}
               </h1>
               <button

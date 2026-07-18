@@ -16,7 +16,7 @@ export function UGCGallery() {
     <section className="w-full bg-background py-14 md:py-20">
       <div className="max-w-[1400px] mx-auto px-6">
         <h2
-          className="font-sans text-center mb-6 md:mb-8 text-black font-bold"
+          className="font-garamond text-center mb-6 md:mb-8 text-black"
           style={{
             fontSize: "clamp(18px, 2.2vw, 28px)",
             letterSpacing: "0.04em",

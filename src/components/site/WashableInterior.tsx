@@ -24,7 +24,7 @@ export function WashableInterior() {
         <div className="flex items-center px-6 md:pl-12 md:pr-[6vw] py-10 md:py-0 md:justify-end">
           <div className="max-w-[440px]">
             <h2
-              className="font-sans font-light italic text-foreground leading-[1.05] tracking-[0.01em]"
+              className="font-garamond text-foreground leading-[1.05] tracking-[0.01em]"
               style={{ fontSize: "clamp(48px, 6vw, 96px)" }}
             >
               erase the
