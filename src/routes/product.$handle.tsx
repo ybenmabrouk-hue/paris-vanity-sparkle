@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState, Suspense } from "react";
 import { Loader2, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { fetchProductByHandle, formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
+import { useBannerStore } from "@/stores/bannerStore";
 import { ProductReviews } from "@/components/site/ProductReviews";
 import { UGCGallery } from "@/components/site/UGCGallery";
 import { Marquee } from "@/components/site/Marquee";
@@ -129,6 +130,14 @@ function ProductDetail({ handle }: { handle: string }) {
       if (idx >= 0 && idx < images.length) setActiveImage(idx);
     }
   }, [selectedColor, colorOption, images]);
+
+  // Sync top banner color with selected swatch.
+  const setBannerColor = useBannerStore((s) => s.setColor);
+  useEffect(() => {
+    if (!selectedColor) return;
+    setBannerColor(swatchColor(selectedColor), textColorForSwatch(selectedColor));
+    return () => setBannerColor(null, null);
+  }, [selectedColor, setBannerColor]);
 
   const addItem = useCartStore((s) => s.addItem);
   const isLoading = useCartStore((s) => s.isLoading);
