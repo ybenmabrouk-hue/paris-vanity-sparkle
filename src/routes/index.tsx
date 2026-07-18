@@ -20,6 +20,7 @@ function Home() {
       <CollectionCarousel />
       <TextBanner />
       <SocialFeed />
+      <ReassuranceIcons />
     </div>
   );
 }
