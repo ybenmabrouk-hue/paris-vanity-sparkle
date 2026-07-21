@@ -17,17 +17,17 @@ export function StopDigging() {
               className="font-garamond text-foreground leading-[0.95] tracking-[-0.01em]"
               style={{ fontSize: "clamp(56px, 8vw, 120px)" }}
             >
-              stop
+              Stop
               <br />
-              digging.
+              Digging.
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
-              no more rummaging through a bottomless pouch for the one lipstick
-              you actually need. every piece has its place — brushes upright,
+              No more rummaging through a bottomless pouch for the one lipstick
+              you actually need. Every piece has its place — brushes upright,
               skincare visible, essentials within reach.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
-              designed in paris, built to end the daily search.
+              Designed in paris, built to end the daily search.
             </p>
           </div>
         </div>
@@ -36,16 +36,16 @@ export function StopDigging() {
         <div className="flex w-full h-full">
           <div className="flex-1 bg-muted overflow-hidden">
             <ImageSlot
-              label="lifestyle image — vanity case 1"
+              label="Lifestyle image — vanity case 1"
               className="h-full w-full"
-              caption="lifestyle image 1"
+              caption="Lifestyle image 1"
             />
           </div>
           <div className="flex-1 bg-muted overflow-hidden">
             <ImageSlot
-              label="lifestyle image — vanity case 2"
+              label="Lifestyle image — vanity case 2"
               className="h-full w-full"
-              caption="lifestyle image 2"
+              caption="Lifestyle image 2"
             />
           </div>
         </div>

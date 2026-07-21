@@ -2,7 +2,7 @@ import { useBannerStore } from "@/stores/bannerStore";
 
 export function TopBanner() {
   const color = useBannerStore((s) => s.color);
-  const textColor = useBannerStore((s) => s.textColor);
+  const textColor = useBannerStore((s) => S.textColor);
   return (
     <div
       className="w-full text-center py-2.5 text-[12px] tracking-[0.08em] transition-colors duration-500"
@@ -11,7 +11,7 @@ export function TopBanner() {
         color: textColor ?? "#1a1a1a",
       }}
     >
-      worldwide delivery
+      Worldwide delivery
     </div>
   );
 }

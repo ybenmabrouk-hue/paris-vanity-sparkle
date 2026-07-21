@@ -20,13 +20,13 @@ export function SocialFeed() {
             className="font-garamond inline-block hover:opacity-70 transition"
             style={{ fontSize: "clamp(40px, 7vw, 72px)", lineHeight: 1.1 }}
           >
-            with dahlia
+            With dahlia
           </a>
           <p
             className="mt-3 text-muted-foreground"
             style={{ fontSize: "14px", lineHeight: "20px" }}
           >
-            a case for beauty, since 2016.
+            A case for beauty, since 2016.
           </p>
         </div>
 

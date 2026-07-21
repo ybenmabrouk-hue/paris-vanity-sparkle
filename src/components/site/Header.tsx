@@ -6,7 +6,7 @@ import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
 export function Header() {
   const items = useCartStore((s) => s.items);
   const setOpen = useCartStore((s) => s.setOpen);
-  const totalItems = items.reduce((s, i) => s + i.quantity, 0);
+  const totalItems = items.reduce((s, i) => S + i.quantity, 0);
 
   return (
     <header className="fixed top-10 inset-x-0 z-40 bg-background">

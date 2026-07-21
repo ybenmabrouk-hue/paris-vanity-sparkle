@@ -11,16 +11,16 @@ export function LifestyleStory() {
       <div className="flex w-full">
         <div className="flex-1 aspect-[3/4] bg-muted overflow-hidden">
           <ImageSlot
-            label="lifestyle image — dahlia vanity case 1"
+            label="Lifestyle image — dahlia vanity case 1"
             className="h-full w-full"
-            caption="lifestyle image 1"
+            caption="Lifestyle image 1"
           />
         </div>
         <div className="flex-1 aspect-[3/4] bg-muted overflow-hidden">
           <ImageSlot
-            label="lifestyle image — dahlia vanity case 2"
+            label="Lifestyle image — dahlia vanity case 2"
             className="h-full w-full"
-            caption="lifestyle image 2"
+            caption="Lifestyle image 2"
           />
         </div>
       </div>

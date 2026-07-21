@@ -23,13 +23,13 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-serif text-6xl">page not found</h1>
+        <h1 className="font-serif text-6xl">Page not found</h1>
         <p className="mt-4 text-sm text-muted-foreground">
-          the page you're looking for has wandered off.
+          The page you're looking for has wandered off.
         </p>
         <div className="mt-8">
           <Link to="/" className="eyebrow underline underline-offset-4 hover:text-accent">
-            return home
+            Return home
           </Link>
         </div>
       </div>
@@ -47,17 +47,17 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-serif text-3xl">something went wrong</h1>
-        <p className="mt-2 text-sm text-muted-foreground">please try again.</p>
+        <h1 className="font-serif text-3xl">Something went wrong</h1>
+        <p className="mt-2 text-sm text-muted-foreground">Please try again.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <button
             onClick={() => { router.invalidate(); reset(); }}
             className="eyebrow px-6 py-3 bg-foreground text-background hover:bg-accent transition-colors"
           >
-            try again
+            Try again
           </button>
           <a href="/" className="eyebrow px-6 py-3 border border-border hover:bg-muted">
-            go home
+            Go home
           </a>
         </div>
       </div>
@@ -69,21 +69,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "Viewport", content: "width=device-width, initial-scale=1" },
       { title: "Dahlia — Vanity Cases Made in Paris" },
       {
-        name: "description",
+        name: "Description",
         content:
           "Dahlia crafts refined vanity cases in Paris — small-batch, made to travel and to keep.",
       },
-      { name: "author", content: "Dahlia" },
+      { name: "Author", content: "Dahlia" },
       { property: "og:title", content: "Dahlia — Vanity Cases Made in Paris" },
       {
         property: "og:description",
         content: "Refined vanity cases, crafted in small batches in Paris.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { name: "Twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
