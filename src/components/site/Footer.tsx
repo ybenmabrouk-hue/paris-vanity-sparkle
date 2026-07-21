@@ -37,8 +37,6 @@ export function Footer() {
               <li><Link to="/about" className="hover:opacity-60 transition">About us</Link></li>
               <li><a href="#" className="hover:opacity-60 transition">Account</a></li>
               <li><a href="mailto:hello@dahlia-paris.com" className="hover:opacity-60 transition">Contact</a></li>
-              <li><a href="#" className="hover:opacity-60 transition">Dahlia hub</a></li>
-              <li><a href="#" className="hover:opacity-60 transition">E-gift card</a></li>
               <li><a href="#" className="hover:opacity-60 transition">Reviews</a></li>
             </ul>
             <ul className="space-y-4" style={{ fontSize: "14px", lineHeight: "20px" }}>
@@ -53,8 +51,6 @@ export function Footer() {
               <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Instagram</a></li>
               <li><a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Facebook</a></li>
               <li><a href="https://tiktok.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Tiktok</a></li>
-              <li><a href="https://pinterest.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Pinterest</a></li>
-              <li><a href="https://youtube.com" target="_blank" rel="noreferrer" className="hover:opacity-60 transition">Youtube</a></li>
             </ul>
           </div>
         </div>
