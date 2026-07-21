@@ -272,7 +272,7 @@ function ProductDetail({ handle }: { handle: string }) {
                   {colorOption.values.map((value) => {
                     const match = variants.find((v) =>
                       v.node.selectedOptions.some(
-                        (o) => O.name === colorOption.name && o.value === value,
+                        (o) => o.name === colorOption.name && o.value === value,
                       ),
                     );
                     const isActive = selectedColor === value;
