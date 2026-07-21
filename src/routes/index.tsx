@@ -49,7 +49,7 @@ function Banner() {
               letterSpacing: "0.14em",
             }}
           >
-            shop now
+            Shop now
           </Link>
         </div>
       </div>
@@ -77,10 +77,10 @@ function CollectionCarousel() {
       <div className="max-w-[1600px] mx-auto">
         <div className="mb-8 md:mb-12 text-left">
           <h2 className="font-garamond text-black leading-[1.05] tracking-tight" style={{ fontSize: "clamp(40px, 6vw, 72px)", fontWeight: 300, letterSpacing: "0.01em" }}>
-            collection
+            Collection
           </h2>
           <p className="mt-2 md:mt-3 text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-muted-foreground max-w-3xl">
-            the collection begins at our atelier. shaped by a parisian eye and
+            The collection begins at our atelier. Shaped by a parisian eye and
             crafted through modern leatherwork, each vanity case is designed to
             hold the small rituals that travel with you.
           </p>
@@ -168,7 +168,7 @@ function TextBanner() {
             lineHeight: 1.05,
           }}
         >
-          imagined in paris. crafted by hand
+          Imagined in paris. Crafted by hand
         </h2>
         <p
           style={{
@@ -177,9 +177,9 @@ function TextBanner() {
             lineHeight: 1.6,
           }}
         >
-          dahlia is a modern leather-led lifestyle brand shaped around the
+          Dahlia is a modern leather-led lifestyle brand shaped around the
           rituals of self and travel, where the objects you carry become part
-          of everyday life. small batch. considered. made to keep.
+          of everyday life. Small batch. Considered. Made to keep.
         </p>
       </div>
     </section>

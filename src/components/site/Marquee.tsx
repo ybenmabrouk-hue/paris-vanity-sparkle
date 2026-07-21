@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Play, Pause } from "lucide-react";
 
 const MESSAGES = [
-  "🤍 spacious enough for makeup, skincare & toiletries 🤍",
-  "✨ as seen in POPSUGAR, New York Magazine, Forbes & more ✨",
-  "🖌️ new! brush layout design 🖌️",
+  "🤍 Spacious enough for makeup, skincare & toiletries 🤍",
+  "✨ As seen in POPSUGAR, New York Magazine, Forbes & more ✨",
+  "🖌️ New! Brush layout design 🖌️",
 ];
 
 const SPEEDS = [

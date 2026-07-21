@@ -15,10 +15,10 @@ type Review = {
 const SEED_REVIEWS: Review[] = [
   {
     id: "1",
-    author: "camille l.",
+    author: "Camille l.",
     location: "paris, fr",
     rating: 5,
-    title: "the one i always take with me",
+    title: "The one i always take with me",
     body: "it finally replaced the three pouches i used to travel with. everything fits and i can actually find things.",
     date: "june 12, 2026",
     verified: true,
@@ -29,10 +29,10 @@ const SEED_REVIEWS: Review[] = [
   },
   {
     id: "2",
-    author: "sophie b.",
+    author: "Sophie b.",
     location: "london, uk",
     rating: 5,
-    title: "beautiful object, thoughtful design",
+    title: "Beautiful object, thoughtful design",
     body: "the interior wipes clean with water. no more foundation stains ruining the lining after a month.",
     date: "may 28, 2026",
     verified: true,
@@ -42,20 +42,20 @@ const SEED_REVIEWS: Review[] = [
   },
   {
     id: "3",
-    author: "alexandra p.",
+    author: "Alexandra p.",
     location: "new york, us",
     rating: 4,
-    title: "worth it",
+    title: "Worth it",
     body: "on the pricier side but the craft shows. i wish it came with a small mirror inside.",
     date: "may 03, 2026",
     verified: true,
   },
   {
     id: "4",
-    author: "inès r.",
+    author: "Inès r.",
     location: "milan, it",
     rating: 5,
-    title: "gifted to my sister — bought a second",
+    title: "Gifted to my sister — bought a second",
     body: "she loved it so much i had to order mine. the burgundy is even prettier in person.",
     date: "april 21, 2026",
     verified: true,
@@ -65,19 +65,19 @@ const SEED_REVIEWS: Review[] = [
   },
   {
     id: "5",
-    author: "marie d.",
+    author: "Marie d.",
     rating: 5,
-    title: "no more digging",
+    title: "No more digging",
     body: "flat opening is a game changer. brushes stay in place and nothing gets lost at the bottom.",
     date: "april 09, 2026",
     verified: true,
   },
   {
     id: "6",
-    author: "juliette m.",
+    author: "Juliette m.",
     location: "paris, fr",
     rating: 4,
-    title: "chic and practical",
+    title: "Chic and practical",
     body: "compact enough for a weekend, holds a surprising amount.",
     date: "march 30, 2026",
   },
@@ -223,7 +223,7 @@ export function ReviewsSection() {
             className="font-garamond"
             style={{ fontWeight: 300, fontSize: "clamp(32px, 5vw, 56px)", lineHeight: 1.05, letterSpacing: "0.01em" }}
           >
-            reviews
+            Reviews
           </h2>
         </header>
 
@@ -279,7 +279,7 @@ export function ReviewsSection() {
                   onClick={() => setLightbox(p.src)}
                   className="shrink-0 w-24 h-24 md:w-28 md:h-28 overflow-hidden bg-black/5"
                 >
-                  <img src={p.src} alt="customer photo" className="w-full h-full object-cover hover:scale-105 transition-transform" />
+                  <img src={p.src} alt="Customer photo" className="w-full h-full object-cover hover:scale-105 transition-transform" />
                 </button>
               ))}
             </div>
@@ -290,12 +290,12 @@ export function ReviewsSection() {
         {writing && (
           <form onSubmit={submitReview} className="border border-black/10 p-6 md:p-8 mb-10 grid gap-5">
             <div>
-              <label className="text-sm text-black/60 block mb-2">your rating</label>
+              <label className="text-sm text-black/60 block mb-2">Your rating</label>
               <Stars value={dRating} size={22} interactive onChange={setDRating} />
             </div>
             <div className="grid md:grid-cols-2 gap-5">
               <label className="text-sm">
-                <span className="text-black/60 block mb-1">your name</span>
+                <span className="text-black/60 block mb-1">Your name</span>
                 <input
                   type="text"
                   value={dAuthor}
@@ -305,7 +305,7 @@ export function ReviewsSection() {
                 />
               </label>
               <label className="text-sm">
-                <span className="text-black/60 block mb-1">title</span>
+                <span className="text-black/60 block mb-1">Title</span>
                 <input
                   type="text"
                   value={dTitle}
@@ -316,7 +316,7 @@ export function ReviewsSection() {
               </label>
             </div>
             <label className="text-sm">
-              <span className="text-black/60 block mb-1">your review</span>
+              <span className="text-black/60 block mb-1">Your review</span>
               <textarea
                 value={dBody}
                 onChange={(e) => setDBody(e.target.value)}
@@ -331,12 +331,12 @@ export function ReviewsSection() {
               <div className="flex flex-wrap gap-3">
                 {dPhotos.map((src, i) => (
                   <div key={i} className="relative w-20 h-20 overflow-hidden bg-black/5">
-                    <img src={src} alt="upload preview" className="w-full h-full object-cover" />
+                    <img src={src} alt="Upload preview" className="w-full h-full object-cover" />
                     <button
                       type="button"
                       onClick={() => removePhoto(i)}
                       className="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-black text-white text-xs leading-none flex items-center justify-center"
-                      aria-label="remove photo"
+                      aria-label="Remove photo"
                     >
                       ×
                     </button>
@@ -367,10 +367,10 @@ export function ReviewsSection() {
 
             <div className="flex gap-3">
               <button type="submit" className="border border-black bg-black text-white px-6 py-3 text-sm hover:opacity-90">
-                submit review
+                Submit review
               </button>
               <button type="button" onClick={() => setWriting(false)} className="border border-black/20 px-6 py-3 text-sm hover:border-black">
-                cancel
+                Cancel
               </button>
             </div>
           </form>
@@ -379,15 +379,15 @@ export function ReviewsSection() {
         <div className="flex items-center justify-between mb-8">
           <span className="text-sm text-black/60">{total} reviews</span>
           <label className="text-sm flex items-center gap-2">
-            <span className="text-black/60">sort by</span>
+            <span className="text-black/60">Sort by</span>
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as typeof sort)}
               className="bg-transparent border-b border-black/20 py-1 pr-6 focus:outline-none focus:border-black"
             >
-              <option value="recent">most recent</option>
-              <option value="highest">highest rated</option>
-              <option value="lowest">lowest rated</option>
+              <option value="recent">Most recent</option>
+              <option value="highest">Highest rated</option>
+              <option value="lowest">Lowest rated</option>
             </select>
           </label>
         </div>
@@ -431,7 +431,7 @@ export function ReviewsSection() {
               onClick={() => setVisible((v) => v + PAGE_SIZE)}
               className="border border-black px-8 py-3 text-sm hover:bg-black hover:text-white transition-colors"
             >
-              load more reviews
+              Load more reviews
             </button>
           </div>
         )}
@@ -442,11 +442,11 @@ export function ReviewsSection() {
           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-6 cursor-zoom-out"
           onClick={() => setLightbox(null)}
         >
-          <img src={lightbox} alt="review photo" className="max-w-full max-h-full object-contain" />
+          <img src={lightbox} alt="Review photo" className="max-w-full max-h-full object-contain" />
           <button
             onClick={() => setLightbox(null)}
             className="absolute top-6 right-6 text-white text-2xl leading-none"
-            aria-label="close"
+            aria-label="Close"
           >
             ×
           </button>
