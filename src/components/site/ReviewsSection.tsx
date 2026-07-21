@@ -263,7 +263,7 @@ export function ReviewsSection() {
               onClick={() => setWriting((w) => !w)}
               className="border border-black px-6 py-3 text-sm hover:bg-black hover:text-white transition-colors whitespace-nowrap"
             >
-              {writing ? "cancel" : "write a review"}
+              {writing ? "Cancel" : "Write a review"}
             </button>
           </div>
         </div>
