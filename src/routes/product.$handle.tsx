@@ -333,7 +333,7 @@ function ProductDetail({ handle }: { handle: string }) {
                 {isLoading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
                 ) : (
-                  "add to cart"
+                  "Add to cart"
                 )}
               </button>
 
