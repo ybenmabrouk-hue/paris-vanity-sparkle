@@ -104,11 +104,16 @@ export function Editorial() {
 
       {/* Chapter 2 — Easy packing / space (image left, text right) */}
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="aspect-[4/5] md:aspect-auto md:min-h-[640px]">
+        <div className="grid grid-cols-2">
           <ImageSlot
-            label="The Vanity Case — packed, open, filled"
-            caption="Packed with ease"
-            className="w-full h-full border-0"
+            label="Chapter II — the Dahlia vanity case open, showcasing space"
+            caption="Open — the space"
+            className="w-full aspect-[3/4] md:aspect-auto md:min-h-[640px] border-0"
+          />
+          <VideoSlot
+            label="Chapter II — video of hand digging inside a regular toiletry bag"
+            caption="Elsewhere — the digging"
+            className="w-full aspect-[3/4] md:aspect-auto md:min-h-[640px] border-0"
           />
         </div>
         <div className="flex items-center justify-center px-6 md:px-16 py-16 md:py-24">
@@ -140,6 +145,20 @@ export function Editorial() {
             </p>
           </div>
         </div>
+      </div>
+
+      {/* Chapter II — supporting duo (sept fragrances style, touching) */}
+      <div className="grid grid-cols-2">
+        <ImageSlot
+          label="Chapter II — supporting editorial image 1"
+          caption="Hôtel Balzac"
+          className="w-full aspect-[4/5] border-0"
+        />
+        <ImageSlot
+          label="Chapter II — supporting editorial image 2"
+          caption="Hôtel Balzac"
+          className="w-full aspect-[4/5] border-0"
+        />
       </div>
 
       {/* Full-bleed editorial image */}
