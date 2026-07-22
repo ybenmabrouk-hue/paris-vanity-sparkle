@@ -1,4 +1,5 @@
 import { ImageSlot } from "@/components/site/ImageSlot";
+import { VideoSlot } from "@/components/site/VideoSlot";
 
 export function Editorial() {
   return (
@@ -73,13 +74,32 @@ export function Editorial() {
             </p>
           </div>
         </div>
-        <div className="aspect-[4/5] md:aspect-auto md:min-h-[640px] order-1 md:order-2">
+        <div className="grid grid-cols-2 order-1 md:order-2">
           <ImageSlot
-            label="Hôtel Balzac — beauty ritual on marble vanity"
-            caption="Hôtel Balzac"
-            className="w-full h-full border-0"
+            label="Chapter I — a mess of beauty products scattered before the ritual"
+            caption="Before — the mess"
+            className="w-full aspect-[3/4] md:aspect-auto md:min-h-[640px] border-0"
+          />
+          <ImageSlot
+            label="Chapter I — model getting ready using the Dahlia vanity case"
+            caption="After — the ritual"
+            className="w-full aspect-[3/4] md:aspect-auto md:min-h-[640px] border-0"
           />
         </div>
+      </div>
+
+      {/* Chapter I — supporting duo (sept fragrances style, touching) */}
+      <div className="grid grid-cols-2">
+        <ImageSlot
+          label="Chapter I — supporting editorial image 1"
+          caption="Hôtel Balzac"
+          className="w-full aspect-[4/5] border-0"
+        />
+        <ImageSlot
+          label="Chapter I — supporting editorial image 2"
+          caption="Hôtel Balzac"
+          className="w-full aspect-[4/5] border-0"
+        />
       </div>
 
       {/* Chapter 2 — Easy packing / space (image left, text right) */}
