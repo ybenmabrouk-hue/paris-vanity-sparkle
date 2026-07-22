@@ -20,7 +20,7 @@ export function SocialFeed() {
             className="font-garamond inline-block hover:opacity-70 transition"
             style={{ fontSize: "clamp(40px, 7vw, 72px)", lineHeight: 1.1 }}
           >
-            With dahlia
+            With Dahlia
           </a>
           <p
             className="mt-3 text-muted-foreground"
