@@ -158,7 +158,11 @@ function TextBanner() {
           alt=""
           aria-hidden
           className="block mx-auto"
-          style={{ width: "clamp(140px, 22vw, 320px)", height: "auto" }}
+          style={{
+            width: "clamp(140px, 22vw, 320px)",
+            height: "auto",
+            transform: "translateX(-8%)",
+          }}
         />
         <h2
           className="font-garamond"
