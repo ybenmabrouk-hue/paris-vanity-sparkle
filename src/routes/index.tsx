@@ -170,7 +170,7 @@ function TextBanner() {
             lineHeight: 1.05,
           }}
         >
-          Imagined in paris. Crafted by hand
+          Imagined in Paris.
         </h2>
         <p
           style={{
