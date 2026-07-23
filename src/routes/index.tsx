@@ -149,7 +149,7 @@ function TextBanner() {
         className="mx-auto text-center"
         style={{
           // sept .container--xs → 42.5rem, gutter 1.25rem → 3rem
-          maxWidth: "42.5rem",
+          maxWidth: "55rem",
           paddingInline: "clamp(1.25rem, 0.6707rem + 2.4390vw, 3rem)",
         }}
       >
@@ -168,6 +168,7 @@ function TextBanner() {
             marginBlockStart: "1.25rem",
             fontSize: "clamp(40px, 6vw, 72px)",
             lineHeight: 1.05,
+            whiteSpace: "nowrap",
           }}
         >
           Elevate your beauty routine
