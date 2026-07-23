@@ -30,7 +30,7 @@ const SEED_REVIEWS: Review[] = [
   {
     id: "2",
     author: "Sophie b.",
-    location: "london, uk",
+    location: "London, UK",
     rating: 5,
     title: "Beautiful object, thoughtful design",
     body: "the interior wipes clean with water. no more foundation stains ruining the lining after a month.",
@@ -43,7 +43,7 @@ const SEED_REVIEWS: Review[] = [
   {
     id: "3",
     author: "Alexandra p.",
-    location: "new york, us",
+    location: "New York, US",
     rating: 4,
     title: "Worth it",
     body: "on the pricier side but the craft shows. i wish it came with a small mirror inside.",
@@ -53,7 +53,7 @@ const SEED_REVIEWS: Review[] = [
   {
     id: "4",
     author: "Inès r.",
-    location: "milan, it",
+    location: "Milan, IT",
     rating: 5,
     title: "Gifted to my sister — bought a second",
     body: "she loved it so much i had to order mine. the burgundy is even prettier in person.",
