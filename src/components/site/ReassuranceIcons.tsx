@@ -7,19 +7,19 @@ const ITEMS = [
   },
   {
     icon: RefreshCcw,
-    label: "30-day returns",
+    label: "30-Day Returns",
   },
   {
     icon: ShieldCheck,
-    label: "Secure checkout",
+    label: "Secure Checkout",
   },
   {
     icon: HeartHandshake,
-    label: "Prepared with care",
+    label: "Prepared With Care",
   },
   {
     icon: Headphones,
-    label: "Customer support",
+    label: "Customer Support",
   },
 ];
 
