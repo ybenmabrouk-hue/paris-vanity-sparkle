@@ -20,7 +20,6 @@ function Home() {
       <Banner />
       <CollectionCarousel />
       <TextBanner />
-      <TextBanner />
       <Editorial />
       <SocialFeed />
       <ReassuranceIcons />
