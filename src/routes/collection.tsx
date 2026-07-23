@@ -46,7 +46,7 @@ function CollectionPage() {
             className="mt-3 max-w-2xl mx-auto md:mx-0 text-muted-foreground"
             style={{ fontSize: "clamp(12px, 1vw, 15px)", lineHeight: "clamp(15px, 1.6vw, 22px)" }}
           >
-            The collection begins at our atelier. Shaped by a parisian eye and
+            The collection begins at our atelier. Shaped by a Parisian eye and
             crafted through modern leatherwork, each piece is designed to hold
             the small rituals that travel with you.
           </p>

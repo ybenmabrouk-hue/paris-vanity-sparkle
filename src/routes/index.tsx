@@ -82,7 +82,7 @@ function CollectionCarousel() {
             Collection
           </h2>
           <p className="mt-2 md:mt-3 text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-muted-foreground max-w-3xl">
-            The collection begins at our atelier. Shaped by a parisian eye and
+            The collection begins at our atelier. Shaped by a Parisian eye and
             crafted through modern leatherwork, each vanity case is designed to
             hold the small rituals that travel with you.
           </p>
@@ -170,7 +170,7 @@ function TextBanner() {
             lineHeight: 1.05,
           }}
         >
-          Imagined in paris. Crafted by hand
+          Imagined in Paris.
         </h2>
         <p
           style={{
