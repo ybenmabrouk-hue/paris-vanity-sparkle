@@ -26,7 +26,7 @@ export function SocialFeed() {
             className="mt-3 text-muted-foreground"
             style={{ fontSize: "14px", lineHeight: "20px" }}
           >
-            A case for beauty, since 2016.
+            &nbsp;
           </p>
         </div>
 
