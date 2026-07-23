@@ -59,8 +59,8 @@ export function Footer() {
           className="mt-16 pt-6 border-t border-foreground/20 flex flex-wrap justify-between gap-4"
           style={{ fontSize: "11px", lineHeight: "16px", letterSpacing: "0.04em" }}
         >
-          <p>© {new Date().getFullYear()} dahlia. all rights reserved.</p>
-          <p className="font-garamond">Imagined in paris. Crafted by hand.</p>
+          <p>© {new Date().getFullYear()}&nbsp;Dahlia. all rights reserved.</p>
+          <p className="font-garamond">Imagined in Paris.</p>
         </div>
       </div>
     </footer>
