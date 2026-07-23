@@ -25,7 +25,7 @@ export function Editorial() {
               lineHeight: 1.05,
             }}
           >
-            A room, a ritual, a vanity case.
+            A room, a ritual, a vanity case
           </h2>
           <p
             className="mx-auto mt-5 text-muted-foreground"
@@ -61,7 +61,7 @@ export function Editorial() {
                 lineHeight: 1.1,
               }}
             >
-              An elevated beauty ritual.
+              An elevated beauty ritual
             </h3>
             <p
               className="mt-5 text-muted-foreground"
@@ -133,7 +133,7 @@ export function Editorial() {
                 lineHeight: 1.1,
               }}
             >
-              Everything, in its place.
+              Everything, in its place
             </h3>
             <p
               className="mt-5 text-muted-foreground"
