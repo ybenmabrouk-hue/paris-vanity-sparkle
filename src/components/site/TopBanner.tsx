@@ -11,7 +11,7 @@ export function TopBanner() {
         color: textColor ?? "#1a1a1a",
       }}
     >
-      Worldwide delivery
+      Worldwide Delivery
     </div>
   );
 }
