@@ -27,7 +27,7 @@ export function StopDigging() {
               skincare visible, essentials within reach.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
-              Designed in paris, built to end the daily search.
+              Designed in Paris, built to end the daily search.
             </p>
           </div>
         </div>

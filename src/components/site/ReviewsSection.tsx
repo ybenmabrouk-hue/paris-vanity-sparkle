@@ -16,7 +16,7 @@ const SEED_REVIEWS: Review[] = [
   {
     id: "1",
     author: "Camille l.",
-    location: "paris, fr",
+    location: "Paris, FR",
     rating: 5,
     title: "The one i always take with me",
     body: "it finally replaced the three pouches i used to travel with. everything fits and i can actually find things.",
@@ -75,7 +75,7 @@ const SEED_REVIEWS: Review[] = [
   {
     id: "6",
     author: "Juliette m.",
-    location: "paris, fr",
+    location: "Paris, FR",
     rating: 4,
     title: "Chic and practical",
     body: "compact enough for a weekend, holds a surprising amount.",
