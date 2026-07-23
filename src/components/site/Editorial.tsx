@@ -42,39 +42,37 @@ export function Editorial() {
         </div>
       </div>
 
-      {/* Chapter 1 — Beauty routine elevation (image right, text left) */}
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="flex items-center justify-center px-6 md:px-16 py-16 md:py-24 order-2 md:order-1">
-          <div className="max-w-[440px]">
-            <p
-              className="text-[11px] md:text-[12px] uppercase text-muted-foreground"
-              style={{ letterSpacing: "0.24em" }}
-            >
-              Chapter I — The routine
-            </p>
-            <h3
-              className="font-garamond text-black mt-4"
-              style={{
-                fontWeight: 300,
-                letterSpacing: "0.01em",
-                fontSize: "clamp(30px, 4vw, 48px)",
-                lineHeight: 1.1,
-              }}
-            >
-              An elevated beauty ritual
-            </h3>
-            <p
-              className="mt-5 text-muted-foreground"
-              style={{ fontSize: "15px", lineHeight: 1.7 }}
-            >
-              Serums lined up on marble. A brush placed with intention. The
-              vanity case becomes the object around which the moment is built —
-              turning a routine into a ritual you look forward to, wherever you
-              wake up.
-            </p>
-          </div>
+      {/* Chapter 1 — Beauty routine elevation */}
+      <div className="bg-white">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10 text-center md:text-left" style={{ paddingBlock: "clamp(45px, 6vw, 70px)" }}>
+          <p
+            className="text-[11px] md:text-[12px] uppercase text-muted-foreground"
+            style={{ letterSpacing: "0.24em" }}
+          >
+            Chapter I — The routine
+          </p>
+          <h3
+            className="font-garamond text-black mt-4"
+            style={{
+              fontWeight: 300,
+              letterSpacing: "0.01em",
+              fontSize: "clamp(30px, 4vw, 48px)",
+              lineHeight: 1.1,
+            }}
+          >
+            An elevated beauty ritual
+          </h3>
+          <p
+            className="mt-5 text-muted-foreground max-w-[38rem]"
+            style={{ fontSize: "15px", lineHeight: 1.7 }}
+          >
+            Serums lined up on marble. A brush placed with intention. The
+            vanity case becomes the object around which the moment is built —
+            turning a routine into a ritual you look forward to, wherever you
+            wake up.
+          </p>
         </div>
-        <div className="grid grid-cols-2 order-1 md:order-2">
+        <div className="grid grid-cols-2">
           <ImageSlot
             label="Chapter I — a mess of beauty products scattered before the ritual"
             caption="Before — the mess"
@@ -102,8 +100,35 @@ export function Editorial() {
         />
       </div>
 
-      {/* Chapter 2 — Easy packing / space (image left, text right) */}
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      {/* Chapter 2 — Easy packing / space */}
+      <div className="bg-white">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10 text-center md:text-left" style={{ paddingBlock: "clamp(45px, 6vw, 70px)" }}>
+          <p
+            className="text-[11px] md:text-[12px] uppercase text-muted-foreground"
+            style={{ letterSpacing: "0.24em" }}
+          >
+            Chapter II — The travel
+          </p>
+          <h3
+            className="font-garamond text-black mt-4"
+            style={{
+              fontWeight: 300,
+              letterSpacing: "0.01em",
+              fontSize: "clamp(30px, 4vw, 48px)",
+              lineHeight: 1.1,
+            }}
+          >
+            Everything, in its place
+          </h3>
+          <p
+            className="mt-5 text-muted-foreground max-w-[38rem]"
+            style={{ fontSize: "15px", lineHeight: 1.7 }}
+          >
+            Designed with generous depth and a considered interior, the
+            vanity case holds makeup, skincare and toiletries side by side —
+            so packing takes minutes and nothing gets lost along the way.
+          </p>
+        </div>
         <div className="grid grid-cols-2">
           <ImageSlot
             label="Chapter II — the Dahlia vanity case open, showcasing space"
@@ -115,35 +140,6 @@ export function Editorial() {
             caption="Elsewhere — the digging"
             className="w-full aspect-[3/4] md:aspect-auto md:min-h-[640px] border-0"
           />
-        </div>
-        <div className="flex items-center justify-center px-6 md:px-16 py-16 md:py-24">
-          <div className="max-w-[440px]">
-            <p
-              className="text-[11px] md:text-[12px] uppercase text-muted-foreground"
-              style={{ letterSpacing: "0.24em" }}
-            >
-              Chapter II — The travel
-            </p>
-            <h3
-              className="font-garamond text-black mt-4"
-              style={{
-                fontWeight: 300,
-                letterSpacing: "0.01em",
-                fontSize: "clamp(30px, 4vw, 48px)",
-                lineHeight: 1.1,
-              }}
-            >
-              Everything, in its place
-            </h3>
-            <p
-              className="mt-5 text-muted-foreground"
-              style={{ fontSize: "15px", lineHeight: 1.7 }}
-            >
-              Designed with generous depth and a considered interior, the
-              vanity case holds makeup, skincare and toiletries side by side —
-              so packing takes minutes and nothing gets lost along the way.
-            </p>
-          </div>
         </div>
       </div>
 
