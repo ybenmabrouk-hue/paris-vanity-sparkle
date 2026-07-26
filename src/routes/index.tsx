@@ -44,7 +44,7 @@ function Banner() {
             className="max-w-[300px] md:max-w-[540px] w-auto invert brightness-0 opacity-95 mb-8 md:mb-10"
           />
           <Link
-            to="/collection"
+            to="/vanity-cases"
             className="inline-block text-white border-b border-white/90 pb-1 hover:opacity-80 transition-opacity"
             style={{
               fontSize: "13px",
@@ -101,7 +101,7 @@ function CollectionCarousel() {
 
 function VanityProductCard({ card }: { card: ColorSwatch }) {
   return (
-    <Link to="/collection" className="group block">
+    <Link to="/vanity-cases" className="group block">
       <div
         className="relative w-full aspect-[4/5] overflow-hidden"
         style={{ backgroundColor: card.swatch }}
