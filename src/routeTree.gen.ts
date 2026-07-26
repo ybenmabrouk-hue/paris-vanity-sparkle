@@ -9,11 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VanityCasesRouteImport } from './routes/vanity-cases'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CollectionRouteImport } from './routes/collection'
+import { Route as BrushesRouteImport } from './routes/brushes'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 
+const VanityCasesRoute = VanityCasesRouteImport.update({
+  id: '/vanity-cases',
+  path: '/vanity-cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -22,6 +29,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const CollectionRoute = CollectionRouteImport.update({
   id: '/collection',
   path: '/collection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrushesRoute = BrushesRouteImport.update({
+  id: '/brushes',
+  path: '/brushes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -37,40 +49,74 @@ const ProductHandleRoute = ProductHandleRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/brushes': typeof BrushesRoute
   '/collection': typeof CollectionRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vanity-cases': typeof VanityCasesRoute
   '/product/$handle': typeof ProductHandleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/brushes': typeof BrushesRoute
   '/collection': typeof CollectionRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vanity-cases': typeof VanityCasesRoute
   '/product/$handle': typeof ProductHandleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/brushes': typeof BrushesRoute
   '/collection': typeof CollectionRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vanity-cases': typeof VanityCasesRoute
   '/product/$handle': typeof ProductHandleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/collection' | '/sitemap.xml' | '/product/$handle'
+  fullPaths:
+    | '/'
+    | '/brushes'
+    | '/collection'
+    | '/sitemap.xml'
+    | '/vanity-cases'
+    | '/product/$handle'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/collection' | '/sitemap.xml' | '/product/$handle'
-  id: '__root__' | '/' | '/collection' | '/sitemap.xml' | '/product/$handle'
+  to:
+    | '/'
+    | '/brushes'
+    | '/collection'
+    | '/sitemap.xml'
+    | '/vanity-cases'
+    | '/product/$handle'
+  id:
+    | '__root__'
+    | '/'
+    | '/brushes'
+    | '/collection'
+    | '/sitemap.xml'
+    | '/vanity-cases'
+    | '/product/$handle'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BrushesRoute: typeof BrushesRoute
   CollectionRoute: typeof CollectionRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  VanityCasesRoute: typeof VanityCasesRoute
   ProductHandleRoute: typeof ProductHandleRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vanity-cases': {
+      id: '/vanity-cases'
+      path: '/vanity-cases'
+      fullPath: '/vanity-cases'
+      preLoaderRoute: typeof VanityCasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -83,6 +129,13 @@ declare module '@tanstack/react-router' {
       path: '/collection'
       fullPath: '/collection'
       preLoaderRoute: typeof CollectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/brushes': {
+      id: '/brushes'
+      path: '/brushes'
+      fullPath: '/brushes'
+      preLoaderRoute: typeof BrushesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -104,8 +157,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BrushesRoute: BrushesRoute,
   CollectionRoute: CollectionRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  VanityCasesRoute: VanityCasesRoute,
   ProductHandleRoute: ProductHandleRoute,
 }
 export const routeTree = rootRouteImport
