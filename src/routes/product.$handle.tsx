@@ -52,8 +52,8 @@ function NotFound() {
     <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
       <h1 className="font-garamond text-4xl">Piece not found</h1>
       <p className="text-muted-foreground mt-2">This vanity case couldn't be located.</p>
-      <Link to="/collection" className="eyebrow mt-8 underline underline-offset-4 hover:text-accent">
-        Back to the collection
+      <Link to="/vanity-cases" className="eyebrow mt-8 underline underline-offset-4 hover:text-accent">
+        Back to Vanity Cases
       </Link>
     </div>
   );
@@ -168,7 +168,7 @@ function ProductDetail({ handle }: { handle: string }) {
         <nav className="eyebrow text-muted-foreground mb-8 text-xs">
           <Link to="/" className="hover:text-accent">Home</Link>
           <span className="mx-2">/</span>
-          <Link to="/collection" className="hover:text-accent">Collection</Link>
+          <Link to="/vanity-cases" className="hover:text-accent">Vanity Cases</Link>
           <span className="mx-2">/</span>
           <span>{product.title}</span>
         </nav>

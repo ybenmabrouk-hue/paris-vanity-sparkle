@@ -15,7 +15,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         } catch (e) {
           console.error("sitemap products fetch failed", e);
         }
-        const paths = ["/", "/collection", ...productPaths];
+        const paths = ["/", "/collection", "/vanity-cases", "/brushes", ...productPaths];
         const urls = paths.map(
           (p) => `  <url><loc>${BASE_URL}${p}</loc><changefreq>weekly</changefreq></url>`,
         );
