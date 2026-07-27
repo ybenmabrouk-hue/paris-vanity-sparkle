@@ -1,11 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
-import { useEffect, useMemo, useState, Suspense } from "react";
-import { Loader2, Heart, ChevronLeft, ChevronRight } from "lucide-react";
-import { fetchProductByHandle, formatPrice, type ShopifyProduct } from "@/lib/shopify";
-import { useCartStore } from "@/stores/cartStore";
+import { useEffect, useMemo, useState } from "react";
+import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
+import { toast } from "sonner";
+import { getStaticProduct, formatPrice, type StaticProduct } from "@/lib/staticProducts";
 import { useBannerStore } from "@/stores/bannerStore";
 import { ProductReviews } from "@/components/site/ProductReviews";
+import { ImageSlot } from "@/components/site/ImageSlot";
 import { UGCGallery } from "@/components/site/UGCGallery";
 import { Marquee } from "@/components/site/Marquee";
 import { StopDigging } from "@/components/site/StopDigging";
@@ -14,35 +14,26 @@ import { LifestyleStory } from "@/components/site/LifestyleStory";
 import { ReassuranceIcons } from "@/components/site/ReassuranceIcons";
 import { ReviewsSection } from "@/components/site/ReviewsSection";
 
-const productQueryOptions = (handle: string) =>
-  queryOptions({
-    queryKey: ["product", handle],
-    queryFn: async () => {
-      const p = await fetchProductByHandle(handle);
-      if (!p) throw notFound();
-      return p;
-    },
-  });
-
 export const Route = createFileRoute("/product/$handle")({
-  head: ({ params, loaderData }) => {
-    const p = loaderData as Awaited<ReturnType<typeof fetchProductByHandle>> | undefined;
+  head: ({ params }) => {
+    const p = getStaticProduct(params.handle);
     const title = p?.title ?? "Product";
-    const desc = p?.description?.slice(0, 155) ?? "A Dahlia vanity case.";
-    const img = p?.images.edges[0]?.node.url;
+    const desc = p?.description.slice(0, 155) ?? "A Dahlia piece.";
     return {
       meta: [
         { title: `${title} — Dahlia` },
-        { name: "Description", content: desc },
+        { name: "description", content: desc },
         { property: "og:title", content: `${title} — Dahlia` },
         { property: "og:description", content: desc },
-        ...(img ? [{ property: "og:image", content: img }, { name: "Twitter:image", content: img }] : []),
       ],
       links: [{ rel: "canonical", href: `/product/${params.handle}` }],
     };
   },
-  loader: ({ context, params }) =>
-    context.queryClient.ensureQueryData(productQueryOptions(params.handle)),
+  loader: ({ params }) => {
+    const product = getStaticProduct(params.handle);
+    if (!product) throw notFound();
+    return product;
+  },
   component: ProductPage,
   notFoundComponent: NotFound,
 });
@@ -51,20 +42,11 @@ function NotFound() {
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
       <h1 className="font-garamond text-4xl">Piece not found</h1>
-      <p className="text-muted-foreground mt-2">This vanity case couldn't be located.</p>
+      <p className="text-muted-foreground mt-2">This product couldn't be located.</p>
       <Link to="/vanity-cases" className="eyebrow mt-8 underline underline-offset-4 hover:text-accent">
-        Back to Vanity Cases
+        Back to the collection
       </Link>
     </div>
-  );
-}
-
-function ProductPage() {
-  const { handle } = Route.useParams();
-  return (
-    <Suspense fallback={<div className="h-screen" />}>
-      <ProductDetail handle={handle} />
-    </Suspense>
   );
 }
 
@@ -81,7 +63,6 @@ function swatchColor(value: string): string {
   return COLOR_SWATCHES[value.toLowerCase()] ?? "#cccccc";
 }
 
-/* Choose light or dark text for a given hex swatch for readability. */
 function textColorForSwatch(value: string): string {
   const hex = swatchColor(value).replace("#", "");
   const r = parseInt(hex.slice(0, 2), 16);
@@ -91,45 +72,30 @@ function textColorForSwatch(value: string): string {
   return luminance > 0.6 ? "#111111" : "#ffffff";
 }
 
-function ProductDetail({ handle }: { handle: string }) {
-  const { data: product } = useSuspenseQuery(productQueryOptions(handle));
-  const images = product.images.edges;
-  const variants = product.variants.edges;
-  const [variantId, setVariantId] = useState(variants[0]?.node.id);
-  const [qty] = useState(1);
+function ProductPage() {
+  const product = Route.useLoaderData() as StaticProduct;
+  return <ProductDetail product={product} />;
+}
+
+function ProductDetail({ product }: { product: StaticProduct }) {
+  const { images, variants, colors, colorOptionName } = product;
+  const [variantId, setVariantId] = useState(variants[0]?.id);
   const [activeImage, setActiveImage] = useState(0);
 
   const selectedVariant = useMemo(
-    () => variants.find((v) => v.node.id === variantId)?.node ?? variants[0]?.node,
+    () => variants.find((v) => v.id === variantId) ?? variants[0],
     [variantId, variants],
   );
+  const selectedColor = selectedVariant?.color;
 
-  // Detect the color option: prefer named "color"/"colour", otherwise fall back
-  // to any option whose values match known color swatch names.
-  const isColorName = (v: string) => v.toLowerCase() in COLOR_SWATCHES;
-  const colorOption =
-    product.options.find((o) => ["color", "colour"].includes(o.name.toLowerCase())) ??
-    product.options.find((o) => o.values.some(isColorName));
-  const selectedColor = colorOption
-    ? selectedVariant?.selectedOptions.find((o) => o.name === colorOption.name)?.value
-    : undefined;
-
-  // When the selected color changes, switch the main image to match (by altText, then by index).
+  // When the selected color changes, switch the main image to match.
   useEffect(() => {
     if (!selectedColor || images.length === 0) return;
-    const needle = selectedColor.toLowerCase();
-    const byAlt = images.findIndex((img) =>
-      (img.node.altText ?? "").toLowerCase().includes(needle),
+    const idx = images.findIndex(
+      (img) => (img.color ?? "").toLowerCase() === selectedColor.toLowerCase(),
     );
-    if (byAlt >= 0) {
-      setActiveImage(byAlt);
-      return;
-    }
-    if (colorOption) {
-      const idx = colorOption.values.findIndex((v) => v.toLowerCase() === needle);
-      if (idx >= 0 && idx < images.length) setActiveImage(idx);
-    }
-  }, [selectedColor, colorOption, images]);
+    if (idx >= 0) setActiveImage(idx);
+  }, [selectedColor, images]);
 
   // Sync top banner color with selected swatch.
   const setBannerColor = useBannerStore((s) => s.setColor);
@@ -139,28 +105,16 @@ function ProductDetail({ handle }: { handle: string }) {
     return () => setBannerColor(null, null);
   }, [selectedColor, setBannerColor]);
 
-  const addItem = useCartStore((s) => s.addItem);
-  const isLoading = useCartStore((s) => s.isLoading);
-
-  const productWrap: ShopifyProduct = { node: product };
   const inStock = !!selectedVariant?.availableForSale;
 
-  const handleAdd = async () => {
+  const handleAdd = () => {
     if (!selectedVariant || !inStock) return;
-    await addItem({
-      product: productWrap,
-      variantId: selectedVariant.id,
-      variantTitle: selectedVariant.title,
-      price: selectedVariant.price,
-      quantity: qty,
-      selectedOptions: selectedVariant.selectedOptions ?? [],
-    });
+    toast.success(`${product.title} — ${selectedVariant.title} added to cart`);
   };
 
   const handleNotify = () => {
-    alert("We'll let you know when this piece is back.");
+    toast("We'll let you know when this piece is back.");
   };
-
 
   return (
     <article className="px-4 md:px-10 pt-10 pb-24 bg-background">
@@ -168,41 +122,49 @@ function ProductDetail({ handle }: { handle: string }) {
         <nav className="eyebrow text-muted-foreground mb-8 text-xs">
           <Link to="/" className="hover:text-accent">Home</Link>
           <span className="mx-2">/</span>
-          <Link to="/vanity-cases" className="hover:text-accent">Vanity Cases</Link>
+          <Link to={product.categoryHref} className="hover:text-accent">
+            {product.categoryLabel}
+          </Link>
           <span className="mx-2">/</span>
           <span>{product.title}</span>
         </nav>
 
         <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(300px,390px)] xl:grid-cols-[minmax(0,940px)_420px] gap-8 md:gap-10 xl:gap-16 items-start">
-          {/* Left side — thumbnails next to the main product image */}
+          {/* Left side — thumbnails + main image */}
           <div className="grid md:grid-cols-[72px_minmax(0,1fr)] gap-3 md:gap-5">
             <div className="hidden md:flex flex-col gap-3">
               {images.slice(0, 8).map((img, i) => (
                 <button
-                  key={img.node.url}
+                  key={img.altText + i}
                   onClick={() => setActiveImage(i)}
                   aria-label={`View image ${i + 1}`}
                   className={`aspect-[4/5] bg-muted overflow-hidden rounded-[2px] transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground ${
                     activeImage === i ? "opacity-100" : "opacity-55 hover:opacity-100"
                   }`}
                 >
-                  <img src={img.node.url} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  {img.url ? (
+                    <img src={img.url} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  ) : (
+                    <ImageSlot label={img.altText} caption="" className="w-full h-full border-0" />
+                  )}
                 </button>
               ))}
             </div>
 
             <div className="relative bg-muted rounded-[2px] overflow-hidden aspect-[4/5] md:min-h-[620px]">
-              {images[activeImage] ? (
+              {images[activeImage]?.url ? (
                 <img
-                  key={images[activeImage].node.url}
-                  src={images[activeImage].node.url}
-                  alt={images[activeImage].node.altText ?? product.title}
+                  key={images[activeImage].url}
+                  src={images[activeImage].url}
+                  alt={images[activeImage].altText}
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-muted-foreground eyebrow text-xs">
-                  Product image
-                </div>
+                <ImageSlot
+                  label={images[activeImage]?.altText ?? product.title}
+                  caption={`${product.title} — ${selectedColor ?? ""}`}
+                  className="w-full h-full border-0"
+                />
               )}
               {images.length > 1 && (
                 <>
@@ -227,25 +189,30 @@ function ProductDetail({ handle }: { handle: string }) {
             <div className="md:hidden flex gap-2 overflow-x-auto -mx-4 px-4 pb-1">
               {images.slice(0, 8).map((img, i) => (
                 <button
-                  key={img.node.url}
+                  key={img.altText + i}
                   onClick={() => setActiveImage(i)}
                   aria-label={`View image ${i + 1}`}
                   className={`shrink-0 h-16 w-13 bg-muted overflow-hidden rounded-[2px] transition-opacity ${
                     activeImage === i ? "opacity-100 ring-1 ring-foreground/70" : "opacity-70"
                   }`}
                 >
-                  <img src={img.node.url} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  {img.url ? (
+                    <img src={img.url} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  ) : (
+                    <div
+                      className="w-full h-full"
+                      style={{ backgroundColor: swatchColor(img.color ?? "") }}
+                    />
+                  )}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Right side — product information */}
+          {/* Right side — product info */}
           <div className="md:sticky md:top-24 md:self-start">
             <div className="flex items-start justify-between gap-4">
-              <h1 className="font-garamond text-[34px] leading-none">
-                {product.title}
-              </h1>
+              <h1 className="font-garamond text-[34px] leading-none">{product.title}</h1>
               <button
                 aria-label="Add to wishlist"
                 className="shrink-0 h-10 w-10 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors"
@@ -262,25 +229,20 @@ function ProductDetail({ handle }: { handle: string }) {
               <ProductReviews />
             </div>
 
-
-            {colorOption && (
+            {colors.length > 0 && (
               <div className="mt-8">
                 <div className="text-[13px] mb-4">
-                  Colour: <span className="text-muted-foreground">{selectedColor}</span>
+                  {colorOptionName}: <span className="text-muted-foreground">{selectedColor}</span>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  {colorOption.values.map((value) => {
-                    const match = variants.find((v) =>
-                      v.node.selectedOptions.some(
-                        (o) => o.name === colorOption.name && o.value === value,
-                      ),
-                    );
+                  {colors.map((value) => {
+                    const match = variants.find((v) => v.color === value);
                     const isActive = selectedColor === value;
                     const disabled = !match;
                     return (
                       <button
                         key={value}
-                        onClick={() => match && setVariantId(match.node.id)}
+                        onClick={() => match && setVariantId(match.id)}
                         disabled={disabled}
                         aria-label={value}
                         title={value}
@@ -300,43 +262,33 @@ function ProductDetail({ handle }: { handle: string }) {
             <div className="mt-8 space-y-3">
               <button
                 onClick={handleAdd}
-                disabled={isLoading || !inStock}
+                disabled={!inStock}
                 className="w-full h-13 border border-transparent tracking-[0.14em] text-[12px] transition-colors duration-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 style={
                   selectedColor
-                    ? {
+                    ? ({
                         backgroundColor: swatchColor(selectedColor),
                         color: textColorForSwatch(selectedColor),
-                        // Persist the same paint for both rest and hover states.
                         "--btn-bg": swatchColor(selectedColor),
                         "--btn-fg": textColorForSwatch(selectedColor),
-                      } as React.CSSProperties
+                      } as React.CSSProperties)
                     : { backgroundColor: "#111111", color: "#ffffff" }
                 }
                 onMouseEnter={(e) => {
                   const target = e.currentTarget;
                   if (selectedColor) {
-                    target.style.backgroundColor = "var(--btn-bg)";
-                    target.style.color = "var(--btn-fg)";
                     target.style.filter = "brightness(0.95)";
                   }
                 }}
                 onMouseLeave={(e) => {
                   const target = e.currentTarget;
                   if (selectedColor) {
-                    target.style.backgroundColor = "var(--btn-bg)";
-                    target.style.color = "var(--btn-fg)";
                     target.style.filter = "none";
                   }
                 }}
               >
-                {isLoading ? (
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                ) : (
-                  "Add to cart"
-                )}
+                {inStock ? "Add to cart" : "Sold out"}
               </button>
-
 
               {!inStock && (
                 <button
@@ -349,9 +301,8 @@ function ProductDetail({ handle }: { handle: string }) {
             </div>
 
             <div className="mt-8 text-[13px] leading-relaxed text-foreground/80 whitespace-pre-line">
-              {product.description || "A Dahlia vanity case."}
+              {product.description}
             </div>
-
           </div>
         </div>
       </div>
