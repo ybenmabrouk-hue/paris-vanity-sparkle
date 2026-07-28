@@ -124,6 +124,10 @@ function VanityProductCard({ card }: { card: ColorSwatch }) {
       >
         $70
       </div>
+      <div className="flex items-center gap-1.5 mt-1.5 text-[12px] text-foreground/80">
+        <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#3ea564]" aria-hidden />
+        <span>In stock for immediate dispatch</span>
+      </div>
       <ProductReviews className="mt-[10px]" />
     </Link>
   );
