@@ -287,17 +287,15 @@ function ProductDetail({ product }: { product: StaticProduct }) {
                   }
                 }}
               >
-                {inStock ? "Add to cart" : "Sold out"}
+                {inStock ? "Add to Cart" : "Sold out"}
               </button>
 
-              {!inStock && (
-                <button
-                  onClick={handleNotify}
-                  className="w-full h-13 bg-muted text-foreground/70 tracking-[0.14em] text-[12px] hover:bg-muted/80 transition-colors"
-                >
-                  Notify me when available
-                </button>
-              )}
+              <button
+                onClick={handleNotify}
+                className="w-full h-13 bg-muted text-foreground/70 tracking-[0.14em] text-[12px] hover:bg-muted/80 transition-colors"
+              >
+                Notify me when available
+              </button>
             </div>
 
             <div className="mt-8 text-[13px] leading-relaxed text-foreground/80 whitespace-pre-line">
