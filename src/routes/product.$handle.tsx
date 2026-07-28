@@ -228,6 +228,12 @@ function ProductDetail({ product }: { product: StaticProduct }) {
               </div>
               <ProductReviews />
             </div>
+            {inStock && (
+              <div className="mt-2 flex items-center gap-1.5 text-[12px] text-foreground/80">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#3ea564]" aria-hidden />
+                <span>In stock for immediate dispatch</span>
+              </div>
+            )}
 
             {colors.length > 0 && (
               <div className="mt-8">
