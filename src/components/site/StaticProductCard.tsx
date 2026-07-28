@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Star } from "lucide-react";
 import { formatPrice, type StaticProduct } from "@/lib/staticProducts";
 import { ImageSlot } from "@/components/site/ImageSlot";
 
@@ -12,6 +13,15 @@ const COLOR_SWATCHES: Record<string, string> = {
 
 function swatchColor(value: string): string {
   return COLOR_SWATCHES[value.toLowerCase()] ?? "#cccccc";
+}
+
+function ProductReviews({ rating = 4.9 }: { rating?: number }) {
+  return (
+    <div className="flex items-center gap-1.5 text-[12px] text-muted-foreground">
+      <Star className="w-3 h-3 fill-foreground text-foreground" aria-hidden />
+      <span>{rating} stars</span>
+    </div>
+  );
 }
 
 export function StaticProductCard({ product }: { product: StaticProduct }) {
@@ -67,7 +77,10 @@ export function StaticProductCard({ product }: { product: StaticProduct }) {
             {formatPrice(price.amount, price.currencyCode)}
           </div>
         </div>
-        <div className="flex flex-wrap gap-2 mt-3">
+        <div className="mt-2">
+          <ProductReviews />
+        </div>
+        <div className="flex flex-wrap gap-2 mt-2">
           {product.colors.map((color) => (
             <span
               key={color}
