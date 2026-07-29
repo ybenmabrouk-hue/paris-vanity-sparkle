@@ -8,6 +8,7 @@ import { ProductReviews } from "@/components/site/ProductReviews";
 import { ImageSlot } from "@/components/site/ImageSlot";
 import { UGCGallery } from "@/components/site/UGCGallery";
 import { Marquee } from "@/components/site/Marquee";
+import { TimelessPiece } from "@/components/site/TimelessPiece";
 import { StopDigging } from "@/components/site/StopDigging";
 import { WashableInterior } from "@/components/site/WashableInterior";
 import { LifestyleStory } from "@/components/site/LifestyleStory";
@@ -318,6 +319,8 @@ function ProductDetail({ product }: { product: StaticProduct }) {
       <div className="mt-16 md:mt-24">
         <UGCGallery />
       </div>
+
+      <TimelessPiece />
 
       <StopDigging />
 
