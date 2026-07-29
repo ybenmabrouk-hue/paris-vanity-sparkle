@@ -7,7 +7,7 @@ const ITEMS = [
   },
   {
     icon: RefreshCcw,
-    label: "30-Day Returns",
+    label: "15-day Returns",
   },
   {
     icon: ShieldCheck,
