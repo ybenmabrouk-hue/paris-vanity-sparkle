@@ -332,6 +332,8 @@ function ProductDetail({ product }: { product: StaticProduct }) {
       <ReassuranceIcons />
 
       <ReviewsSection />
+
+      <FAQ />
     </article>
   );
 }
