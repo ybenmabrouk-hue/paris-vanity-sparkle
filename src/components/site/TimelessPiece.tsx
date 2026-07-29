@@ -10,15 +10,15 @@ export function TimelessPiece() {
     <section className="mt-16 md:mt-24 bg-background">
       <div className="grid grid-cols-1 md:grid-cols-[minmax(0,58%)_minmax(0,1fr)] items-stretch gap-10 md:gap-0">
         {/* Left — two photos touching, flush to the left edge */}
-        <div className="flex w-full h-full">
-          <div className="flex-1 aspect-[3/4] md:aspect-auto bg-muted overflow-hidden">
+        <div className="grid grid-cols-2 w-full">
+          <div className="aspect-[3/4] bg-muted overflow-hidden">
             <ImageSlot
               label="Image — vanity case craftsmanship detail"
               className="h-full w-full"
               caption="Image — craftsmanship detail"
             />
           </div>
-          <div className="flex-1 aspect-[3/4] md:aspect-auto bg-muted overflow-hidden">
+          <div className="aspect-[3/4] bg-muted overflow-hidden">
             <ImageSlot
               label="Image — vegan leather material close-up"
               className="h-full w-full"
