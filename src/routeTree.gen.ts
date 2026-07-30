@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VanityCasesRouteImport } from './routes/vanity-cases'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CollectionRouteImport } from './routes/collection'
-import { Route as BrushesRouteImport } from './routes/brushes'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 
@@ -31,11 +30,6 @@ const CollectionRoute = CollectionRouteImport.update({
   path: '/collection',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BrushesRoute = BrushesRouteImport.update({
-  id: '/brushes',
-  path: '/brushes',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -49,7 +43,6 @@ const ProductHandleRoute = ProductHandleRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/brushes': typeof BrushesRoute
   '/collection': typeof CollectionRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/vanity-cases': typeof VanityCasesRoute
@@ -57,7 +50,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/brushes': typeof BrushesRoute
   '/collection': typeof CollectionRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/vanity-cases': typeof VanityCasesRoute
@@ -66,7 +58,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/brushes': typeof BrushesRoute
   '/collection': typeof CollectionRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/vanity-cases': typeof VanityCasesRoute
@@ -76,7 +67,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/brushes'
     | '/collection'
     | '/sitemap.xml'
     | '/vanity-cases'
@@ -84,7 +74,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/brushes'
     | '/collection'
     | '/sitemap.xml'
     | '/vanity-cases'
@@ -92,7 +81,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/brushes'
     | '/collection'
     | '/sitemap.xml'
     | '/vanity-cases'
@@ -101,7 +89,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BrushesRoute: typeof BrushesRoute
   CollectionRoute: typeof CollectionRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   VanityCasesRoute: typeof VanityCasesRoute
@@ -131,13 +118,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CollectionRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/brushes': {
-      id: '/brushes'
-      path: '/brushes'
-      fullPath: '/brushes'
-      preLoaderRoute: typeof BrushesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -157,7 +137,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BrushesRoute: BrushesRoute,
   CollectionRoute: CollectionRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   VanityCasesRoute: VanityCasesRoute,
@@ -166,3 +145,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
