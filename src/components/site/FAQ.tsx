@@ -45,7 +45,7 @@ export function FAQ() {
     <section className="w-full bg-white px-6 md:px-12 lg:px-20 py-16 md:py-24">
       <div className="max-w-[1000px] mx-auto">
         <h2 className="font-garamond italic text-3xl md:text-4xl lg:text-[42px] leading-[1.05] tracking-[0.01em] text-foreground mb-10 md:mb-14">
-          Faq
+          FAQ
         </h2>
 
         <div className="flex flex-col gap-3">
