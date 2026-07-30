@@ -7,9 +7,12 @@ const COLOR_SWATCHES: Record<string, string> = {
   black: "#111111",
   beige: "#d9c6a5",
   brown: "#6b4a2b",
+  espresso: "#4a3227",
   pink: "#e8b5c0",
-  burgundy: "#6b1f2b",
+  rose: "#e3a9ae",
+  burgundy: "#320F13",
 };
+
 
 function swatchColor(value: string): string {
   return COLOR_SWATCHES[value.toLowerCase()] ?? "#cccccc";
