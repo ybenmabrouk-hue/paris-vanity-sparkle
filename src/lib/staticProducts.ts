@@ -16,9 +16,9 @@ export interface StaticProduct {
   title: string;
   subtitle: string;
   description: string;
-  category: "vanity-case" | "brush";
+  category: "vanity-case";
   categoryLabel: string;
-  categoryHref: "/vanity-cases" | "/brushes";
+  categoryHref: "/vanity-cases";
   images: { url: string; altText: string; color?: string }[];
   colorOptionName: string;
   colors: string[];
@@ -71,28 +71,6 @@ export const STATIC_PRODUCTS: Record<string, StaticProduct> = {
     ],
   },
 
-  brush: {
-    handle: "brush",
-    title: "The Brush",
-    subtitle: "Brush / signature",
-    description:
-      "A signature Dahlia brush, designed for precision and made to last. Soft bristles and a hand-finished handle, shaped to pair seamlessly with the Dahlia ritual.\n\nUse for face, eyes or detail work.",
-    category: "brush",
-    categoryLabel: "Brushes",
-    categoryHref: "/brushes",
-    colorOptionName: "Finish",
-    colors: ["Black", "Beige", "Brown"],
-    images: [
-      { url: "", altText: "Brush — black", color: "Black" },
-      { url: "", altText: "Brush — beige", color: "Beige" },
-      { url: "", altText: "Brush — brown", color: "Brown" },
-    ],
-    variants: [
-      { id: "br-black", title: "Black", color: "Black", price: usd("38.00"), availableForSale: true },
-      { id: "br-beige", title: "Beige", color: "Beige", price: usd("38.00"), availableForSale: true },
-      { id: "br-brown", title: "Brown", color: "Brown", price: usd("38.00"), availableForSale: false },
-    ],
-  },
 };
 
 export function getStaticProduct(handle: string): StaticProduct | null {
