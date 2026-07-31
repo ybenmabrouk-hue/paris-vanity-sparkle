@@ -19,9 +19,10 @@ export function Header() {
           <Link to="/vanity-cases" className="hover:opacity-60 transition-opacity">
             Vanity Cases
           </Link>
-          <a href="#story" className="hover:opacity-60 transition-opacity">
+          <Link to="/about" className="hover:opacity-60 transition-opacity">
             About
-          </a>
+          </Link>
+
           <a href="#login" className="hover:opacity-60 transition-opacity">
             Login
           </a>
