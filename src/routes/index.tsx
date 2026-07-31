@@ -5,6 +5,7 @@ import { SocialFeed } from "@/components/site/SocialFeed";
 import { ReassuranceIcons } from "@/components/site/ReassuranceIcons";
 import { Editorial } from "@/components/site/Editorial";
 import { ProductReviews } from "@/components/site/ProductReviews";
+import { FAQ } from "@/components/site/FAQ";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
 import monogrammeWhite from "@/assets/dahlia-monogramme-white.png.asset.json";
 
@@ -23,6 +24,7 @@ function Home() {
       <Editorial />
       <SocialFeed />
       <ReassuranceIcons />
+      <FAQ />
     </div>
   );
 }
