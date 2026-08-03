@@ -8,6 +8,8 @@ import { ProductReviews } from "@/components/site/ProductReviews";
 import { FAQ } from "@/components/site/FAQ";
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
 import monogrammeWhite from "@/assets/dahlia-monogramme-white.png.asset.json";
+import heroBanner from "@/assets/hero-balzac.jpg.asset.json";
+
 
 
 
@@ -34,11 +36,13 @@ function Banner() {
   return (
     <section className="relative -mt-16">
       <div className="relative w-full aspect-[16/9] md:aspect-[32/17] overflow-hidden bg-secondary">
-        <ImageSlot
-          label="Dahlia — hero banner (3200×1700)"
-          caption="Hero banner"
-          className="absolute inset-0 border-0"
+        <img
+          src={heroBanner.url}
+          alt="Dahlia — editorial hero, hotel suite"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
+        <div className="absolute inset-0 bg-black/15" />
+
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-[42px] md:pb-[80px] px-6 text-center">
           <img
             src={logoBlack.url}
