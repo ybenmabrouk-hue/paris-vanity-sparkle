@@ -1,6 +1,7 @@
 import { ImageSlot } from "@/components/site/ImageSlot";
 import { VideoSlot } from "@/components/site/VideoSlot";
 import ritualImage from "@/assets/editorial-chapter-i-ritual.jpg.asset.json";
+import ritualOpenImage from "@/assets/editorial-chapter-i-ritual-open.jpg.asset.json";
 
 export function Editorial() {
   return (
