@@ -75,15 +75,15 @@ export function Editorial() {
           </p>
         </div>
         <div className="grid grid-cols-2">
-          <img
-            src={ritualImage.url}
-            alt="Chapter I — a pink Dahlia vanity case and beauty essentials on a hotel bed"
-            className="w-full h-full object-cover aspect-[3/4] md:aspect-auto md:min-h-[640px]"
+          <ImageSlot
+            label="Chapter I — a mess of beauty products scattered before the ritual"
+            caption="Before — the mess"
+            className="w-full aspect-[3/4] md:aspect-auto md:min-h-[640px] border-0"
           />
-          <img
-            src={ritualOpenImage.url}
-            alt="Chapter I — the open Dahlia vanity case, organized with beauty essentials"
-            className="w-full h-full object-cover aspect-[3/4] md:aspect-auto md:min-h-[640px]"
+          <ImageSlot
+            label="Chapter I — model getting ready using the Dahlia vanity case"
+            caption="After — the ritual"
+            className="w-full aspect-[3/4] md:aspect-auto md:min-h-[640px] border-0"
           />
         </div>
       </div>
