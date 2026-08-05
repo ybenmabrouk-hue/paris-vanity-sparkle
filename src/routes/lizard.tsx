@@ -170,33 +170,70 @@ function LizardPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <div className="relative aspect-[4/5]">
-              <Link to="/product/vanity-case-lizard" className="absolute inset-0">
-                <ImageSlot
-                  label="The Lizard Vanity Case — Pink"
-                  caption="Lizard Pink"
-                  className="absolute inset-0 border-0 bg-petale text-foreground"
-                />
-              </Link>
-            </div>
-            <div className="relative aspect-[4/5]">
-              <Link to="/product/vanity-case-lizard" className="absolute inset-0">
-                <ImageSlot
-                  label="The Lizard Vanity Case — Beige"
-                  caption="Lizard Beige"
-                  className="absolute inset-0 border-0 text-foreground"
-                  style={{ backgroundColor: LIZARD_BEIGE }}
-                />
-              </Link>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-6">
-            <StaticProductCard product={lizardProduct} />
-            <StaticProductCard product={lizardProduct} />
+            <LizardProductCard
+              product={lizardProduct}
+              color="Rose"
+              bgColor={LIZARD_PINK}
+            />
+            <LizardProductCard
+              product={lizardProduct}
+              color="Beige"
+              bgColor={LIZARD_BEIGE}
+            />
           </div>
         </div>
       </section>
     </div>
+  );
+}
+
+function LizardProductCard({
+  product,
+  color,
+  bgColor,
+}: {
+  product: StaticProduct;
+  color: string;
+  bgColor: string;
+}) {
+  const price = product.variants.find((v) => v.color === color)?.price ??
+    product.variants[0]?.price ?? { amount: "0", currencyCode: "USD" };
+
+  return (
+    <Link to="/product/$handle" params={{ handle: product.handle }} className="group block">
+      <div className="relative aspect-[4/5] overflow-hidden">
+        <ImageSlot
+          label={`${product.title} — ${color}`}
+          caption={color}
+          className="absolute inset-0 border-0 text-foreground"
+          style={{ backgroundColor: bgColor }}
+        />
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <div className="flex justify-between items-start gap-1">
+          <div style={{ fontSize: "15px", lineHeight: "20px" }}>
+            {product.title}
+            <br />
+            <span className="text-muted-foreground" style={{ fontSize: "13px" }}>
+              {product.subtitle}
+            </span>
+          </div>
+          <div
+            className="text-muted-foreground whitespace-nowrap"
+            style={{ fontSize: "14px", lineHeight: "20px" }}
+          >
+            {formatPrice(price.amount, price.currencyCode)}
+          </div>
+        </div>
+        <div className="flex items-center gap-1.5 mt-1.5 text-[12px] text-foreground/80">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#3ea564]" aria-hidden />
+          <span>Limited stock available</span>
+        </div>
+        <div className="mt-2 flex items-center gap-1.5 text-[12px] text-muted-foreground">
+          <Star className="w-3 h-3 fill-foreground text-foreground" aria-hidden />
+          <span>4.9 stars</span>
+        </div>
+      </div>
+    </Link>
   );
 }
