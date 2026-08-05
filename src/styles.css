@@ -113,6 +113,7 @@
   --color-terracotta: var(--terracotta);
   --color-ink: var(--ink);
   --color-petale: var(--petale);
+  --color-burgundy: var(--burgundy);
 }
 
 :root {
