@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Star } from "lucide-react";
 import { ImageSlot } from "@/components/site/ImageSlot";
-import { StaticProductCard } from "@/components/site/StaticProductCard";
+import { formatPrice, type StaticProduct } from "@/lib/staticProducts";
 import { STATIC_PRODUCTS } from "@/lib/staticProducts";
 import monogrammeWhite from "@/assets/dahlia-monogramme-white.png.asset.json";
 
