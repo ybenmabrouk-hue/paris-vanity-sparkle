@@ -9,15 +9,18 @@ export function ImageSlot({
   label,
   className,
   caption,
+  style,
 }: {
   label: string;
   className?: string;
   caption?: string;
+  style?: React.CSSProperties;
 }) {
   return (
     <div
       role="img"
       aria-label={label}
+      style={style}
       className={cn(
         "flex items-center justify-center bg-muted text-muted-foreground",
         "border border-dashed border-border",
