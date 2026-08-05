@@ -260,7 +260,7 @@ function LizardBanner() {
           collect the exception.
         </p>
         <Link
-          to="/product/vanity-case-lizard"
+          to="/lizard"
           className="inline-block mt-6 border-b border-burgundy/90 pb-1 hover:opacity-80 transition-opacity"
           style={{
             fontSize: "13px",
