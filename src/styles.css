@@ -113,6 +113,7 @@
   --color-terracotta: var(--terracotta);
   --color-ink: var(--ink);
   --color-petale: var(--petale);
+  --color-burgundy: var(--burgundy);
 }
 
 :root {
@@ -123,6 +124,7 @@
   --terracotta: oklch(0.62 0.13 40);
   --ink: oklch(0.22 0.02 60);
   --petale: #edc7c7;
+  --burgundy: #320F13;
 
   --background: #ffffff;
   --foreground: oklch(0.22 0.02 60);
