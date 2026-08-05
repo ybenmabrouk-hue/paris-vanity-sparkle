@@ -203,3 +203,73 @@ function TextBanner() {
     </section>
   );
 }
+
+/* ---------- Pink Lizard limited-edition banner ---------- */
+function LizardBanner() {
+  return (
+    <section
+      className="bg-petale text-burgundy"
+      style={{
+        // sept .section-spacing → 2.5rem (mobile) to 4rem (desktop),
+        // plus the 1.5625rem block-start compensation
+        paddingBlockStart: "calc(clamp(2.5rem, 2.0122rem + 2.0813vw, 4rem) + 1.5625rem)",
+        paddingBlockEnd: "clamp(2.5rem, 2.0122rem + 2.0813vw, 4rem)",
+      }}
+    >
+      <div
+        className="mx-auto text-center"
+        style={{
+          maxWidth: "55rem",
+          paddingInline: "clamp(1.25rem, 0.6707rem + 2.4390vw, 3rem)",
+        }}
+      >
+        <img
+          src={monogrammeWhite.url}
+          alt=""
+          aria-hidden
+          className="block mx-auto"
+          style={{
+            width: "clamp(140px, 22vw, 320px)",
+            height: "auto",
+            transform: "translateX(-8%)",
+            filter: "invert(1)",
+          }}
+        />
+        <h2
+          className="font-garamond"
+          style={{
+            fontWeight: 300,
+            letterSpacing: "0.01em",
+            marginBlockStart: "1.25rem",
+            fontSize: "clamp(40px, 6vw, 72px)",
+            lineHeight: 1.05,
+            whiteSpace: "nowrap",
+          }}
+        >
+          The Lizard limited edition
+        </h2>
+        <p
+          style={{
+            marginBlockStart: "1.25rem",
+            fontSize: "1rem",
+            lineHeight: 1.6,
+          }}
+        >
+          Pink and beige, reimagined in lizard-embossed vegan leather. The same
+          Dahlia silhouette, raised with a new scale of texture — for those who
+          collect the exception.
+        </p>
+        <Link
+          to="/product/vanity-case-lizard"
+          className="inline-block mt-6 border-b border-burgundy/90 pb-1 hover:opacity-80 transition-opacity"
+          style={{
+            fontSize: "13px",
+            letterSpacing: "0.14em",
+          }}
+        >
+          Shop the lizard edition
+        </Link>
+      </div>
+    </section>
+  );
+}
