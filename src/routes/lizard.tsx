@@ -114,7 +114,8 @@ function LizardPage() {
           <ImageSlot
             label="Warm beige lizard vanity case campaign image"
             caption="Beige lizard campaign image"
-            className="absolute inset-0 border-0"
+            className="absolute inset-0 border-0 text-foreground"
+            style={{ backgroundColor: LIZARD_BEIGE }}
           />
         </div>
         <div className="flex items-center justify-center px-6 md:px-10 py-16 md:py-24 bg-background">
