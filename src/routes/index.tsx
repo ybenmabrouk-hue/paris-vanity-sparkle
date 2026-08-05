@@ -24,6 +24,7 @@ function Home() {
       <CollectionCarousel />
       <TextBanner />
       <Editorial />
+      <LizardBanner />
       <SocialFeed />
       <ReassuranceIcons />
       <FAQ />
