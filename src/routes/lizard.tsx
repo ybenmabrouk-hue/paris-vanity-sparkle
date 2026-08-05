@@ -169,21 +169,22 @@ function LizardPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <div className="relative aspect-[4/5]" style={{ backgroundColor: LIZARD_PINK }}>
+            <div className="relative aspect-[4/5]">
               <Link to="/product/vanity-case-lizard" className="absolute inset-0">
                 <ImageSlot
                   label="The Lizard Vanity Case — Pink"
                   caption="Lizard Pink"
-                  className="absolute inset-0 border-0"
+                  className="absolute inset-0 border-0 bg-petale text-foreground"
                 />
               </Link>
             </div>
-            <div className="relative aspect-[4/5]" style={{ backgroundColor: LIZARD_BEIGE }}>
+            <div className="relative aspect-[4/5]">
               <Link to="/product/vanity-case-lizard" className="absolute inset-0">
                 <ImageSlot
                   label="The Lizard Vanity Case — Beige"
                   caption="Lizard Beige"
-                  className="absolute inset-0 border-0"
+                  className="absolute inset-0 border-0 text-foreground"
+                  style={{ backgroundColor: LIZARD_BEIGE }}
                 />
               </Link>
             </div>
