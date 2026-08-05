@@ -99,11 +99,11 @@ function LizardPage() {
             </p>
           </div>
         </div>
-        <div className="relative min-h-[400px] md:min-h-[600px]" style={{ backgroundColor: LIZARD_PINK }}>
+        <div className="relative min-h-[400px] md:min-h-[600px] bg-petale">
           <ImageSlot
             label="Petal pink lizard vanity case campaign image"
             caption="Pink lizard campaign image"
-            className="absolute inset-0 border-0"
+            className="absolute inset-0 border-0 bg-petale text-foreground"
           />
         </div>
       </section>
