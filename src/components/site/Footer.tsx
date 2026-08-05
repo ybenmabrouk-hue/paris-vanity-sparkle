@@ -40,11 +40,11 @@ export function Footer() {
               <li><a href="#" className="hover:opacity-60 transition">Reviews</a></li>
             </ul>
             <ul className="space-y-4" style={{ fontSize: "14px", lineHeight: "20px" }}>
-              <li><Link to="/shipping" className="hover:opacity-60 transition">Shipping & returns</Link></li>
+              <li><a href="#" className="hover:opacity-60 transition">Shipping & returns</a></li>
               <li><a href="#" className="hover:opacity-60 transition">Warranty</a></li>
               <li><a href="#" className="hover:opacity-60 transition">Make a return</a></li>
-              <li><Link to="/privacy" className="hover:opacity-60 transition">Terms & conditions</Link></li>
-              <li><Link to="/privacy" className="hover:opacity-60 transition">Privacy policy</Link></li>
+              <li><a href="#" className="hover:opacity-60 transition">Terms & conditions</a></li>
+              <li><a href="#" className="hover:opacity-60 transition">Privacy policy</a></li>
               <li><a href="#" className="hover:opacity-60 transition">Eu right of withdrawal</a></li>
             </ul>
             <ul className="space-y-4" style={{ fontSize: "14px", lineHeight: "20px" }}>
