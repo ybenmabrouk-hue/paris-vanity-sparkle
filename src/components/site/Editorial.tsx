@@ -99,64 +99,6 @@ export function Editorial() {
         />
       </div>
 
-      {/* Chapter 2 — Easy packing / space */}
-      <div className="bg-white">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-10 text-center md:text-left" style={{ paddingBlock: "clamp(45px, 6vw, 70px)" }}>
-          <p
-            className="text-[11px] md:text-[12px] uppercase text-muted-foreground"
-            style={{ letterSpacing: "0.24em" }}
-          >
-            Chapter II — The travel
-          </p>
-          <h3
-            className="font-garamond text-black mt-4"
-            style={{
-              fontWeight: 300,
-              letterSpacing: "0.01em",
-              fontSize: "clamp(30px, 4vw, 48px)",
-              lineHeight: 1.1,
-            }}
-          >
-            Everything, in its place
-          </h3>
-          <p
-            className="mt-5 text-muted-foreground max-w-[38rem]"
-            style={{ fontSize: "15px", lineHeight: 1.7 }}
-          >
-            Designed with generous depth and a considered interior, the
-            vanity case holds makeup, skincare and toiletries side by side —
-            so packing takes minutes and nothing gets lost along the way.
-          </p>
-        </div>
-        <div className="grid grid-cols-2">
-          <img
-            src={ritualOpenImage.url}
-            alt="Chapter II — the open Dahlia vanity case, organized with beauty essentials"
-            className="w-full h-full object-cover aspect-[3/4] md:aspect-auto md:min-h-[640px]"
-          />
-          <img
-            src={ritualImage.url}
-            alt="Chapter II — a Dahlia vanity case on a hotel bed with beauty essentials"
-            className="w-full h-full object-cover aspect-[3/4] md:aspect-auto md:min-h-[640px]"
-          />
-        </div>
-      </div>
-
-      {/* Chapter II — supporting duo (sept fragrances style, touching) */}
-      <div className="grid grid-cols-2">
-        <ImageSlot
-          label="Chapter II — supporting editorial image 1"
-          caption="Hôtel Balzac"
-          className="w-full aspect-[4/5] border-0"
-        />
-        <ImageSlot
-          label="Chapter II — supporting editorial image 2"
-          caption="Hôtel Balzac"
-          className="w-full aspect-[4/5] border-0"
-        />
-      </div>
-
-      {/* Full-bleed editorial image */}
       <div className="w-full aspect-[16/9] md:aspect-[21/9]">
         <ImageSlot
           label="Hôtel Balzac — full-bleed editorial (2400×1030)"
