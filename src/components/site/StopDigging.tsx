@@ -1,10 +1,9 @@
-import { ImageSlot } from "./ImageSlot";
+import stopDiggingVideo from "@/assets/stop-digging.mp4.asset.json";
 
 /**
  * Reassurance + storytelling section.
  * Left: title + copy (with breathing room from the edge).
- * Right: two lifestyle photos side-by-side, touching, flush to the right edge
- * of the viewport — echoing Sept's split-screen hero.
+ * Right: stop digging video, flush to the right edge of the viewport.
  */
 export function StopDigging() {
   return (
@@ -32,22 +31,17 @@ export function StopDigging() {
           </div>
         </div>
 
-        {/* Right — two lifestyle photos touching, flush to the right edge */}
-        <div className="flex w-full h-full">
-          <div className="flex-1 bg-muted overflow-hidden">
-            <ImageSlot
-              label="Lifestyle image — vanity case 1"
-              className="h-full w-full"
-              caption="Lifestyle image 1"
-            />
-          </div>
-          <div className="flex-1 bg-muted overflow-hidden">
-            <ImageSlot
-              label="Lifestyle image — vanity case 2"
-              className="h-full w-full"
-              caption="Lifestyle image 2"
-            />
-          </div>
+        {/* Right — stop digging video, flush to the right edge */}
+        <div className="w-full h-full bg-muted overflow-hidden">
+          <video
+            src={stopDiggingVideo.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover"
+            aria-label="Hand digging through a makeup pouch"
+          />
         </div>
       </div>
     </section>
