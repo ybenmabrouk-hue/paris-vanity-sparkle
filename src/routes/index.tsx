@@ -6,6 +6,8 @@ import { ReassuranceIcons } from "@/components/site/ReassuranceIcons";
 import { Editorial } from "@/components/site/Editorial";
 import { ProductReviews } from "@/components/site/ProductReviews";
 import { FAQ } from "@/components/site/FAQ";
+import { LizardSections } from "@/components/site/LizardSections";
+
 import logoBlack from "@/assets/dahlia-logo-black.svg.asset.json";
 import monogrammeWhite from "@/assets/dahlia-monogramme-white.png.asset.json";
 import heroBanner from "@/assets/hero-balzac.jpg.asset.json";
@@ -25,6 +27,8 @@ function Home() {
       <TextBanner />
       <Editorial />
       <LizardBanner />
+      <LizardSections />
+
       <SocialFeed />
       <ReassuranceIcons />
       <FAQ />
