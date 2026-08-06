@@ -1,5 +1,4 @@
 import stopDiggingVideo from "@/assets/stop-digging.mp4.asset.json";
-import { ImageSlot } from "./ImageSlot";
 
 /**
  * Reassurance + storytelling section.
