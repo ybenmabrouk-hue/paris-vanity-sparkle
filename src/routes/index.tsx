@@ -26,9 +26,9 @@ function Home() {
       <CollectionCarousel />
       <TextBanner />
       <Editorial />
-      <SocialFeed />
       <LizardBanner />
       <LizardSections />
+      <SocialFeed />
       <ReassuranceIcons />
 
       <FAQ />
