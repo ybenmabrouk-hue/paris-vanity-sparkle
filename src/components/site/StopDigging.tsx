@@ -3,8 +3,7 @@ import stopDiggingVideo from "@/assets/stop-digging.mp4.asset.json";
 /**
  * Reassurance + storytelling section.
  * Left: title + copy (with breathing room from the edge).
- * Right: two lifestyle photos side-by-side, touching, flush to the right edge
- * of the viewport — echoing Sept's split-screen hero.
+ * Right: stop digging video, flush to the right edge of the viewport.
  */
 export function StopDigging() {
   return (
