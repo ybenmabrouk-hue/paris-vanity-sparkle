@@ -23,7 +23,7 @@ export function VideoSlot({
       )}
     >
       <span className="eyebrow text-xs px-4 text-center">
-        {caption ?? "video coming soon"}
+        {caption ?? "vidéo à venir"}
       </span>
     </div>
   );

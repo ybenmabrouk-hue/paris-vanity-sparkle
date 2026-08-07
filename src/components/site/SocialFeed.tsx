@@ -40,7 +40,7 @@ export function SocialFeed() {
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              aria-label={`View Dahlia post ${i + 1} on Instagram`}
+              aria-label={`Voir la publication Dahlia ${i + 1} sur Instagram`}
               className="relative block aspect-square overflow-hidden bg-secondary group transition-shadow duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/20 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <span aria-hidden="true" className="absolute inset-0">

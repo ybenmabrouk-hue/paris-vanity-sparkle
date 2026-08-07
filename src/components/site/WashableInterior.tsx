@@ -18,7 +18,7 @@ export function WashableInterior() {
             loop
             playsInline
             className="max-h-[320px] md:max-h-[540px] w-auto max-w-full object-contain rounded-[2px]"
-            aria-label="Washable interior being wiped clean with a tissue and water"
+            aria-label="Intérieur lavable nettoyé avec un mouchoir et de l'eau"
           />
         </div>
 
@@ -29,17 +29,18 @@ export function WashableInterior() {
               className="font-garamond text-foreground leading-[1.05] tracking-[0.01em]"
               style={{ fontSize: "clamp(48px, 6vw, 96px)" }}
             >
-              Erase the
+              Effacez les
               <br />
               Traces.
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
-              Makeup smudges, foundation spills, and powder residue? They wipe
-              away in seconds. The interior lining is fully washable with just a
-              tissue and water — no stain, no trace, no stress.
+              Traces de maquillage, coulures de fond de teint, résidus de
+              poudre ? Ils s'effacent en quelques secondes. La doublure
+              intérieure est entièrement lavable avec un simple mouchoir et de
+              l'eau — sans tache, sans trace, sans stress.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
-              Designed to stay as clean as the day you opened it.
+              Pensé pour rester aussi propre que le jour où vous l'avez ouvert.
             </p>
           </div>
         </div>

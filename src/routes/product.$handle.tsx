@@ -18,8 +18,8 @@ import { FAQ } from "@/components/site/FAQ";
 export const Route = createFileRoute("/product/$handle")({
   head: ({ params }) => {
     const p = getStaticProduct(params.handle);
-    const title = p?.title ?? "Product";
-    const desc = p?.description.slice(0, 155) ?? "A Dahlia piece.";
+    const title = p?.title ?? "Produit";
+    const desc = p?.description.slice(0, 155) ?? "Une pièce Dahlia.";
     return {
       meta: [
         { title: `${title} — Dahlia` },
@@ -42,10 +42,10 @@ export const Route = createFileRoute("/product/$handle")({
 function NotFound() {
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
-      <h1 className="font-garamond text-4xl">Piece not found</h1>
-      <p className="text-muted-foreground mt-2">This product couldn't be located.</p>
+      <h1 className="font-garamond text-4xl">Pièce introuvable</h1>
+      <p className="text-muted-foreground mt-2">Ce produit n'a pas pu être trouvé.</p>
       <Link to="/vanity-cases" className="eyebrow mt-8 underline underline-offset-4 hover:text-accent">
-        Back to the collection
+        Retour à la collection
       </Link>
     </div>
   );
@@ -113,18 +113,18 @@ function ProductDetail({ product }: { product: StaticProduct }) {
 
   const handleAdd = () => {
     if (!selectedVariant || !inStock) return;
-    toast.success(`${product.title} — ${selectedVariant.title} added to cart`);
+    toast.success(`${product.title} — ${selectedVariant.title} ajouté au panier`);
   };
 
   const handleNotify = () => {
-    toast("We'll let you know when this piece is back.");
+    toast("Nous vous préviendrons dès que cette pièce sera de retour.");
   };
 
   return (
     <article className="px-4 md:px-10 pt-10 pb-24 bg-background">
       <div className="max-w-[1500px] mx-auto">
         <nav className="eyebrow text-muted-foreground mb-8 text-xs">
-          <Link to="/" className="hover:text-accent">Home</Link>
+          <Link to="/" className="hover:text-accent">Accueil</Link>
           <span className="mx-2">/</span>
           <Link to={product.categoryHref} className="hover:text-accent">
             {product.categoryLabel}
@@ -141,7 +141,7 @@ function ProductDetail({ product }: { product: StaticProduct }) {
                 <button
                   key={img.altText + i}
                   onClick={() => setActiveImage(i)}
-                  aria-label={`View image ${i + 1}`}
+                  aria-label={`Voir l'image ${i + 1}`}
                   className={`aspect-[4/5] bg-muted overflow-hidden rounded-[2px] transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground ${
                     activeImage === i ? "opacity-100" : "opacity-55 hover:opacity-100"
                   }`}
@@ -174,14 +174,14 @@ function ProductDetail({ product }: { product: StaticProduct }) {
                 <>
                   <button
                     onClick={() => setActiveImage((i) => (i - 1 + images.length) % images.length)}
-                    aria-label="Previous image"
+                    aria-label="Image précédente"
                     className="absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground"
                   >
                     <ChevronLeft className="h-6 w-6" strokeWidth={1.25} />
                   </button>
                   <button
                     onClick={() => setActiveImage((i) => (i + 1) % images.length)}
-                    aria-label="Next image"
+                    aria-label="Image suivante"
                     className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground"
                   >
                     <ChevronRight className="h-6 w-6" strokeWidth={1.25} />
@@ -195,7 +195,7 @@ function ProductDetail({ product }: { product: StaticProduct }) {
                 <button
                   key={img.altText + i}
                   onClick={() => setActiveImage(i)}
-                  aria-label={`View image ${i + 1}`}
+                  aria-label={`Voir l'image ${i + 1}`}
                   className={`shrink-0 h-16 w-13 bg-muted overflow-hidden rounded-[2px] transition-opacity ${
                     activeImage === i ? "opacity-100 ring-1 ring-foreground/70" : "opacity-70"
                   }`}
@@ -218,7 +218,7 @@ function ProductDetail({ product }: { product: StaticProduct }) {
             <div className="flex items-start justify-between gap-4">
               <h1 className="font-garamond text-[34px] leading-none">{product.title}</h1>
               <button
-                aria-label="Add to wishlist"
+                aria-label="Ajouter à la liste de souhaits"
                 className="shrink-0 h-10 w-10 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors"
               >
                 <Heart className="h-5 w-5" />
@@ -235,7 +235,7 @@ function ProductDetail({ product }: { product: StaticProduct }) {
             {inStock && (
               <div className="mt-2 flex items-center gap-1.5 text-[12px] text-foreground/80">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#3ea564]" aria-hidden />
-                <span>In stock for immediate dispatch</span>
+                <span>En stock, expédition immédiate</span>
               </div>
             )}
 
@@ -297,14 +297,14 @@ function ProductDetail({ product }: { product: StaticProduct }) {
                   }
                 }}
               >
-                {inStock ? "Add to Cart" : "Sold out"}
+                {inStock ? "Ajouter au panier" : "Épuisé"}
               </button>
 
               <button
                 onClick={handleNotify}
                 className="w-full h-13 bg-muted text-foreground/70 tracking-[0.14em] text-[12px] hover:bg-muted/80 transition-colors"
               >
-                Notify me when available
+                Me prévenir quand disponible
               </button>
             </div>
 

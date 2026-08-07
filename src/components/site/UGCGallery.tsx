@@ -23,7 +23,7 @@ export function UGCGallery() {
             lineHeight: 1.1,
           }}
         >
-          The Dahlia vanity case &amp; you
+          La trousse de toilette Dahlia &amp; vous
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
@@ -46,7 +46,7 @@ export function UGCGallery() {
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-foreground/40">
                   <Play className="w-8 h-8" strokeWidth={1.25} />
                   <span className="text-[11px] tracking-[0.14em]">
-                    video {i + 1}
+                    vidéo {i + 1}
                   </span>
                 </div>
               )}

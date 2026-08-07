@@ -13,7 +13,7 @@ export function Editorial() {
             className="text-[11px] md:text-[12px] uppercase text-muted-foreground"
             style={{ letterSpacing: "0.24em" }}
           >
-            An editorial — Hôtel Balzac, Paris
+            Un éditorial — Hôtel Balzac, Paris
           </p>
           <h2
             className="font-garamond text-black mt-4"
@@ -24,7 +24,7 @@ export function Editorial() {
               lineHeight: 1.05,
             }}
           >
-            A room, a ritual, a vanity case
+            Une chambre, un rituel, une trousse de toilette
           </h2>
           <p
             className="mx-auto mt-5 text-muted-foreground"
@@ -34,9 +34,9 @@ export function Editorial() {
               lineHeight: 1.7,
             }}
           >
-            Photographed in the quiet suites of Hôtel Balzac, Dahlia is captured
-            the way it is lived — between morning light, a marble vanity, and
-            the small gestures that make a place feel like your own.
+            Photographiée dans les suites paisibles de l'Hôtel Balzac, Dahlia est saisie
+            telle qu'elle est vécue — entre lumière du matin, coiffeuse en marbre et
+            les petits gestes qui font qu'un lieu devient le vôtre.
           </p>
         </div>
       </div>
@@ -48,7 +48,7 @@ export function Editorial() {
             className="text-[11px] md:text-[12px] uppercase text-muted-foreground"
             style={{ letterSpacing: "0.24em" }}
           >
-            Chapter I — The routine
+            Chapitre I — Le rituel
           </p>
           <h3
             className="font-garamond text-black mt-4"
@@ -59,27 +59,27 @@ export function Editorial() {
               lineHeight: 1.1,
             }}
           >
-            An elevated beauty ritual
+            Un rituel beauté sublimé
           </h3>
           <p
             className="mt-5 text-muted-foreground max-w-[38rem]"
             style={{ fontSize: "15px", lineHeight: 1.7 }}
           >
-            Serums lined up on marble. A brush placed with intention. The
-            vanity case becomes the object around which the moment is built —
-            turning a routine into a ritual you look forward to, wherever you
-            wake up.
+            Des sérums alignés sur le marbre. Un pinceau posé avec intention. La
+            trousse de toilette devient l'objet autour duquel le moment se construit —
+            transformant une routine en un rituel que l'on attend avec impatience, où que
+            l'on se réveille.
           </p>
         </div>
         <div className="grid grid-cols-2">
           <ImageSlot
-            label="Chapter I — a mess of beauty products scattered before the ritual"
-            caption="Before — the mess"
+            label="Chapitre I — un désordre de produits de beauté avant le rituel"
+            caption="Avant — le désordre"
             className="w-full aspect-[3/4] md:aspect-auto md:min-h-[640px] border-0"
           />
           <ImageSlot
-            label="Chapter I — model getting ready using the Dahlia vanity case"
-            caption="After — the ritual"
+            label="Chapitre I — un mannequin se préparant avec la trousse de toilette Dahlia"
+            caption="Après — le rituel"
             className="w-full aspect-[3/4] md:aspect-auto md:min-h-[640px] border-0"
           />
         </div>
@@ -88,12 +88,12 @@ export function Editorial() {
       {/* Chapter I — supporting duo (sept fragrances style, touching) */}
       <div className="grid grid-cols-2">
         <ImageSlot
-          label="Chapter I — supporting editorial image 1"
+          label="Chapitre I — image éditoriale complémentaire 1"
           caption="Hôtel Balzac"
           className="w-full aspect-[4/5] border-0"
         />
         <ImageSlot
-          label="Chapter I — supporting editorial image 2"
+          label="Chapitre I — image éditoriale complémentaire 2"
           caption="Hôtel Balzac"
           className="w-full aspect-[4/5] border-0"
         />
@@ -101,7 +101,7 @@ export function Editorial() {
 
       <div className="w-full aspect-[16/9] md:aspect-[21/9]">
         <ImageSlot
-          label="Hôtel Balzac — full-bleed editorial (2400×1030)"
+          label="Hôtel Balzac — éditorial pleine page (2400×1030)"
           caption="Hôtel Balzac"
           className="w-full h-full border-0"
         />

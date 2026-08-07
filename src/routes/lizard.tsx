@@ -5,10 +5,10 @@ import monogrammeWhite from "@/assets/dahlia-monogramme-white.png.asset.json";
 export const Route = createFileRoute("/lizard")({
   head: () => ({
     meta: [
-      { title: "The Lizard Collection — Dahlia" },
-      { name: "description", content: "A limited pair of vanity cases in lizard-embossed vegan leather, finished in petal pink and warm beige." },
-      { property: "og:title", content: "The Lizard Collection — Dahlia" },
-      { property: "og:description", content: "A limited pair of vanity cases in lizard-embossed vegan leather, finished in petal pink and warm beige." },
+      { title: "La collection Lizard — Dahlia" },
+      { name: "description", content: "Un duo limité de vanity cases en cuir végan gaufré effet lézard, décliné en rose pétale et beige chaud." },
+      { property: "og:title", content: "La collection Lizard — Dahlia" },
+      { property: "og:description", content: "Un duo limité de vanity cases en cuir végan gaufré effet lézard, décliné en rose pétale et beige chaud." },
     ],
   }),
   component: LizardPage,
@@ -52,7 +52,7 @@ function LizardPage() {
               lineHeight: 1.05,
             }}
           >
-            A little wild, beautifully kept
+            Un brin sauvage, joliment tenu
           </h1>
           <p
             style={{
@@ -61,8 +61,9 @@ function LizardPage() {
               lineHeight: 1.6,
             }}
           >
-            Lizard-embossed leather brings a subtle edge to the Dahlia ritual — a
-            tactile finish, made for the shelf, the suitcase, and everywhere in between.
+            Le cuir gaufré effet lézard apporte une touche subtile au rituel
+            Dahlia — une finition texturée, faite pour l'étagère, la valise,
+            et tout ce qui se trouve entre les deux.
           </p>
         </div>
       </section>

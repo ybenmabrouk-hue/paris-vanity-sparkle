@@ -3,23 +3,23 @@ import { Truck, RefreshCcw, ShieldCheck, Headphones, HeartHandshake } from "luci
 const ITEMS = [
   {
     icon: Truck,
-    label: "Delivered in 3-7 Days",
+    label: "Livré en 3 à 7 jours",
   },
   {
     icon: RefreshCcw,
-    label: "15-day Returns",
+    label: "Retours sous 15 jours",
   },
   {
     icon: ShieldCheck,
-    label: "Secure Checkout",
+    label: "Paiement sécurisé",
   },
   {
     icon: HeartHandshake,
-    label: "Prepared With Care",
+    label: "Préparé avec soin",
   },
   {
     icon: Headphones,
-    label: "Customer Support",
+    label: "Service client",
   },
 ];
 

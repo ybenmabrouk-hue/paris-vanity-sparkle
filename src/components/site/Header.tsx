@@ -11,25 +11,25 @@ export function Header() {
   return (
     <header className="fixed top-10 inset-x-0 z-40 bg-background">
       <div className="mx-auto max-w-[1800px] px-8 md:px-12 h-24 flex items-center justify-between">
-        <Link to="/" aria-label="Dahlia — home" className="flex items-center">
+        <Link to="/" aria-label="Dahlia — accueil" className="flex items-center">
           <img src={logoBlack.url} alt="Dahlia" className="h-10 md:h-12 w-auto" />
         </Link>
 
         <nav className="flex items-center gap-10 md:gap-14 font-sans font-normal text-[12px] tracking-[0.03em]">
           <Link to="/vanity-cases" className="hover:opacity-60 transition-opacity">
-            Vanity Cases
+            Trousses de toilette
           </Link>
           <Link to="/about" className="hover:opacity-60 transition-opacity">
-            About
+            À propos
           </Link>
 
           <a href="#login" className="hover:opacity-60 transition-opacity">
-            Login
+            Connexion
           </a>
           <button
             onClick={() => setOpen(true)}
             className="relative flex items-center hover:opacity-60 transition-opacity"
-            aria-label="Open cart"
+            aria-label="Ouvrir le panier"
           >
             <ShoppingBag className="h-5 w-5" strokeWidth={1.4} />
             {totalItems > 0 && (

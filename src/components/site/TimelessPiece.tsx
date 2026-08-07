@@ -18,7 +18,7 @@ export function TimelessPiece() {
             loop
             playsInline
             className="max-h-[320px] md:max-h-[540px] w-auto max-w-full object-contain rounded-[2px]"
-            aria-label="Vanity case craftsmanship and vegan leather detail"
+            aria-label="Savoir-faire du vanity case et détail du cuir végan"
           />
         </div>
 
@@ -29,19 +29,19 @@ export function TimelessPiece() {
               className="font-garamond text-foreground leading-[1.05] tracking-[0.01em]"
               style={{ fontSize: "clamp(48px, 6vw, 96px)" }}
             >
-              A timeless
+              Une pièce
               <br />
-              Piece.
+              Intemporelle.
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
-              A quiet silhouette, clean lines and a signature handle — designed
-              to look as considered on a hotel vanity as it does in your
-              suitcase. Nothing decorative, nothing disposable.
+              Une silhouette discrète, des lignes épurées et une poignée
+              signature — pensée pour être aussi élégante sur une coiffeuse
+              d'hôtel que dans votre valise. Rien de décoratif, rien de jetable.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
-              Cut and finished by hand in a vegan leather chosen for its supple
-              grain and its resistance to daily use. Craftsmanship you feel the
-              moment you pick it up.
+              Coupé et fini à la main dans un cuir végan choisi pour son grain
+              souple et sa résistance à l'usage quotidien. Un savoir-faire que
+              l'on ressent dès la première prise en main.
             </p>
           </div>
         </div>

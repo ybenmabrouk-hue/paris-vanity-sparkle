@@ -18,8 +18,8 @@ const SEED_REVIEWS: Review[] = [
     author: "Camille l.",
     location: "Paris, FR",
     rating: 5,
-    title: "The one i always take with me",
-    body: "it finally replaced the three pouches i used to travel with. everything fits and i can actually find things.",
+    title: "Celui que j'emmène toujours avec moi",
+    body: "il a enfin remplacé les trois trousses avec lesquelles je voyageais. tout rentre et je retrouve enfin mes affaires.",
     date: "june 12, 2026",
     verified: true,
     photos: [
@@ -32,8 +32,8 @@ const SEED_REVIEWS: Review[] = [
     author: "Sophie b.",
     location: "London, UK",
     rating: 5,
-    title: "Beautiful object, thoughtful design",
-    body: "the interior wipes clean with water. no more foundation stains ruining the lining after a month.",
+    title: "Un bel objet, un design réfléchi",
+    body: "l'intérieur se nettoie à l'eau. fini les taches de fond de teint qui abîment la doublure après un mois.",
     date: "may 28, 2026",
     verified: true,
     photos: [
@@ -45,8 +45,8 @@ const SEED_REVIEWS: Review[] = [
     author: "Alexandra p.",
     location: "New York, US",
     rating: 4,
-    title: "Worth it",
-    body: "on the pricier side but the craft shows. i wish it came with a small mirror inside.",
+    title: "Ça vaut le coup",
+    body: "un peu cher mais la qualité se sent. j'aurais aimé un petit miroir à l'intérieur.",
     date: "may 03, 2026",
     verified: true,
   },
@@ -55,8 +55,8 @@ const SEED_REVIEWS: Review[] = [
     author: "Inès r.",
     location: "Milan, IT",
     rating: 5,
-    title: "Gifted to my sister — bought a second",
-    body: "she loved it so much i had to order mine. the burgundy is even prettier in person.",
+    title: "Offert à ma sœur — j'en ai racheté un",
+    body: "elle l'a tellement aimé que j'ai dû commander le mien. le bordeaux est encore plus joli en vrai.",
     date: "april 21, 2026",
     verified: true,
     photos: [
@@ -67,8 +67,8 @@ const SEED_REVIEWS: Review[] = [
     id: "5",
     author: "Marie d.",
     rating: 5,
-    title: "No more digging",
-    body: "flat opening is a game changer. brushes stay in place and nothing gets lost at the bottom.",
+    title: "Fini de fouiller",
+    body: "l'ouverture à plat change tout. les pinceaux restent en place et rien ne se perd au fond.",
     date: "april 09, 2026",
     verified: true,
   },
@@ -77,8 +77,8 @@ const SEED_REVIEWS: Review[] = [
     author: "Juliette m.",
     location: "Paris, FR",
     rating: 4,
-    title: "Chic and practical",
-    body: "compact enough for a weekend, holds a surprising amount.",
+    title: "Chic et pratique",
+    body: "assez compact pour un week-end, mais il contient étonnamment beaucoup.",
     date: "march 30, 2026",
   },
 ];
@@ -95,7 +95,7 @@ function Stars({
   onChange?: (v: number) => void;
 }) {
   return (
-    <div className="inline-flex items-center gap-[2px]" aria-label={`${value} out of 5 stars`}>
+    <div className="inline-flex items-center gap-[2px]" aria-label={`${value} sur 5 étoiles`}>
       {[1, 2, 3, 4, 5].map((i) => {
         const filled = i <= Math.round(value);
         const star = (
@@ -117,7 +117,7 @@ function Stars({
             type="button"
             onClick={() => onChange?.(i)}
             className="p-0.5 hover:opacity-80"
-            aria-label={`rate ${i} stars`}
+            aria-label={`noter ${i} étoiles`}
           >
             {star}
           </button>
@@ -223,7 +223,7 @@ export function ReviewsSection() {
             className="font-garamond"
             style={{ fontWeight: 300, fontSize: "clamp(32px, 5vw, 56px)", lineHeight: 1.05, letterSpacing: "0.01em" }}
           >
-            Reviews
+            Avis
           </h2>
         </header>
 
@@ -235,7 +235,7 @@ export function ReviewsSection() {
             <div className="mt-3">
               <Stars value={average} size={18} />
             </div>
-            <div className="mt-2 text-sm text-black/60">based on {total} reviews</div>
+            <div className="mt-2 text-sm text-black/60">basé sur {total} avis</div>
           </div>
 
           <div className="flex flex-col gap-2 justify-center max-w-md">
@@ -263,7 +263,7 @@ export function ReviewsSection() {
               onClick={() => setWriting((w) => !w)}
               className="border border-black px-6 py-3 text-sm hover:bg-black hover:text-white transition-colors whitespace-nowrap"
             >
-              {writing ? "Cancel" : "Write a review"}
+              {writing ? "Annuler" : "Écrire un avis"}
             </button>
           </div>
         </div>
@@ -271,7 +271,7 @@ export function ReviewsSection() {
         {/* photo gallery strip */}
         {photoGallery.length > 0 && (
           <div className="mb-10">
-            <div className="text-sm text-black/60 mb-3">customer photos ({photoGallery.length})</div>
+            <div className="text-sm text-black/60 mb-3">photos des clientes ({photoGallery.length})</div>
             <div className="flex gap-2 overflow-x-auto pb-2">
               {photoGallery.map((p, i) => (
                 <button
@@ -279,7 +279,7 @@ export function ReviewsSection() {
                   onClick={() => setLightbox(p.src)}
                   className="shrink-0 w-24 h-24 md:w-28 md:h-28 overflow-hidden bg-black/5"
                 >
-                  <img src={p.src} alt="Customer photo" className="w-full h-full object-cover hover:scale-105 transition-transform" />
+                  <img src={p.src} alt="Photo de cliente" className="w-full h-full object-cover hover:scale-105 transition-transform" />
                 </button>
               ))}
             </div>
@@ -290,12 +290,12 @@ export function ReviewsSection() {
         {writing && (
           <form onSubmit={submitReview} className="border border-black/10 p-6 md:p-8 mb-10 grid gap-5">
             <div>
-              <label className="text-sm text-black/60 block mb-2">Your rating</label>
+              <label className="text-sm text-black/60 block mb-2">Votre note</label>
               <Stars value={dRating} size={22} interactive onChange={setDRating} />
             </div>
             <div className="grid md:grid-cols-2 gap-5">
               <label className="text-sm">
-                <span className="text-black/60 block mb-1">Your name</span>
+                <span className="text-black/60 block mb-1">Votre nom</span>
                 <input
                   type="text"
                   value={dAuthor}
@@ -305,7 +305,7 @@ export function ReviewsSection() {
                 />
               </label>
               <label className="text-sm">
-                <span className="text-black/60 block mb-1">Title</span>
+                <span className="text-black/60 block mb-1">Titre</span>
                 <input
                   type="text"
                   value={dTitle}
@@ -316,7 +316,7 @@ export function ReviewsSection() {
               </label>
             </div>
             <label className="text-sm">
-              <span className="text-black/60 block mb-1">Your review</span>
+              <span className="text-black/60 block mb-1">Votre avis</span>
               <textarea
                 value={dBody}
                 onChange={(e) => setDBody(e.target.value)}
@@ -327,16 +327,16 @@ export function ReviewsSection() {
             </label>
 
             <div>
-              <div className="text-sm text-black/60 mb-2">add photos ({dPhotos.length}/6)</div>
+              <div className="text-sm text-black/60 mb-2">ajouter des photos ({dPhotos.length}/6)</div>
               <div className="flex flex-wrap gap-3">
                 {dPhotos.map((src, i) => (
                   <div key={i} className="relative w-20 h-20 overflow-hidden bg-black/5">
-                    <img src={src} alt="Upload preview" className="w-full h-full object-cover" />
+                    <img src={src} alt="Aperçu de la photo" className="w-full h-full object-cover" />
                     <button
                       type="button"
                       onClick={() => removePhoto(i)}
                       className="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-black text-white text-xs leading-none flex items-center justify-center"
-                      aria-label="Remove photo"
+                      aria-label="Supprimer la photo"
                     >
                       ×
                     </button>
@@ -367,27 +367,27 @@ export function ReviewsSection() {
 
             <div className="flex gap-3">
               <button type="submit" className="border border-black bg-black text-white px-6 py-3 text-sm hover:opacity-90">
-                Submit review
+                Envoyer l'avis
               </button>
               <button type="button" onClick={() => setWriting(false)} className="border border-black/20 px-6 py-3 text-sm hover:border-black">
-                Cancel
+                Annuler
               </button>
             </div>
           </form>
         )}
 
         <div className="flex items-center justify-between mb-8">
-          <span className="text-sm text-black/60">{total} reviews</span>
+          <span className="text-sm text-black/60">{total} avis</span>
           <label className="text-sm flex items-center gap-2">
-            <span className="text-black/60">Sort by</span>
+            <span className="text-black/60">Trier par</span>
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as typeof sort)}
               className="bg-transparent border-b border-black/20 py-1 pr-6 focus:outline-none focus:border-black"
             >
-              <option value="recent">Most recent</option>
-              <option value="highest">Highest rated</option>
-              <option value="lowest">Lowest rated</option>
+              <option value="recent">Plus récents</option>
+              <option value="highest">Mieux notés</option>
+              <option value="lowest">Moins bien notés</option>
             </select>
           </label>
         </div>
@@ -398,7 +398,7 @@ export function ReviewsSection() {
               <div className="text-sm">
                 <div className="font-medium">{r.author}</div>
                 {r.location && <div className="text-black/60 mt-0.5">{r.location}</div>}
-                {r.verified && <div className="text-black/60 mt-2 text-xs">✓ verified buyer</div>}
+                {r.verified && <div className="text-black/60 mt-2 text-xs">✓ achat vérifié</div>}
                 <div className="text-black/60 mt-2 text-xs">{r.date}</div>
               </div>
               <div>
@@ -415,7 +415,7 @@ export function ReviewsSection() {
                         onClick={() => setLightbox(src)}
                         className="w-20 h-20 md:w-24 md:h-24 overflow-hidden bg-black/5"
                       >
-                        <img src={src} alt={`review photo ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform" />
+                        <img src={src} alt={`photo d'avis ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform" />
                       </button>
                     ))}
                   </div>
@@ -431,7 +431,7 @@ export function ReviewsSection() {
               onClick={() => setVisible((v) => v + PAGE_SIZE)}
               className="border border-black px-8 py-3 text-sm hover:bg-black hover:text-white transition-colors"
             >
-              Load more reviews
+              Voir plus d'avis
             </button>
           </div>
         )}
@@ -442,11 +442,11 @@ export function ReviewsSection() {
           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-6 cursor-zoom-out"
           onClick={() => setLightbox(null)}
         >
-          <img src={lightbox} alt="Review photo" className="max-w-full max-h-full object-contain" />
+          <img src={lightbox} alt="Photo d'avis" className="max-w-full max-h-full object-contain" />
           <button
             onClick={() => setLightbox(null)}
             className="absolute top-6 right-6 text-white text-2xl leading-none"
-            aria-label="Close"
+            aria-label="Fermer"
           >
             ×
           </button>

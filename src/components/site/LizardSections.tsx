@@ -26,21 +26,21 @@ export function LizardSections() {
                 lineHeight: 1.1,
               }}
             >
-              Petal pink, made to travel
+              Rose pétale, faite pour voyager
             </h2>
             <p
               className="mt-5 text-muted-foreground"
               style={{ fontSize: "15px", lineHeight: 1.7 }}
             >
-              A reserved place for the pink lizard vanity case photography — styled
-              with the quiet confidence of a piece you reach for every day.
+              Un emplacement réservé pour la photographie de la trousse de toilette lézard rose — mise en scène
+              avec l'assurance discrète d'un objet que l'on saisit chaque jour.
             </p>
           </div>
         </div>
         <div className="relative min-h-[400px] md:min-h-[600px] bg-petale">
           <ImageSlot
-            label="Petal pink lizard vanity case campaign image"
-            caption="Pink lizard campaign image"
+            label="Image de campagne de la trousse de toilette lézard rose pétale"
+            caption="Image de campagne lézard rose"
             className="absolute inset-0 border-0 bg-petale text-foreground"
           />
         </div>
@@ -53,8 +53,8 @@ export function LizardSections() {
           style={{ backgroundColor: LIZARD_BEIGE }}
         >
           <ImageSlot
-            label="Warm beige lizard vanity case campaign image"
-            caption="Beige lizard campaign image"
+            label="Image de campagne de la trousse de toilette lézard beige chaud"
+            caption="Image de campagne lézard beige"
             className="absolute inset-0 border-0 text-foreground"
             style={{ backgroundColor: LIZARD_BEIGE }}
           />
@@ -71,14 +71,14 @@ export function LizardSections() {
                 lineHeight: 1.1,
               }}
             >
-              Warm beige, quietly considered
+              Beige chaud, pensé avec discrétion
             </h2>
             <p
               className="mt-5 text-muted-foreground"
               style={{ fontSize: "15px", lineHeight: 1.7 }}
             >
-              A reserved place for beige lizard vanity case photography — a softer
-              study in texture, craftsmanship, and travel-ready ritual.
+              Un emplacement réservé pour la photographie de la trousse de toilette lézard beige — une étude
+              plus douce de texture, de savoir-faire et de rituel prêt à voyager.
             </p>
           </div>
         </div>
@@ -101,14 +101,14 @@ export function LizardSections() {
                 lineHeight: 1.1,
               }}
             >
-              A softer kind of statement
+              Une déclaration plus douce
             </h2>
             <p
               className="mt-5 text-muted-foreground"
               style={{ fontSize: "15px", lineHeight: 1.7 }}
             >
-              A limited pair of vanity cases in lizard-embossed leather, finished
-              in petal pink and warm beige for rituals that travel beautifully.
+              Une paire limitée de trousses de toilette en cuir gaufré lézard, déclinées
+              en rose pétale et beige chaud pour des rituels qui voyagent avec élégance.
             </p>
           </div>
 
@@ -162,11 +162,11 @@ function LizardProductCard({
         </div>
         <div className="flex items-center gap-1.5 mt-1.5 text-[12px] text-foreground/80">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#3ea564]" aria-hidden />
-          <span>Limited stock available</span>
+          <span>Stock limité disponible</span>
         </div>
         <div className="mt-2 flex items-center gap-1.5 text-[12px] text-muted-foreground">
           <Star className="w-3 h-3 fill-foreground text-foreground" aria-hidden />
-          <span>4.9 stars</span>
+          <span>4,9 étoiles</span>
         </div>
       </div>
     </Link>
