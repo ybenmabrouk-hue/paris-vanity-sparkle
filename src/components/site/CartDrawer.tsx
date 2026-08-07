@@ -56,9 +56,9 @@ export function CartDrawer() {
       >
         <div className="flex items-center justify-between px-6 h-16 border-b border-border/60">
           <div className="eyebrow">
-            cart {totalItems > 0 && `(${totalItems})`}
+            panier {totalItems > 0 && `(${totalItems})`}
           </div>
-          <button onClick={() => setOpen(false)} aria-label="Close cart">
+          <button onClick={() => setOpen(false)} aria-label="Fermer le panier">
             <X className="h-5 w-5" strokeWidth={1.4} />
           </button>
         </div>
@@ -66,8 +66,8 @@ export function CartDrawer() {
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center px-6 text-center">
             <ShoppingBag className="h-10 w-10 text-muted-foreground mb-4" strokeWidth={1.2} />
-            <p className="font-serif text-2xl">Your cart is empty</p>
-            <p className="text-sm text-muted-foreground mt-2">Every case begins with a story.</p>
+            <p className="font-serif text-2xl">Votre panier est vide</p>
+            <p className="text-sm text-muted-foreground mt-2">Chaque vanity case commence par une histoire.</p>
           </div>
         ) : (
           <>
@@ -90,7 +90,7 @@ export function CartDrawer() {
                       </h4>
                       <button
                         onClick={() => removeItem(item.variantId)}
-                        aria-label="Remove"
+                        aria-label="Supprimer"
                         className="text-muted-foreground hover:text-foreground"
                       >
                         <Trash2 className="h-4 w-4" strokeWidth={1.4} />
@@ -126,11 +126,11 @@ export function CartDrawer() {
 
             <div className="border-t border-border/60 px-6 py-6 space-y-4">
               <div className="flex justify-between items-baseline">
-                <span className="eyebrow">Subtotal</span>
+                <span className="eyebrow">Sous-total</span>
                 <span className="font-serif text-2xl">{formatPrice(total, currency)}</span>
               </div>
               <p className="text-xs text-muted-foreground">
-                Shipping and taxes calculated at checkout.
+                Frais de livraison et taxes calculés lors du paiement.
               </p>
               <button
                 onClick={handleCheckout}
@@ -141,7 +141,7 @@ export function CartDrawer() {
                   <Loader2 className="w-4 h-4 animate-spin" />
                 ) : (
                   <>
-                    Checkout <ExternalLink className="w-3.5 h-3.5" />
+                    Paiement <ExternalLink className="w-3.5 h-3.5" />
                   </>
                 )}
               </button>

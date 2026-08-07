@@ -21,12 +21,12 @@ export function StopDigging() {
               Digging.
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
-              No more rummaging through a bottomless pouch for the one lipstick
-              you actually need. Every piece has its place — brushes upright,
-              skincare visible, essentials within reach.
+              Fini de fouiller dans une trousse sans fond pour trouver le seul
+              rouge à lèvres dont vous avez besoin. Chaque objet a sa place —
+              pinceaux debout, soins visibles, essentiels à portée de main.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
-              Designed in Paris, built to end the daily search.
+              Conçu à Paris, pensé pour mettre fin à la recherche quotidienne.
             </p>
           </div>
         </div>
@@ -40,7 +40,7 @@ export function StopDigging() {
             loop
             playsInline
             className="max-h-[320px] md:max-h-[540px] w-auto max-w-full object-contain rounded-[2px]"
-            aria-label="Hand digging through a makeup pouch"
+            aria-label="Main fouillant dans une trousse de maquillage"
           />
         </div>
       </div>

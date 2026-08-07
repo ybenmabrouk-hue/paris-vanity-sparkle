@@ -22,7 +22,7 @@ function ProductReviews({ rating = 4.9 }: { rating?: number }) {
   return (
     <div className="flex items-center gap-1.5 text-[12px] text-muted-foreground">
       <Star className="w-3 h-3 fill-foreground text-foreground" aria-hidden />
-      <span>{rating} stars</span>
+      <span>{rating} étoiles</span>
     </div>
   );
 }
@@ -59,7 +59,7 @@ export function StaticProductCard({ product }: { product: StaticProduct }) {
         ) : (
           <ImageSlot
             label={`${product.title} — product image`}
-            caption="Product image"
+            caption="Image du produit"
             className="absolute inset-0 border-0"
           />
         )}
@@ -82,7 +82,7 @@ export function StaticProductCard({ product }: { product: StaticProduct }) {
         </div>
         <div className="flex items-center gap-1.5 mt-1.5 text-[12px] text-foreground/80">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#3ea564]" aria-hidden />
-          <span>In stock for immediate dispatch</span>
+          <span>En stock, expédition immédiate</span>
         </div>
         <div className="mt-2">
           <ProductReviews />

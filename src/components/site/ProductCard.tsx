@@ -35,7 +35,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
         ) : (
           <ImageSlot
             label={`${p.title} — product image`}
-            caption="Product image"
+            caption="Image du produit"
             className="absolute inset-0 border-0"
           />
         )}
