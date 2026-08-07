@@ -1,23 +1,25 @@
-import { ImageSlot } from "./ImageSlot";
+import eraseTheTracesVideo from "@/assets/erase-the-traces.mp4.asset.json";
 
 /**
  * Reassurance section: the washable interior.
- * Left: image of the interior being wiped clean.
+ * Left: video showing the interior being wiped clean.
  * Right: title + copy (with breathing room from the edge).
  */
 export function WashableInterior() {
   return (
     <section className="mt-16 md:mt-24 bg-background">
-      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,58%)_minmax(0,1fr)] items-stretch gap-10 md:gap-0">
-        {/* Left — image */}
-        <div className="w-full">
-          <div className="aspect-[3/4] bg-muted overflow-hidden">
-            <ImageSlot
-              label="Image — washable interior with tissue and water"
-              className="h-full w-full"
-              caption="Image — washable interior"
-            />
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,50%)_minmax(0,1fr)] items-stretch gap-10 md:gap-0">
+        {/* Left — video */}
+        <div className="flex items-center justify-center w-full h-full min-h-[400px] md:min-h-[600px] bg-muted p-4 md:p-8 overflow-hidden">
+          <video
+            src={eraseTheTracesVideo.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="max-h-[320px] md:max-h-[540px] w-auto max-w-full object-contain rounded-[2px]"
+            aria-label="Washable interior being wiped clean with a tissue and water"
+          />
         </div>
 
         {/* Right — copy */}
