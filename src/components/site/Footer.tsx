@@ -112,7 +112,7 @@ function NewsletterForm() {
           className="bg-foreground text-background px-10 py-3 hover:opacity-80 transition"
           style={{ fontSize: "13px", letterSpacing: "0.06em" }}
         >
-          Submit
+          Envoyer
         </button>
       </div>
       {status !== "idle" && (
