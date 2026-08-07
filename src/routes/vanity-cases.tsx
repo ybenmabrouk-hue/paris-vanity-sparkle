@@ -6,9 +6,9 @@ export const Route = createFileRoute("/vanity-cases")({
   head: () => ({
     meta: [
       { title: "Vanity Cases — Dahlia" },
-      { name: "description", content: "Dahlia vanity cases — shaped by a Parisian eye and crafted by hand." },
+      { name: "description", content: "Vanity cases Dahlia — façonnés par un regard parisien et fabriqués à la main." },
       { property: "og:title", content: "Vanity Cases — Dahlia" },
-      { property: "og:description", content: "Dahlia vanity cases — shaped by a Parisian eye and crafted by hand." },
+      { property: "og:description", content: "Vanity cases Dahlia — façonnés par un regard parisien et fabriqués à la main." },
     ],
   }),
   component: VanityCasesPage,
@@ -38,9 +38,10 @@ function VanityCasesPage() {
             className="mt-3 max-w-2xl mx-auto md:mx-0 text-muted-foreground"
             style={{ fontSize: "clamp(12px, 1vw, 15px)", lineHeight: "clamp(15px, 1.6vw, 22px)" }}
           >
-            The collection begins at our atelier. Shaped by a Parisian eye and
-            crafted through modern leatherwork, each piece is designed to hold
-            the small rituals that travel with you.
+            La collection commence dans notre atelier. Façonnée par un regard
+            parisien et travaillée selon un savoir-faire moderne du cuir,
+            chaque pièce est conçue pour accueillir les petits rituels qui
+            vous accompagnent.
           </p>
         </div>
       </header>

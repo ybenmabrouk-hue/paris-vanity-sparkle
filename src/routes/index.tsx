@@ -43,7 +43,7 @@ function Banner() {
       <div className="relative w-full aspect-[16/9] md:aspect-[32/17] overflow-hidden bg-secondary">
         <img
           src={heroBanner.url}
-          alt="Dahlia — editorial hero, hotel suite"
+          alt="Dahlia — hero éditorial, suite d'hôtel"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/15" />
@@ -62,7 +62,7 @@ function Banner() {
               letterSpacing: "0.14em",
             }}
           >
-            Shop now
+            Découvrir
           </Link>
         </div>
       </div>
@@ -74,10 +74,10 @@ function Banner() {
 type ColorSwatch = { name: string; swatch: string };
 
 const COLOR_SWATCHES: ColorSwatch[] = [
-  { name: "Black", swatch: "#1a1614" },
-  { name: "Brown", swatch: "#6b4a2b" },
-  { name: "Burgundy", swatch: "#5c1a2a" },
-  { name: "Pink", swatch: "#e8b8c8" },
+  { name: "Noir", swatch: "#1a1614" },
+  { name: "Marron", swatch: "#6b4a2b" },
+  { name: "Bordeaux", swatch: "#5c1a2a" },
+  { name: "Rose", swatch: "#e8b8c8" },
   { name: "Beige", swatch: "#d9c4a6" },
 ];
 
@@ -93,9 +93,10 @@ function CollectionCarousel() {
             Collection
           </h2>
           <p className="mt-2 md:mt-3 text-[14px] md:text-[18px] leading-[20px] md:leading-[26px] text-muted-foreground max-w-3xl">
-            The collection begins at our atelier. Shaped by a Parisian eye and
-            crafted through modern leatherwork, each vanity case is designed to
-            hold the small rituals that travel with you.
+            La collection commence dans notre atelier. Façonnée par un regard
+            parisien et travaillée selon un savoir-faire moderne du cuir,
+            chaque vanity case est conçue pour accueillir les petits rituels
+            qui vous accompagnent.
           </p>
         </div>
 
@@ -137,7 +138,7 @@ function VanityProductCard({ card }: { card: ColorSwatch }) {
       </div>
       <div className="flex items-center gap-1.5 mt-1.5 text-[12px] text-foreground/80">
         <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#3ea564]" aria-hidden />
-        <span>In stock for immediate dispatch</span>
+        <span>En stock, expédition immédiate</span>
       </div>
       <ProductReviews className="mt-[10px]" />
     </Link>
@@ -190,7 +191,7 @@ function TextBanner() {
             whiteSpace: "nowrap",
           }}
         >
-          Elevate your beauty routine
+          Sublimez votre rituel beauté
         </h2>
         <p
           style={{
@@ -199,9 +200,10 @@ function TextBanner() {
             lineHeight: 1.6,
           }}
         >
-          Dahlia is a modern leather-led lifestyle brand shaped around the
-          rituals of self and travel, where the objects you carry become part
-          of everyday life. Small batch. Considered. Made to keep.
+          Dahlia est une marque de vie moderne portée par le cuir, façonnée
+          autour des rituels du quotidien et du voyage, où les objets que vous
+          emportez deviennent partie intégrante de votre vie. Petites séries.
+          Réfléchis. Faits pour durer.
         </p>
       </div>
     </section>
@@ -250,7 +252,7 @@ function LizardBanner() {
             whiteSpace: "nowrap",
           }}
         >
-          The Lizard limited edition
+          L'édition limitée Lizard
         </h2>
         <p
           style={{
@@ -259,9 +261,9 @@ function LizardBanner() {
             lineHeight: 1.6,
           }}
         >
-          Pink and beige, reimagined in lizard-embossed vegan leather. The same
-          Dahlia silhouette, raised with a new scale of texture — for those who
-          collect the exception.
+          Rose et beige, réinventés en cuir vegan gaufré façon lézard. La même
+          silhouette Dahlia, sublimée par une nouvelle échelle de texture —
+          pour celles qui collectionnent l'exception.
         </p>
         <Link
           to="/lizard"
@@ -271,7 +273,7 @@ function LizardBanner() {
             letterSpacing: "0.14em",
           }}
         >
-          Shop the lizard edition
+          Découvrir l'édition lizard
         </Link>
       </div>
     </section>
