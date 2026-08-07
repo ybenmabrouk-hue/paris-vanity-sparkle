@@ -1,30 +1,25 @@
-import { ImageSlot } from "./ImageSlot";
+import timelessPieceVideo from "@/assets/timeless-piece.mp4.asset.json";
 
 /**
  * Craftsmanship storytelling section.
- * Left: two photos side-by-side, touching, flush to the left edge.
+ * Left: timeless piece video, scaled down and centered.
  * Right: title + copy (with breathing room from the edge).
  */
 export function TimelessPiece() {
   return (
     <section className="mt-16 md:mt-24 bg-background">
-      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,58%)_minmax(0,1fr)] items-stretch gap-10 md:gap-0">
-        {/* Left — two photos touching, flush to the left edge */}
-        <div className="grid grid-cols-2 w-full">
-          <div className="aspect-[3/4] bg-muted overflow-hidden">
-            <ImageSlot
-              label="Image — vanity case craftsmanship detail"
-              className="h-full w-full"
-              caption="Image — craftsmanship detail"
-            />
-          </div>
-          <div className="aspect-[3/4] bg-muted overflow-hidden">
-            <ImageSlot
-              label="Image — vegan leather material close-up"
-              className="h-full w-full"
-              caption="Image — vegan leather"
-            />
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,50%)_minmax(0,1fr)] items-stretch gap-10 md:gap-0">
+        {/* Left — timeless piece video, scaled down and centered */}
+        <div className="flex items-center justify-center w-full h-full min-h-[400px] md:min-h-[600px] bg-muted p-4 md:p-8 overflow-hidden">
+          <video
+            src={timelessPieceVideo.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="max-h-[320px] md:max-h-[540px] w-auto max-w-full object-contain rounded-[2px]"
+            aria-label="Vanity case craftsmanship and vegan leather detail"
+          />
         </div>
 
         {/* Right — copy */}
