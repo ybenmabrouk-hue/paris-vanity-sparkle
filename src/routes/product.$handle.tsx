@@ -11,7 +11,6 @@ import { Marquee } from "@/components/site/Marquee";
 import { TimelessPiece } from "@/components/site/TimelessPiece";
 import { StopDigging } from "@/components/site/StopDigging";
 import { WashableInterior } from "@/components/site/WashableInterior";
-import { LifestyleStory } from "@/components/site/LifestyleStory";
 import { ReassuranceIcons } from "@/components/site/ReassuranceIcons";
 import { ReviewsSection } from "@/components/site/ReviewsSection";
 import { FAQ } from "@/components/site/FAQ";
@@ -329,8 +328,6 @@ function ProductDetail({ product }: { product: StaticProduct }) {
       <StopDigging />
 
       <WashableInterior />
-
-      <LifestyleStory />
 
       <ReassuranceIcons />
 
