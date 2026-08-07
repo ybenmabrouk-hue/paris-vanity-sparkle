@@ -3,34 +3,34 @@ import { ChevronDown } from "lucide-react";
 
 const FAQS = [
   {
-    question: "What fits inside the vanity case?",
+    question: "Que peut contenir la trousse de toilette ?",
     answer:
-      "The case is designed to hold your full beauty routine including foundation, powders, skincare, brushes and daily essentials while still remaining compact and elegant. Everything fits without feeling bulky.",
+      "La trousse est conçue pour accueillir toute votre routine beauté, fond de teint, poudres, soins, pinceaux et essentiels du quotidien, tout en restant compacte et élégante. Tout trouve sa place sans encombrement.",
   },
   {
-    question: "Does the case keep its shape even when full?",
+    question: "La trousse garde-t-elle sa forme même une fois remplie ?",
     answer:
-      "Yes. The structured silhouette is engineered to stay perfectly in shape whether it is on your vanity, inside your handbag or in your suitcase. No collapsing. No bending.",
+      "Oui. La silhouette structurée est conçue pour conserver parfaitement sa forme, que ce soit sur votre coiffeuse, dans votre sac ou dans votre valise. Aucun affaissement. Aucune déformation.",
   },
   {
-    question: "Is the inside easy to clean?",
+    question: "L'intérieur est-il facile à nettoyer ?",
     answer:
-      "Absolutely. The vanity case features an innovative easy clean lining that allows you to wipe away makeup residue or spills effortlessly. It is designed for real everyday use.",
+      "Absolument. La trousse est dotée d'une doublure innovante facile à nettoyer, permettant d'essuyer résidus de maquillage ou éclaboussures sans effort. Elle est pensée pour un usage vraiment quotidien.",
   },
   {
-    question: "How do the removable compartments work?",
+    question: "Comment fonctionnent les compartiments amovibles ?",
     answer:
-      "The interior includes removable dividers so you can customize the space to match your routine. Keep brushes separate, organize skincare or create one large open compartment. The case adapts to you.",
+      "L'intérieur comprend des séparateurs amovibles permettant de personnaliser l'espace selon votre routine. Séparez vos pinceaux, organisez vos soins ou créez un grand compartiment ouvert. La trousse s'adapte à vous.",
   },
   {
-    question: "Is the zipper secure and high quality?",
+    question: "La fermeture éclair est-elle sûre et de qualité ?",
     answer:
-      "Yes. The premium zipper is smooth, durable and designed to stay securely closed, protecting your essentials whether at home or on the go.",
+      "Oui. La fermeture éclair haut de gamme est fluide, durable et conçue pour rester bien fermée, protégeant vos essentiels à la maison comme en déplacement.",
   },
   {
-    question: "What if it is not right for me?",
+    question: "Et si elle ne me convient pas ?",
     answer:
-      "You can return the case within 14 days of delivery as long as it is unused and in its original condition.",
+      "Vous pouvez retourner la trousse dans les 14 jours suivant la livraison, à condition qu'elle soit inutilisée et dans son état d'origine.",
   },
 ];
 

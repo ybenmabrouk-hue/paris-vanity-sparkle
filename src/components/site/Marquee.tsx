@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Play, Pause } from "lucide-react";
 
 const MESSAGES = [
-  "🤍 Spacious enough for makeup, skincare & toiletries 🤍",
-  "✨ As seen in POPSUGAR, New York Magazine, Forbes & more ✨",
-  "🖌️ New! Brush layout design 🖌️",
+  "🤍 Spacieuse pour le maquillage, les soins et la toilette 🤍",
+  "✨ Vue dans POPSUGAR, New York Magazine, Forbes et plus encore ✨",
+  "🖌️ Nouveau ! Design à compartiments pour pinceaux 🖌️",
 ];
 
 const SPEEDS = [
@@ -45,7 +45,7 @@ export function Marquee() {
               <button
                 key={s.label}
                 onClick={() => setSpeedIndex(i)}
-                aria-label={`Set speed ${s.label}`}
+                aria-label={`Régler la vitesse ${s.label}`}
                 aria-pressed={speedIndex === i}
                 className={`h-7 px-2 text-[10px] tracking-wider border rounded-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black ${
                   speedIndex === i
@@ -60,7 +60,7 @@ export function Marquee() {
 
           <button
             onClick={() => setIsPlaying((p) => !p)}
-            aria-label={isPlaying ? "Pause marquee" : "Play marquee"}
+            aria-label={isPlaying ? "Mettre en pause le défilement" : "Lancer le défilement"}
             className="h-8 w-8 flex items-center justify-center bg-white border border-black/20 rounded-sm text-black hover:border-black transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black"
           >
             {isPlaying ? (
