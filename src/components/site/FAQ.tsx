@@ -3,24 +3,24 @@ import { ChevronDown } from "lucide-react";
 
 const FAQS = [
   {
-    question: "Que peut contenir la trousse de toilette ?",
+    question: "Que peut contenir la vanity case ?",
     answer:
-      "La trousse est conçue pour accueillir toute votre routine beauté, fond de teint, poudres, soins, pinceaux et essentiels du quotidien, tout en restant compacte et élégante. Tout trouve sa place sans encombrement.",
+      "La vanity case est conçue pour accueillir toute votre routine beauté, fond de teint, poudres, soins, pinceaux et essentiels du quotidien, tout en restant compacte et élégante. Tout trouve sa place sans encombrement.",
   },
   {
-    question: "La trousse garde-t-elle sa forme même une fois remplie ?",
+    question: "La vanity case garde-t-elle sa forme même une fois remplie ?",
     answer:
       "Oui. La silhouette structurée est conçue pour conserver parfaitement sa forme, que ce soit sur votre coiffeuse, dans votre sac ou dans votre valise. Aucun affaissement. Aucune déformation.",
   },
   {
     question: "L'intérieur est-il facile à nettoyer ?",
     answer:
-      "Absolument. La trousse est dotée d'une doublure innovante facile à nettoyer, permettant d'essuyer résidus de maquillage ou éclaboussures sans effort. Elle est pensée pour un usage vraiment quotidien.",
+      "Absolument. La vanity case est dotée d'une doublure innovante facile à nettoyer, permettant d'essuyer résidus de maquillage ou éclaboussures sans effort. Elle est pensée pour un usage vraiment quotidien.",
   },
   {
     question: "Comment fonctionnent les compartiments amovibles ?",
     answer:
-      "L'intérieur comprend des séparateurs amovibles permettant de personnaliser l'espace selon votre routine. Séparez vos pinceaux, organisez vos soins ou créez un grand compartiment ouvert. La trousse s'adapte à vous.",
+      "L'intérieur comprend des séparateurs amovibles permettant de personnaliser l'espace selon votre routine. Séparez vos pinceaux, organisez vos soins ou créez un grand compartiment ouvert. La vanity case s'adapte à vous.",
   },
   {
     question: "La fermeture éclair est-elle sûre et de qualité ?",
@@ -30,7 +30,7 @@ const FAQS = [
   {
     question: "Et si elle ne me convient pas ?",
     answer:
-      "Vous pouvez retourner la trousse dans les 14 jours suivant la livraison, à condition qu'elle soit inutilisée et dans son état d'origine.",
+      "Vous pouvez retourner la vanity case dans les 14 jours suivant la livraison, à condition qu'elle soit inutilisée et dans son état d'origine.",
   },
 ];
 
