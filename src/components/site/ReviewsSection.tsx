@@ -19,7 +19,7 @@ const SEED_REVIEWS: Review[] = [
     location: "Paris, FR",
     rating: 5,
     title: "Celui que j'emmène toujours avec moi",
-    body: "il a enfin remplacé les trois trousses avec lesquelles je voyageais. tout rentre et je retrouve enfin mes affaires.",
+    body: "il a enfin remplacé les trois vanity cases avec lesquelles je voyageais. tout rentre et je retrouve enfin mes affaires.",
     date: "june 12, 2026",
     verified: true,
     photos: [

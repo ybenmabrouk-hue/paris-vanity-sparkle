@@ -32,14 +32,14 @@ export function LizardSections() {
               className="mt-5 text-muted-foreground"
               style={{ fontSize: "15px", lineHeight: 1.7 }}
             >
-              Un emplacement réservé pour la photographie de la trousse de toilette lézard rose — mise en scène
+              Un emplacement réservé pour la photographie de la vanity case lézard rose — mise en scène
               avec l'assurance discrète d'un objet que l'on saisit chaque jour.
             </p>
           </div>
         </div>
         <div className="relative min-h-[400px] md:min-h-[600px] bg-petale">
           <ImageSlot
-            label="Image de campagne de la trousse de toilette lézard rose pétale"
+            label="Image de campagne de la vanity case lézard rose pétale"
             caption="Image de campagne lézard rose"
             className="absolute inset-0 border-0 bg-petale text-foreground"
           />
@@ -53,7 +53,7 @@ export function LizardSections() {
           style={{ backgroundColor: LIZARD_BEIGE }}
         >
           <ImageSlot
-            label="Image de campagne de la trousse de toilette lézard beige chaud"
+            label="Image de campagne de la vanity case lézard beige chaud"
             caption="Image de campagne lézard beige"
             className="absolute inset-0 border-0 text-foreground"
             style={{ backgroundColor: LIZARD_BEIGE }}
@@ -77,7 +77,7 @@ export function LizardSections() {
               className="mt-5 text-muted-foreground"
               style={{ fontSize: "15px", lineHeight: 1.7 }}
             >
-              Un emplacement réservé pour la photographie de la trousse de toilette lézard beige — une étude
+              Un emplacement réservé pour la photographie de la vanity case lézard beige — une étude
               plus douce de texture, de savoir-faire et de rituel prêt à voyager.
             </p>
           </div>
@@ -107,7 +107,7 @@ export function LizardSections() {
               className="mt-5 text-muted-foreground"
               style={{ fontSize: "15px", lineHeight: 1.7 }}
             >
-              Une paire limitée de trousses de toilette en cuir gaufré lézard, déclinées
+              Une paire limitée de vanity cases en cuir gaufré lézard, déclinées
               en rose pétale et beige chaud pour des rituels qui voyagent avec élégance.
             </p>
           </div>

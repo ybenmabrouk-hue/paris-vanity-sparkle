@@ -56,7 +56,7 @@ function AboutPage() {
               </p>
               <p>
                 Née d'une frustration simple — fouiller sans fin dans une
-                trousse sans fond — chaque vanity case est pensée autour d'un
+                vanity case sans fond — chaque vanity case est pensée autour d'un
                 intérieur réfléchi : pinceaux debout, soins visibles,
                 essentiels à portée de main.
               </p>

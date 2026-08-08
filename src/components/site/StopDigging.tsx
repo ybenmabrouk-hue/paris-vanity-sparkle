@@ -21,7 +21,7 @@ export function StopDigging() {
               Digging.
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
-              Fini de fouiller dans une trousse sans fond pour trouver le seul
+              Fini de fouiller dans une vanity case sans fond pour trouver le seul
               rouge à lèvres dont vous avez besoin. Chaque objet a sa place —
               pinceaux debout, soins visibles, essentiels à portée de main.
             </p>
@@ -40,7 +40,7 @@ export function StopDigging() {
             loop
             playsInline
             className="max-h-[320px] md:max-h-[540px] w-auto max-w-full object-contain rounded-[2px]"
-            aria-label="Main fouillant dans une trousse de maquillage"
+            aria-label="Main fouillant dans une vanity case de maquillage"
           />
         </div>
       </div>
