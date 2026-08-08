@@ -66,7 +66,7 @@ export function Editorial() {
             style={{ fontSize: "15px", lineHeight: 1.7 }}
           >
             Des sérums alignés sur le marbre. Un pinceau posé avec intention. La
-            trousse de toilette devient l'objet autour duquel le moment se construit —
+            vanity case devient l'objet autour duquel le moment se construit —
             transformant une routine en un rituel que l'on attend avec impatience, où que
             l'on se réveille.
           </p>
