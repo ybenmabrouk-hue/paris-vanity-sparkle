@@ -15,10 +15,7 @@ export const Route = createFileRoute("/vanity-cases")({
 });
 
 function VanityCasesPage() {
-  const products = [
-    STATIC_PRODUCTS["vanity-case"],
-    STATIC_PRODUCTS["vanity-case-lizard"],
-  ];
+  const products = [STATIC_PRODUCTS["vanity-case"]];
 
 
   return (

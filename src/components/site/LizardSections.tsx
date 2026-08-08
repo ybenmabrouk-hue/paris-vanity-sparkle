@@ -8,7 +8,7 @@ export const LIZARD_PINK = "#EDC7C7";
 export const LIZARD_BEIGE = "#d9c6a5";
 
 export function LizardSections() {
-  const lizardProduct = STATIC_PRODUCTS["vanity-case-lizard"];
+  const lizardProduct = STATIC_PRODUCTS["vanity-case"];
 
   return (
     <>
