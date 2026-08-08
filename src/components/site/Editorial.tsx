@@ -24,7 +24,7 @@ export function Editorial() {
               lineHeight: 1.05,
             }}
           >
-            Une chambre, un rituel, une trousse de toilette
+            Une chambre, un rituel, une vanity case
           </h2>
           <p
             className="mx-auto mt-5 text-muted-foreground"
@@ -78,7 +78,7 @@ export function Editorial() {
             className="w-full aspect-[3/4] md:aspect-auto md:min-h-[640px] border-0"
           />
           <ImageSlot
-            label="Chapitre I — un mannequin se préparant avec la trousse de toilette Dahlia"
+            label="Chapitre I — un mannequin se préparant avec la vanity case Dahlia"
             caption="Après — le rituel"
             className="w-full aspect-[3/4] md:aspect-auto md:min-h-[640px] border-0"
           />

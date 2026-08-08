@@ -23,7 +23,7 @@ export function UGCGallery() {
             lineHeight: 1.1,
           }}
         >
-          La trousse de toilette Dahlia &amp; vous
+          La vanity case Dahlia &amp; vous
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">

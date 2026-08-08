@@ -17,7 +17,7 @@ export function Header() {
 
         <nav className="flex items-center gap-10 md:gap-14 font-sans font-normal text-[12px] tracking-[0.03em]">
           <Link to="/vanity-cases" className="hover:opacity-60 transition-opacity">
-            Trousses de toilette
+            Vanity cases
           </Link>
           <Link to="/about" className="hover:opacity-60 transition-opacity">
             À propos
