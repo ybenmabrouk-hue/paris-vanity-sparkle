@@ -33,44 +33,27 @@ export const STATIC_PRODUCTS: Record<string, StaticProduct> = {
     title: "The Vanity Case",
     subtitle: "Vanity case / petit",
     description:
-      "Façonné par un regard parisien et travaillé selon un savoir-faire moderne du cuir, le vanity case Dahlia est conçu pour accueillir les petits rituels qui vous accompagnent.\n\nSuffisamment spacieux pour le maquillage, les soins et les produits de toilette, avec un intérieur lavable et une poignée signature.",
+      "Façonné par un regard parisien et travaillé selon un savoir-faire moderne du cuir, le vanity case Dahlia est conçu pour accueillir les petits rituels qui vous accompagnent.\n\nDisponible en cuir lisse (Noir, Expresso, Bordeaux) et en édition Lizard, un cuir gaufré façon lézard (Beige, Rose).\n\nSuffisamment spacieux pour le maquillage, les soins et les produits de toilette, avec un intérieur lavable et une poignée signature.",
     category: "vanity-case",
     categoryLabel: "Vanity Cases",
     categoryHref: "/vanity-cases",
     colorOptionName: "Couleur",
-    colors: ["Noir", "Expresso", "Bordeaux"],
+    colors: ["Noir", "Expresso", "Bordeaux", "Beige", "Rose"],
     images: [
       { url: "", altText: "Vanity case — noir", color: "Noir" },
       { url: "", altText: "Vanity case — expresso", color: "Expresso" },
       { url: "", altText: "Vanity case — bordeaux", color: "Bordeaux" },
+      { url: "", altText: "Vanity case lizard — beige", color: "Beige" },
+      { url: "", altText: "Vanity case lizard — rose", color: "Rose" },
     ],
     variants: [
       { id: "vc-black", title: "Noir", color: "Noir", price: usd("70.00"), availableForSale: true },
       { id: "vc-espresso", title: "Expresso", color: "Expresso", price: usd("70.00"), availableForSale: true },
       { id: "vc-burgundy", title: "Bordeaux", color: "Bordeaux", price: usd("70.00"), availableForSale: false },
+      { id: "vc-beige", title: "Beige — Lizard", color: "Beige", price: usd("85.00"), availableForSale: true },
+      { id: "vc-rose", title: "Rose — Lizard", color: "Rose", price: usd("85.00"), availableForSale: true },
     ],
   },
-  "vanity-case-lizard": {
-    handle: "vanity-case-lizard",
-    title: "The Vanity Case — Lizard",
-    subtitle: "Vanity case / cuir lizard",
-    description:
-      "La même silhouette parisienne, taillée dans un cuir gaufré façon lézard. Beige et Rose sont façonnés exclusivement dans cette finition — un grain fin et sculpté qui capte la lumière différemment selon les angles.\n\nSuffisamment spacieux pour le maquillage, les soins et les produits de toilette, avec un intérieur lavable et une poignée signature.",
-    category: "vanity-case",
-    categoryLabel: "Vanity Cases",
-    categoryHref: "/vanity-cases",
-    colorOptionName: "Couleur",
-    colors: ["Beige", "Rose"],
-    images: [
-      { url: "", altText: "Vanity case lizard — beige", color: "Beige" },
-      { url: "", altText: "Vanity case lizard — rose", color: "Rose" },
-    ],
-    variants: [
-      { id: "vcl-beige", title: "Beige", color: "Beige", price: usd("85.00"), availableForSale: true },
-      { id: "vcl-rose", title: "Rose", color: "Rose", price: usd("85.00"), availableForSale: true },
-    ],
-  },
-
 };
 
 export function getStaticProduct(handle: string): StaticProduct | null {
