@@ -5,12 +5,15 @@ import { ImageSlot } from "@/components/site/ImageSlot";
 
 const COLOR_SWATCHES: Record<string, string> = {
   black: "#111111",
+  noir: "#111111",
   beige: "#d9c6a5",
   brown: "#6b4a2b",
   espresso: "#4a3227",
+  expresso: "#4a3227",
   pink: "#e8b5c0",
   rose: "#e3a9ae",
   burgundy: "#320F13",
+  bordeaux: "#320F13",
 };
 
 
