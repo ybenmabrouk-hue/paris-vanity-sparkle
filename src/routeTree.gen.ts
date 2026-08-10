@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VanityCasesRouteImport } from './routes/vanity-cases'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PartenariatsRouteImport } from './routes/partenariats'
 import { Route as LizardRouteImport } from './routes/lizard'
 import { Route as CollectionRouteImport } from './routes/collection'
 import { Route as AboutRouteImport } from './routes/about'
@@ -25,6 +26,11 @@ const VanityCasesRoute = VanityCasesRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartenariatsRoute = PartenariatsRouteImport.update({
+  id: '/partenariats',
+  path: '/partenariats',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LizardRoute = LizardRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/collection': typeof CollectionRoute
   '/lizard': typeof LizardRoute
+  '/partenariats': typeof PartenariatsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/vanity-cases': typeof VanityCasesRoute
   '/product/$handle': typeof ProductHandleRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/collection': typeof CollectionRoute
   '/lizard': typeof LizardRoute
+  '/partenariats': typeof PartenariatsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/vanity-cases': typeof VanityCasesRoute
   '/product/$handle': typeof ProductHandleRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/collection': typeof CollectionRoute
   '/lizard': typeof LizardRoute
+  '/partenariats': typeof PartenariatsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/vanity-cases': typeof VanityCasesRoute
   '/product/$handle': typeof ProductHandleRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/collection'
     | '/lizard'
+    | '/partenariats'
     | '/sitemap.xml'
     | '/vanity-cases'
     | '/product/$handle'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/collection'
     | '/lizard'
+    | '/partenariats'
     | '/sitemap.xml'
     | '/vanity-cases'
     | '/product/$handle'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/collection'
     | '/lizard'
+    | '/partenariats'
     | '/sitemap.xml'
     | '/vanity-cases'
     | '/product/$handle'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CollectionRoute: typeof CollectionRoute
   LizardRoute: typeof LizardRoute
+  PartenariatsRoute: typeof PartenariatsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   VanityCasesRoute: typeof VanityCasesRoute
   ProductHandleRoute: typeof ProductHandleRoute
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partenariats': {
+      id: '/partenariats'
+      path: '/partenariats'
+      fullPath: '/partenariats'
+      preLoaderRoute: typeof PartenariatsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lizard': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CollectionRoute: CollectionRoute,
   LizardRoute: LizardRoute,
+  PartenariatsRoute: PartenariatsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   VanityCasesRoute: VanityCasesRoute,
   ProductHandleRoute: ProductHandleRoute,
