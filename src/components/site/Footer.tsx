@@ -33,6 +33,7 @@ export function Footer() {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:justify-self-end lg:pl-16 lg:border-l lg:border-foreground/20 w-full">
             <ul className="space-y-4" style={{ fontSize: "14px", lineHeight: "20px" }}>
               <li><Link to="/about" className="hover:opacity-60 transition">À propos</Link></li>
+              <li><Link to="/partenariats" className="hover:opacity-60 transition">Partenariats</Link></li>
               <li><a href="#" className="hover:opacity-60 transition">Compte</a></li>
               <li><a href="mailto:hello@dahlia-paris.com" className="hover:opacity-60 transition">Contact</a></li>
               <li><a href="#" className="hover:opacity-60 transition">Avis</a></li>
