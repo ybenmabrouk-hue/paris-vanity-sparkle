@@ -119,6 +119,10 @@ function ProductDetail({ product }: { product: StaticProduct }) {
     toast.success(`${product.title} — ${selectedVariant.title} ajouté au panier`);
   };
 
+  const handleGift = () => {
+    toast.success("Option cadeau ajoutée — 8 EUR");
+  };
+
   const handleNotify = () => {
     toast("Nous vous préviendrons dès que cette pièce sera de retour.");
   };
