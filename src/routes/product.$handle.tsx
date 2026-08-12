@@ -304,6 +304,13 @@ function ProductDetail({ product }: { product: StaticProduct }) {
               </button>
 
               <button
+                onClick={handleGift}
+                className="w-full h-13 border border-foreground/20 text-foreground tracking-[0.14em] text-[12px] hover:bg-muted transition-colors flex items-center justify-center gap-2"
+              >
+                Gifting — 8 EUR
+              </button>
+
+              <button
                 onClick={handleNotify}
                 className="w-full h-13 bg-muted text-foreground/70 tracking-[0.14em] text-[12px] hover:bg-muted/80 transition-colors"
               >
