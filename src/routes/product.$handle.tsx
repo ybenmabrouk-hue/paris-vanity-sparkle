@@ -344,6 +344,8 @@ function ProductDetail({ product }: { product: StaticProduct }) {
 
       <WashableInterior />
 
+      <GiftingSection />
+
       <ReassuranceIcons />
 
       <ReviewsSection />
