@@ -25,7 +25,7 @@ export function GiftingSection() {
               cadeau pensé pour surprendre. Un geste simple, un effet immédiat.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
-              Ajoutez l'option Gifting pour 8 EUR à la validation du panier et
+              Ajoutez la Boîte Gifting (+8 EUR) à la validation du panier et
               recevez votre pièce prête à offrir.
             </p>
           </div>

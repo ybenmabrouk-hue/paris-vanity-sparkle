@@ -312,7 +312,7 @@ function ProductDetail({ product }: { product: StaticProduct }) {
                 onClick={handleGift}
                 className="w-full h-13 border border-foreground/20 text-foreground tracking-[0.14em] text-[12px] hover:bg-muted transition-colors flex items-center justify-center gap-2"
               >
-                Gifting — 8 EUR
+                Boîte Gifting (+8 EUR)
               </button>
 
               <button
