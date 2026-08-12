@@ -16,9 +16,9 @@ export function StopDigging() {
               className="font-garamond text-foreground leading-[0.95] tracking-[-0.01em]"
               style={{ fontSize: "clamp(56px, 8vw, 120px)" }}
             >
-              Stop
+              Tout
               <br />
-              Digging.
+              à portée de main.
             </h2>
             <p className="mt-6 text-[15px] leading-relaxed text-foreground/75 max-w-[380px]">
               Fini de fouiller dans une vanity case sans fond pour trouver le seul
