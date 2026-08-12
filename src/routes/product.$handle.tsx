@@ -119,6 +119,10 @@ function ProductDetail({ product }: { product: StaticProduct }) {
     toast.success(`${product.title} — ${selectedVariant.title} ajouté au panier`);
   };
 
+  const handleGift = () => {
+    toast.success("Option cadeau ajoutée — 8 EUR");
+  };
+
   const handleNotify = () => {
     toast("Nous vous préviendrons dès que cette pièce sera de retour.");
   };
@@ -301,6 +305,13 @@ function ProductDetail({ product }: { product: StaticProduct }) {
                 }}
               >
                 {inStock ? "Ajouter au panier" : "Épuisé"}
+              </button>
+
+              <button
+                onClick={handleGift}
+                className="w-full h-13 border border-foreground/20 text-foreground tracking-[0.14em] text-[12px] hover:bg-muted transition-colors flex items-center justify-center gap-2"
+              >
+                Gifting — 8 EUR
               </button>
 
               <button
